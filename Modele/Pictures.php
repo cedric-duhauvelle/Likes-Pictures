@@ -7,29 +7,67 @@ use Modele\DataRecover;
 
 class Pictures
 {
+    private $_id;
+    private $_user;
+    private $_title;
+    private $_upload;
 
-    public function upload($db, $file, $route, $name, $id)
+    public function __construct(array $data)
     {
-        $this->insertDatabase($db, $id, $name);
-        $idPicture = $this->recoverId($db, $id);
-        var_dump($idPicture);    
-        move_uploaded_file($_FILES[$file]['tmp_name'], $route . $name . $idPicture);                
+        $this->hydrate($data);
     }
 
-    public function recoverId($db, $idUser)
+    public function hydrate(array $data)
     {
-        $data = new DataRecover($db);
-        return $data->returnData('picture', 'user', $idUser, 'id');
+        foreach ($data as $key => $value) {
+            $method = 'set' . ucfirst($key);
+            if (method_exists($this, $method)) {
+                $this->$method($value);
+            }
+        }
     }
 
-    public function insertDatabase($db, $id, $title)
+    public function setId(int $id)
     {
-        $data = new DataInsert($db);
-        $data->picture($id, $title);
+        if ($id > 0) {
+            $this->_id = $id;
+        }
     }
 
-    public function displayGalerie($db)
+    public function getId()
     {
-        
+        return $this->_id;
+    }
+
+    public function setUser(int $id)
+    {
+        if ($id > 0) {
+            $this->_id = $id;
+        }
+    }
+
+    public function getUser()
+    {
+        return $this->_user;
+    }
+
+    public function setTitle(string $title)
+    {
+        $this->_title = $title;
+    }
+
+    public function getTitle()
+    {
+        return $this->_title;
+    }
+
+    public function setUpload($date)
+    {
+        $this->_upload = $date;
+    }
+
+    public function getUpload()
+    {
+        return $this->_upload;
     }
 }

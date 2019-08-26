@@ -29,9 +29,8 @@ class User
         }
     }
 
-    public function setId($id)
+    public function setId(int $id)
     {
-        $id = (int) $id;
         if ($id > 0) {
             $this->_id = $id;
         }
