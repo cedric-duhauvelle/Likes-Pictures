@@ -12,14 +12,6 @@ class DataInsert extends Data
         return $this->_db = $db;
     }
 
-    public function user($name, $email, $password)
-    {
-        $req = $this->_db->prepare('INSERT INTO user(name, email, password, inscription) VALUES (:name, :email, :password, CURRENT_TIME)');
-        $req->bindValue(':name', $name);
-        $req->bindValue(':email', $email);
-        $req->bindValue(':password', $password);
-        $req->execute();
-    }
 
     public function picture($idUser, $title)
     {

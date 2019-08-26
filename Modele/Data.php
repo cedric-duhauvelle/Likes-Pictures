@@ -11,11 +11,11 @@ class Data
     {
         $this->setDb($db);
     }
-    
+
     public function setDb(PDO $db)
     {
         $this->_db = $db;
-    } 
+    }
 
     //Appel a la base de donnees
     public function callDisplay($table)
@@ -24,5 +24,5 @@ class Data
         $resp->execute();
         $this->_responses = $resp->fetchAll();
         return $this->_responses;
-    }  
+    }
 }
