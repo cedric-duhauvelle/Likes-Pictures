@@ -2,8 +2,6 @@
 
 namespace Modele;
 
-
-
 use Modele\Data;
 
 class DataInsert extends Data
