@@ -2,6 +2,9 @@
 
 namespace Manager;
 
+use PDO;
+use Model\Pictures;
+
 class PictureManager
 {
     private $_db;

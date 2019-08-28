@@ -2,7 +2,8 @@
 
 namespace Manager;
 
-use Modele\User;
+use PDO;
+use Model\User;
 
 class UserManager
 {
@@ -22,7 +23,7 @@ class UserManager
     public function getUser($id)
     {
         $id = (int) $id;
-        $q = $this->_db->query('SELECT * FROM users WHERE id = '. $id);
+        $q = $this->_db->query('SELECT * FROM user WHERE id = '. $id);
         while ($data =  $q->fetch(PDO::FETCH_ASSOC)) {
            return $user = new User($data);
         }
@@ -32,7 +33,7 @@ class UserManager
     public function getUsers()
     {
         $users = [];
-        $q = $this->_db->query('SELECT * FROM users');
+        $q = $this->_db->query('SELECT * FROM user');
         while ($data =  $q->fetch(PDO::FETCH_ASSOC)) {
            $users[] = new User($data);
         }

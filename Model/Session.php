@@ -1,11 +1,11 @@
 <?php
 
-namespace Modele;
+namespace Model;
 
 class Session
 {
 
-    //Cree une variable session 
+    //Cree une variable session
     public function addSession($name, $value)
     {
         $_SESSION[$name] = $value;

@@ -1,8 +1,8 @@
 <?php
 
-namespace Modele;
+namespace Model;
 
-use Modele\Data;
+use Model\Data;
 
 class DataRecover extends Data
 {
@@ -18,8 +18,8 @@ class DataRecover extends Data
         $this->callDisplay($tab);
         foreach ($this->_responses as $response) {
             if ($response[$champ] === $value) {
-                return true;    
-            }       
+                return true;
+            }
         }
 
         return false;
@@ -30,7 +30,7 @@ class DataRecover extends Data
     {
         $this->callDisplay($tab);
         foreach ($this->_responses as $response) {
-            if ($response[$champ] === $name) {    
+            if ($response[$champ] === $name) {
                 return $response[$value];
             }
         }
@@ -44,7 +44,7 @@ class DataRecover extends Data
             if ($response) {
                 var_dump($response);
             }
-            
+
         }
     }
 }

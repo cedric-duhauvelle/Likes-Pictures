@@ -1,17 +1,13 @@
 <?php
 
-namespace Modele;
-
-use Modele\DataInsert;
-use Modele\DataRecover;
-use Modele\Session;
+namespace Model;
 
 class User
 {
     private $_id;
     private $_name;
     private $_email;
-    private $password;
+    private $_password;
     private $_inscription;
 
     public function __construct(array $data)

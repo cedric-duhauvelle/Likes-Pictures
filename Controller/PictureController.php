@@ -2,7 +2,7 @@
 
 namespace Controller;
 
-use Modele\Pictures;
+use Model\Pictures;
 
 echo 'sa marche';
 var_dump($_POST);
@@ -19,19 +19,19 @@ if (isset($_FILES['file']['tmp_name']) && ($_FILES['file']['error'] == UPLOAD_ER
         $picture->upload($this->_db, 'upload_picture', $route, $_POST['title'], $_SESSION['id']);
     }
 } elseif ($_FILES['file']['error'] || $_FILES['upload_picture']['error']) {
-    switch ($_FILES[$name]['error']) {     
-        case 1: // UPLOAD_ERR_INI_SIZE     
-            echo"Le fichier dépasse la limite autorisée par le serveur (fichier php.ini) !";     
-            break;     
-        case 2: // UPLOAD_ERR_FORM_SIZE     
-            echo "Le fichier dépasse la limite autorisée dans le formulaire HTML !"; 
-            break;     
-        case 3: // UPLOAD_ERR_PARTIAL     
-            echo "L'envoi du fichier a été interrompu pendant le transfert !";     
-            break;     
-        case 4: // UPLOAD_ERR_NO_FILE     
-            echo "Le fichier que vous avez envoyé a une taille nulle !"; 
-            break;     
-    }     
+    switch ($_FILES[$name]['error']) {
+        case 1: // UPLOAD_ERR_INI_SIZE
+            echo"Le fichier dépasse la limite autorisée par le serveur (fichier php.ini) !";
+            break;
+        case 2: // UPLOAD_ERR_FORM_SIZE
+            echo "Le fichier dépasse la limite autorisée dans le formulaire HTML !";
+            break;
+        case 3: // UPLOAD_ERR_PARTIAL
+            echo "L'envoi du fichier a été interrompu pendant le transfert !";
+            break;
+        case 4: // UPLOAD_ERR_NO_FILE
+            echo "Le fichier que vous avez envoyé a une taille nulle !";
+            break;
+    }
 }
 header('Location: galerie');

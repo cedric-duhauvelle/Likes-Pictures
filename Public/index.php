@@ -1,6 +1,6 @@
 <?php
 
-use Modele\Router;
+use Model\Router;
 require_once '../Public/Private/adressDatabase.php';
 
 session_start();
@@ -20,7 +20,7 @@ if(array_key_exists('url', $_GET)) {
     $url = $getClean['url'];
 } else {
 	$url = 'accueil';
-}  
+}
 //Gestion des erreurs
 set_exception_handler('exception');
 function exception($e)

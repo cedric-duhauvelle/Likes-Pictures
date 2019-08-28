@@ -2,9 +2,9 @@
 
 namespace Controller;
 
-use Modele\Router;
-use Modele\Session;
-use Modele\DataRecover;
+use Model\Router;
+use Model\Session;
+use Model\DataRecover;
 
 $router = new Router($this->_db);
 
@@ -23,7 +23,7 @@ if ($data->checkData('user', 'name', $postClean['name'])) {
     } else {
         $session->addSession('errorPassword', 'Mot de passe incorrect');
         header('Location: connexion');
-    }    
+    }
 } else {
     $session->addSession('errorName', 'Nom incorrect');
     header('Location: connexion');

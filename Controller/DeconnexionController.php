@@ -1,5 +1,7 @@
 <?php
 
+namespace Controller;
+
 session_start();
 
 //Detruit la session en cours

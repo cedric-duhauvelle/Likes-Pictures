@@ -1,8 +1,8 @@
 <?php
 
-namespace Modele;
+namespace Model;
 
-use Modele\Data;
+use Model\Data;
 
 class DataInsert extends Data
 {

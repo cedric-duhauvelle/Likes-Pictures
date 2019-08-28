@@ -1,9 +1,9 @@
 <?php
 
-namespace Modele;
+namespace Model;
 
-use Modele\DataInsert;
-use Modele\DataRecover;
+use Model\DataInsert;
+use Model\DataRecover;
 
 class Pictures
 {

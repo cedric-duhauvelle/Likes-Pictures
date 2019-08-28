@@ -1,5 +1,5 @@
 <?php
-namespace Modele;
+namespace Model;
 
 class Data
 {

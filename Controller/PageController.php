@@ -2,7 +2,7 @@
 
 namespace Controller;
 
-use Modele\User;
+use Model\User;
 
 require_once '../View/Template/header.php';
 
@@ -13,11 +13,11 @@ if ($page === 'profil')
 elseif
 	($page === 'accueil')
 {
-	
+
 }
 elseif ($page === 'galerie')
 {
-	
+
 }
 
 
