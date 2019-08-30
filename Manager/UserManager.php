@@ -50,10 +50,17 @@ class UserManager
     }
 
     //return donnee utilisateur
-    public function returnData($db, $champ, $value, $return)
+    public function returnData($champ, $name, $value)
     {
-        $data = new DataRecover($db);
+        $resp = $this->_db->prepare('SELECT * FROM user');
+        $resp->execute();
+        $responses = $resp->fetchAll();
+        foreach ($responses as $response) {
+            if ($response[$champ] === $name) {
+                return $response[$value];
+            }
+        }
+        return null;
 
-        return $data->returnData('user', $champ, $value, $return);
     }
 }

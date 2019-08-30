@@ -3,6 +3,7 @@
 namespace Model;
 
 use Controller\Controller;
+use Controller\PageController;
 
 class Router
 {
@@ -33,7 +34,7 @@ class Router
             new Controller($page, $this->_db);
         //Redirection vers les templates
         } elseif (is_file('../View/' . $page . '.php')) {
-            require_once '../Controller/PageController.php';
+            new PageController($this->_db, $page);
         } else {
             new Exception("Page introuvable", 404);
         }

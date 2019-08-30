@@ -6,7 +6,3 @@
         <p class="lead">Nouveautés</p>
     </div>
 </div>
-<?php
-
-$data = new DataRecover($this->_db);
-$data->allData('picture');

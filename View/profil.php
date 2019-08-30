@@ -1,20 +1,12 @@
-<?php
-
-use Model\User;
-$user = new User();
-
-?>
 <div id="content_profil" class="container">
     <h1>Profil</h1>
     <div class="row">
         <div id="profil">
             <div id="profil_info" class="col-lg-9">
-                <p><?= $user->returnData($this->_db, 'id', $_SESSION['id'], 'name') ?></p>
-                <p><?= $user->returnData($this->_db, 'id', $_SESSION['id'], 'email') ?></p>
-                <p><?= $user->returnData($this->_db, 'id', $_SESSION['id'], 'inscription') ?></p>
+
             </div>
             <div class="col-lg-3">
-                <img src="img/upload/avatar/avatar<?= $_SESSION['id']; ?>" id="avatar_profil" alt="Photo de profil" />
+
             </div>
         </div>
         <div>

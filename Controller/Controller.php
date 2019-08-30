@@ -21,7 +21,6 @@ class Controller
         if ('DeconnexionController' === $page) {
 			return new $class();
 		}
-        var_dump($class);
         new $class($db);
 
 
