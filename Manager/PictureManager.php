@@ -3,7 +3,8 @@
 namespace Manager;
 
 use PDO;
-use Model\Pictures;
+use Model\Picture;
+use Manager\userManager;
 
 class PictureManager
 {
@@ -23,35 +24,41 @@ class PictureManager
     public function getPictures()
     {
         $pictures = [];
-        $q = $this->_db->query('SELECT * FROM users');
+        $q = $this->_db->query('SELECT * FROM picture');
         while ($data =  $q->fetch(PDO::FETCH_ASSOC)) {
            $pictures[] = new Picture($data);
         }
         return $pictures;
     }
 
-    public function add($db, $file, $route, $name, $id)
+    public function add($file, $route, $title, $user)
     {
-        $this->insertDatabase($db, $id, $name);
-        $idPicture = $this->recoverId($db, $id);
-        var_dump($idPicture);
-        move_uploaded_file($_FILES[$file]['tmp_name'], $route . $name . $idPicture);
+        $pictureId = $user;
+        if ('upload_picture' === $file) {
+            $req = $this->_db->prepare('INSERT INTO picture(user, title, upload) VALUES (:user, :title, CURRENT_TIME)');
+            $req->bindValue(':user', $user);
+            $req->bindValue(':title', $title);
+            $req->execute();
+            $pictureId =  $this->returnLastData('title', $title, 'id');
+        }
+
+
+
+        move_uploaded_file($_FILES[$file]['tmp_name'], $route . $title . $pictureId . '.jpg');
     }
 
-    public function recoverId($db, $idUser)
+    //return donnee image
+    public function returnLastData($champ, $name, $value)
     {
-        $data = new DataRecover($db);
-        return $data->returnData('picture', 'user', $idUser, 'id');
-    }
-
-    public function insertDatabase($db, $id, $title)
-    {
-        $data = new DataInsert($db);
-        $data->picture($id, $title);
-    }
-
-    public function displayGalerie($db)
-    {
+        $resp = $this->_db->prepare('SELECT * FROM picture ORDER BY id DESC');
+        $resp->execute();
+        $responses = $resp->fetchAll();
+        foreach ($responses as $response) {
+            if ($response[$champ] === $name) {
+                return $response[$value];
+            }
+        }
+        return null;
 
     }
 }

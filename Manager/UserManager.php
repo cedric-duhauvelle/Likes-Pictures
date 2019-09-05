@@ -24,9 +24,9 @@ class UserManager
     {
         $id = (int) $id;
         $q = $this->_db->query('SELECT * FROM user WHERE id = '. $id);
-        while ($data =  $q->fetch(PDO::FETCH_ASSOC)) {
-           return $user = new User($data);
-        }
+        $data =  $q->fetch(PDO::FETCH_ASSOC);
+
+        return new User($data);
     }
 
     //retourne tous les utilisateurs

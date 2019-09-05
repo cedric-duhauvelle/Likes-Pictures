@@ -2,10 +2,20 @@
 
 namespace Controller;
 
+class DeconnexionController
+{
+    public function __construct()
+    {
+        $this->deconnexion();
+    }
 
-//Detruit la session en cours
-$_SESSION = array();
-session_destroy();
+    public function deconnexion()
+    {
+        //Detruit la session en cours
+        $_SESSION = array();
+        session_destroy();
 
-//Redirection
-header('Location: accueil');
+        //Redirection
+        header('Location: accueil');
+    }
+}

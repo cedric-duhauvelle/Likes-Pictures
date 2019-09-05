@@ -1,5 +1,3 @@
-<?php use Model\DataRecover; ?>
-
 <div id="content_accueil">
     <div class="starter-template">
         <h1>Accueil</h1>

@@ -26,7 +26,7 @@ class InscriptionController
             if ($userManager->returnData('email', $postClean['email'], 'email') === null) {
                 if ($postClean['password'] === $postClean['confirm_password']) {
                     $userManager->add($postClean['name'], $postClean['email'], password_hash($postClean['password'], PASSWORD_DEFAULT));
-                    $session->addSession('id_user', $userManager->returnData('name',$postClean['name'], 'id'));
+                    $session->addSession('id', $userManager->returnData('name',$postClean['name'], 'id'));
                     $session->addSession('name', $postClean['name']);
                     return header('Location: profil');
                 } else {

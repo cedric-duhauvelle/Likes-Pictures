@@ -1,25 +1,25 @@
 <div id="content_galerie">
     <div class="starter-template">
-        <h1>Accueil</h1>
+        <h1>Galerie</h1>
         <p class="lead">Nouveautés</p>
     </div>
     <div id="slider_container">
         <div id="slider">
+            <?php
+            foreach ($pictures as $picture) {
+                if ($picture) {
+            ?>
+
             <figure class="slider_content">
-                <img src="img/port01.jpg" />   
+                <img src="img/upload/picture/<?= $picture->getTitle() . $picture->getId(); ?>.jpg" />
             </figure>
-            <figure class="slider_content">
-                <img src="img/port02.jpg" />
-            </figure>           
-            <figure class="slider_content">
-                <img src="img/port03.jpg" />
-            </figure>       
-            <figure class="slider_content">
-                <img src="img/about-banner.jpg" />
-            </figure>
-            <figure class="slider_content">
-                <img src="img/forest.jpg" />
-            </figure>       
+
+
+            <?php
+                }
+            }
+            ?>
+
         </div>
     </div>
     <div id="content_comments">

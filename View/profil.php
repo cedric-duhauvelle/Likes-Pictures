@@ -3,10 +3,12 @@
     <div class="row">
         <div id="profil">
             <div id="profil_info" class="col-lg-9">
-
+                <p><?= $user->getName(); ?></p>
+                <p><?= $user->getEmail(); ?></p>
+                <p>Inscrit depuis le <?= date_format(date_create($user->getInscription()), 'd/m/Y à H:i:s');;  ?></p>
             </div>
             <div class="col-lg-3">
-
+                <img src="../Public/img/upload/avatar/avatar<?= $_SESSION['id']; ?>.jpg" id="avatar_profil" />
             </div>
         </div>
         <div>
@@ -19,5 +21,7 @@
         </div>
         <p><a href="DeconnexionController">Déconnexion</a></p>
     </div>
+    <div>
+
+    </div>
 </div>
-<?php var_dump($_SESSION); ?>

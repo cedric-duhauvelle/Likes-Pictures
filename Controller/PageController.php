@@ -4,6 +4,7 @@ namespace Controller;
 
 use Model\Router;
 use Manager\UserManager;
+use Manager\PictureManager;
 
 class PageController
 {
@@ -25,11 +26,12 @@ class PageController
 	{
 		if ('profil' === $page) {
 			$userManager = new UserManager($db);
-
+			$user = $userManager->getUser($_SESSION['id']);
 		} elseif ('accueil' === $page) {
 
 		} elseif ('galerie' === $page) {
-
+			$pictureManager = new PictureManager($db);
+			$pictures = $pictureManager->getPictures();
 		}
 
 		require_once '../View/' . $page . '.php';

@@ -2,10 +2,7 @@
 
 namespace Model;
 
-use Model\DataInsert;
-use Model\DataRecover;
-
-class Pictures
+class Picture
 {
     private $_id;
     private $_user;
@@ -42,7 +39,7 @@ class Pictures
     public function setUser(int $id)
     {
         if ($id > 0) {
-            $this->_id = $id;
+            $this->_user = $id;
         }
     }
 
