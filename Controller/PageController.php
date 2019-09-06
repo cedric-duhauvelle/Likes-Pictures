@@ -26,9 +26,13 @@ class PageController
 	{
 		if ('profil' === $page) {
 			$userManager = new UserManager($db);
+			$pictureManager = new PictureManager($db);
 			$user = $userManager->getUser($_SESSION['id']);
-		} elseif ('accueil' === $page) {
+			$pictures = $pictureManager->getPicturesUser($_SESSION['id']);
 
+		} elseif ('accueil' === $page) {
+			$pictureManager = new PictureManager($db);
+			$pictures = $pictureManager->getLastPictures();
 		} elseif ('galerie' === $page) {
 			$pictureManager = new PictureManager($db);
 			$pictures = $pictureManager->getPictures();

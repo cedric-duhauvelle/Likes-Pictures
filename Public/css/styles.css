@@ -68,7 +68,21 @@ footer{
     min-height: 800px;
     background-color: #93B5C6;
     margin-top: 58px;
-    margin-bottom: 2px;   
+    margin-bottom: 2px;
+    padding: 2%;
+}
+.content_new_home{
+    background-color: rgb(205, 211, 219);
+    padding: 2%;
+    margin-bottom: 2%;
+}
+.avatar_home{
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+}
+.picture_home{
+    width: 100%;
 }
 /* ---------------------------------------- */
 /* ==       CONNEXION        */
@@ -76,7 +90,7 @@ footer{
 #content_connexion{
     background-color: #93B5C6;
     margin-top: 58px;
-    margin-bottom: 2px;   
+    margin-bottom: 2px;
 }
 #content_connexion .row{
     padding: 3%;
@@ -115,7 +129,7 @@ footer{
 #content_inscription{
     background-color: #93B5C6;
     margin-top: 58px;
-    margin-bottom: 2px;   
+    margin-bottom: 2px;
 }
 #content_inscription .row{
     padding: 3%;
@@ -130,7 +144,7 @@ footer{
 }
 #form_inscription{
     padding: 3%;
-    background-color: #f5f5f5;   
+    background-color: #f5f5f5;
 }
 .form-inscription{
     display: flex !important;
@@ -185,7 +199,7 @@ footer{
     border-radius: 50%;
     cursor: pointer;
     background: url('../img/pause.png') no-repeat center #fff;
-    
+
 }
 .slider_stop:hover, .slider_play:hover{
     border: 2px solid #000;
@@ -243,27 +257,56 @@ footer{
 /* ---------------------------------------- */
 /* ==       PROFIL       */
 /*---------------------------------------- */
+.tabs li{
+    float: left;
+    display: block;
+}
+ul.tabs, .tabs li{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.tabs a{
+    display: inline-block;
+    background-color: #fff;
+    box-shadow: 0 1px 3px black, 0 1px 2px black;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: inherit;
+}
+.tabs .active a{
+    background-color: #93B5C6;
+}
+.tab_content{
+    display: none;
+}
+.tab_content.active{
+    display: block;
+}
 #content_profil{
     background-color: #93B5C6;
     margin-top: 58px;
-    margin-bottom: 2px;   
+    margin-bottom: 2px;
 }
 #content_profil .row{
     padding: 3%;
     min-height: 800px;
-    display: flex;
     flex-direction: column;
     justify-content: space-around;
 }
 #profil{
-    display: flex;
-    flex-direction: row;
+
+    flex-direction: column;
 }
 #avatar_profil{
     width: 175px;
     height: 175px;
     border-radius: 50%;
     border: 2px solid #fff;
+}
+.picture_profil{
+    width: 70%;
+    margin-bottom: 2%;
 }
 /* ---------------------------------------- */
 /* ==       AJOUT       */
@@ -272,10 +315,10 @@ footer{
     min-height: 800px;
     background-color: #93B5C6;
     margin-top: 58px;
-    margin-bottom: 2px; 
+    margin-bottom: 2px;
 }
 #content_upload_picture .row{
-    min-height: 400px;    
+    min-height: 400px;
     display: flex;
     justify-content: center;
     align-items: center;

@@ -22,8 +22,5 @@ class Controller
 			return new $class();
 		}
         new $class($db);
-
-
-
 	}
 }

@@ -36,8 +36,6 @@ class ConnexionController
             $session->addSession('errorName', 'Nom incorrect');}
         header('Location: connexion');
     }
-
-
 }
 
 

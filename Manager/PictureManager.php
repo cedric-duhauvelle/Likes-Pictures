@@ -31,6 +31,28 @@ class PictureManager
         return $pictures;
     }
 
+    //retourne les images a partir du dernier ajout
+    public function getLastPictures()
+    {
+        $pictures = [];
+        $q = $this->_db->query('SELECT * FROM picture ORDER BY upload DESC');
+        while ($data =  $q->fetch(PDO::FETCH_ASSOC)) {
+           $pictures[] = new Picture($data);
+        }
+        return $pictures;
+    }
+
+    //retourne toutes les images d'un utilisateur
+    public function getPicturesUser($id)
+    {
+        $pictures = [];
+        $q = $this->_db->query('SELECT * FROM picture WHERE user = '. $id);
+        while ($data =  $q->fetch(PDO::FETCH_ASSOC)) {
+           $pictures[] = new Picture($data);
+        }
+        return $pictures;
+    }
+
     public function add($file, $route, $title, $user)
     {
         $pictureId = $user;
