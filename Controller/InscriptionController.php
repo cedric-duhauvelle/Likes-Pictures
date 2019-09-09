@@ -5,8 +5,8 @@
  */
 namespace Controller;
 
-use Model\Session;
-use Model\Router;
+use Systeme\Session;
+use Systeme\Router;
 use Manager\UserManager;
 
 class InscriptionController

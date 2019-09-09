@@ -2,8 +2,8 @@
 
 namespace Controller;
 
-use Model\Router;
-use Model\Session;
+use Systeme\Router;
+use Systeme\Session;
 use Manager\UserManager;
 
 class ConnexionController

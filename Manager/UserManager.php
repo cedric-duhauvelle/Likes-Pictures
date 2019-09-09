@@ -4,7 +4,7 @@ namespace Manager;
 
 use PDO;
 use Model\User;
-use Model\Database;
+use Systeme\Database;
 
 class UserManager
 {

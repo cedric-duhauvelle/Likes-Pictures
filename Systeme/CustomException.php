@@ -1,9 +1,9 @@
 <?php
 
-namespace Model;
+namespace Systeme;
 
 use Exception;
-use Model\Session;
+use Systeme\Session;
 
 class CustomException extends Exception
 {

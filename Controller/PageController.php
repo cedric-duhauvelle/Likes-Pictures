@@ -2,7 +2,7 @@
 
 namespace Controller;
 
-use Model\Router;
+use Systeme\Router;
 use Manager\UserManager;
 use Manager\PictureManager;
 

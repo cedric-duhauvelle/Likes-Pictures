@@ -4,7 +4,7 @@ namespace Manager;
 
 use PDO;
 use Model\Picture;
-use Model\DataBase;
+use Systeme\DataBase;
 use Manager\userManager;
 
 class PictureManager

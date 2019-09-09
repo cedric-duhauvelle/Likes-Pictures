@@ -1,10 +1,10 @@
 <?php
 
-namespace Model;
+namespace Systeme;
 
 use Controller\Controller;
 use Controller\PageController;
-use Model\CustomException;
+use Systeme\CustomException;
 
 class Router
 {
