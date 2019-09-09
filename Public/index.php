@@ -1,6 +1,7 @@
 <?php
 
-use Model\Router;
+use Systeme\Router;
+use Systeme\CustomException;
 
 session_start();
 spl_autoload_register(function ($class) {
@@ -24,7 +25,7 @@ if(array_key_exists('url', $_GET)) {
 set_exception_handler('exception');
 function exception($e)
 {
-    new Exception($e);
+    new CustomException($e);
 }
 
 $router->setUrl($url);

@@ -1,5 +1,5 @@
 <?php
-use Model\Session;
+use Systeme\Session;
 
 new Session();
 ?>

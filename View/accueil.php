@@ -8,10 +8,10 @@
             ?>
             <div class="col-ms-8 content_new_home">
                 <div>
-                    <figure>
+                    <figure class="col-ms-8">
                         <img src="../Public/img/upload/avatar/avatar<?= $picture->getUser()->getId(); ?>.jpg" class="avatar_home" />
                     </figure>
-                    <p><?= $picture->getUser()->getName(); ?></p>
+                    <p class="col-ms-4"><?= $picture->getUser()->getName(); ?></p>
                 </div>
 
                 <figure>
