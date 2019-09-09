@@ -7,13 +7,6 @@ use Controller\PageController;
 
 class Router
 {
-    private $_db;
-
-    public function __construct($db)
-    {
-        return $this->_db = $db;
-    }
-
     //Nettoyeur de tableau
     public function cleanArray($array)
     {
@@ -31,10 +24,10 @@ class Router
     {
         //Redirection vers les controllers
         if (strpos($page, 'Controller') && is_file('../Controller/' . $page . '.php')) {
-            new Controller($page, $this->_db);
+            new Controller($page);
         //Redirection vers les templates
         } elseif (is_file('../View/' . $page . '.php')) {
-            new PageController($this->_db, $page);
+            new PageController($page);
         } else {
             new Exception("Page introuvable", 404);
         }

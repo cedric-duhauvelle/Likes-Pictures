@@ -9,9 +9,9 @@
             <div class="col-ms-8 content_new_home">
                 <div>
                     <figure>
-                        <img src="../Public/img/upload/avatar/avatar<?= $picture->getUser(); ?>.jpg" class="avatar_home" />
+                        <img src="../Public/img/upload/avatar/avatar<?= $picture->getUser()->getId(); ?>.jpg" class="avatar_home" />
                     </figure>
-                    <p><?= $picture->getUser(); ?></p>
+                    <p><?= $picture->getUser()->getName(); ?></p>
                 </div>
 
                 <figure>

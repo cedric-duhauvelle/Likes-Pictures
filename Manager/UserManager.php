@@ -4,37 +4,57 @@ namespace Manager;
 
 use PDO;
 use Model\User;
+use Model\Database;
 
 class UserManager
 {
     private $_db;
 
-    public function __construct(PDO $db)
+    public function __construct()
     {
-        $this->setDb($db);
-    }
-
-    public function setDb($db)
-    {
-        $this->_db = $db;
+        $db = new DataBase();
+        $this->_db = $db->connect();
     }
 
     //retourne un utilisateur
-    public function getUser($id)
+    public function getUserById($id)
     {
         $id = (int) $id;
-        $q = $this->_db->query('SELECT * FROM user WHERE id = '. $id);
-        $data =  $q->fetch(PDO::FETCH_ASSOC);
+        $request = $this->_db->query('SELECT * FROM user WHERE id = '. $id);
 
-        return new User($data);
+        return new User($request->fetch(PDO::FETCH_ASSOC));
+    }
+
+    //retourne un utilisateur
+    public function getUserByName($name)
+    {
+        $request = $this->_db->query('SELECT * FROM user WHERE name="' . $name . '"');
+        $data = $request->fetch(PDO::FETCH_ASSOC);
+        if ($data !== false) {
+            return new User($data);
+        }
+
+        return false;
+    }
+
+    //retourne un utilisateur
+    public function getUserByEmail($email)
+    {
+        $request = $this->_db->query('SELECT * FROM user WHERE email="' . $email . '"');
+        $data = $request->fetch(PDO::FETCH_ASSOC);
+        if ($data !== false) {
+            return new User($data);
+        }
+
+        return false;
     }
 
     //retourne tous les utilisateurs
     public function getUsers()
     {
         $users = [];
-        $q = $this->_db->query('SELECT * FROM user');
-        while ($data =  $q->fetch(PDO::FETCH_ASSOC)) {
+        $request = $this->_db->query('SELECT * FROM user');
+        while ($data =  $request->fetch(PDO::FETCH_ASSOC)) {
            $users[] = new User($data);
         }
         return $users;
@@ -42,25 +62,18 @@ class UserManager
 
     public function add($name, $email, $password)
     {
-        $req = $this->_db->prepare('INSERT INTO user(name, email, password, inscription) VALUES (:name, :email, :password, CURRENT_TIME)');
-        $req->bindValue(':name', $name);
-        $req->bindValue(':email', $email);
-        $req->bindValue(':password', $password);
-        $req->execute();
+        $request = $this->_db->prepare('INSERT INTO user(name, email, password, inscription) VALUES (:name, :email, :password, CURRENT_TIME)');
+        $request->bindValue(':name', $name);
+        $request->bindValue(':email', $email);
+        $request->bindValue(':password', $password);
+        $request->execute();
     }
 
     //return donnee utilisateur
-    public function returnData($champ, $name, $value)
+    public function returnData($name)
     {
-        $resp = $this->_db->prepare('SELECT * FROM user');
-        $resp->execute();
-        $responses = $resp->fetchAll();
-        foreach ($responses as $response) {
-            if ($response[$champ] === $name) {
-                return $response[$value];
-            }
-        }
-        return null;
+        $users = $this->getUserByName($name);
 
+        return $users;
     }
 }

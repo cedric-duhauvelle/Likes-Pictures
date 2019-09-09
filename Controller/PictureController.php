@@ -6,14 +6,14 @@ use Manager\PictureManager;
 
 class PictureController
 {
-    public function __construct($db)
+    public function __construct()
     {
-        $this->pictureAdd($db);
+        $this->pictureAdd();
     }
 
-    public function pictureAdd($db)
+    public function pictureAdd()
     {
-        $pictureManager = new PictureManager($db);
+        $pictureManager = new PictureManager();
 
         if (isset($_FILES['file']['tmp_name']) && ($_FILES['file']['error'] == UPLOAD_ERR_OK) || isset($_FILES['upload_picture']['tmp_name']) && ($_FILES['upload_picture']['error'] == UPLOAD_ERR_OK)) {
             if (array_key_exists('file', $_FILES)) {

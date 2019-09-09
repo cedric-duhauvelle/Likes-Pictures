@@ -2,6 +2,8 @@
 
 namespace Model;
 
+use Manager\UserManager;
+
 class Picture
 {
     private $_id;
@@ -45,7 +47,8 @@ class Picture
 
     public function getUser()
     {
-        return $this->_user;
+        $user = new UserManager();
+        return $user->getUserById($this->_user);
     }
 
     public function setTitle(string $title)

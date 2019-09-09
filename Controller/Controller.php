@@ -9,18 +9,15 @@ use Controller\PictureController;
 
 class Controller
 {
-    public function __construct($page, $db)
+    public function __construct($page)
 	{
-		$this->callController($page, $db);
+		$this->callController($page);
 	}
 
 	//Appel controller
-	public function callController($page, $db)
+	public function callController($page)
 	{
         $class = 'Controller\\' . $page;
-        if ('DeconnexionController' === $page) {
-			return new $class();
-		}
-        new $class($db);
+        new $class();
 	}
 }

@@ -1,7 +1,6 @@
 <?php
 
 use Model\Router;
-require_once '../Public/Private/adressDatabase.php';
 
 session_start();
 spl_autoload_register(function ($class) {
@@ -13,7 +12,7 @@ spl_autoload_register(function ($class) {
     }
 });
 
-$router = new Router($db);
+$router = new Router();
 $getClean = $router->cleanArray($_GET);
 
 if(array_key_exists('url', $_GET)) {

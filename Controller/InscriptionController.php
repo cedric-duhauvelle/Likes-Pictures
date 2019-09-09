@@ -11,33 +11,37 @@ use Manager\UserManager;
 
 class InscriptionController
 {
-    public function __construct($db)
+    public function __construct()
     {
-        $this->inscription($db);
+        $this->inscription();
     }
 
-    public function inscription($db)
+    public function inscription()
     {
-        $router = new Router($db);
+        $router = new Router();
         $session = new Session();
         $postClean = $router->cleanArray($_POST);
-        $userManager = new UserManager($db);
-        if ($userManager->returnData('name',$postClean['name'], 'id') === null) {
-            if ($userManager->returnData('email', $postClean['email'], 'email') === null) {
-                if ($postClean['password'] === $postClean['confirm_password']) {
-                    $userManager->add($postClean['name'], $postClean['email'], password_hash($postClean['password'], PASSWORD_DEFAULT));
-                    $session->addSession('id', $userManager->returnData('name',$postClean['name'], 'id'));
-                    $session->addSession('name', $postClean['name']);
-                    return header('Location: profil');
-                } else {
-                    $session->addSession('errorPassword', 'Les mots de passe ne sont pas identiques');
-                }
-            } else {
-                $session->addSession('errorEmail', 'Email déjà utilisé!!');
-            }
-        } else {
+        $userManager = new UserManager();
+
+        if ($userManager->getUserByName($postClean['name']) !== false) {
             $session->addSession('errorName', 'Nom déjà utilisé!!');
+
+            return header('Location: inscription');
         }
-        header('Location: inscription');
+        if ($userManager->getUserByEmail($postClean['email']) !== false) {
+            $session->addSession('errorEmail', 'Email déjà utilisé!!');
+
+            return header('Location: inscription');
+        }
+        if ($postClean['password'] !== $postClean['confirm_password']) {
+            $session->addSession('errorPassword', 'Les mots de passe ne sont pas identiques');
+
+            return header('Location: inscription');
+        }
+        $userManager->add($postClean['name'], $postClean['email'], password_hash($postClean['password'], PASSWORD_DEFAULT));
+        $user = $userManager->getUserByName($postClean['name']);
+        $session->addSession('id', $user->getId());
+        $session->addSession('name', $user->getName());
+        header('Location: profil');
     }
 }

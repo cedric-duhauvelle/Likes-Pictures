@@ -8,32 +8,32 @@ use Manager\UserManager;
 
 class ConnexionController
 {
-    public function __construct($db)
+    public function __construct()
     {
-        $this->connexion($db);
+        $this->connexion();
     }
 
-    public function connexion($db)
+    public function connexion()
     {
-        $router = new Router($db);
-
+        $router = new Router();
         $postClean = $router->cleanArray($_POST);
 
-        var_dump($postClean);
-        $userManager = new UserManager($db);
+        $userManager = new UserManager();
         $session = new Session();
-        var_dump($userManager->returnData('name', $postClean['name'], 'id'));
-        if ($userManager->returnData('name', $postClean['name'], 'id')) {
-            $checkPassword = $userManager->returnData('name', $postClean['name'], 'password');
-            if (password_verify($postClean['password'], $checkPassword)) {
+
+        if ($userManager->getUserByName($postClean['name'])) {
+            $user = $userManager->getUserByName($postClean['name']);
+
+            if (password_verify($postClean['password'], $user->getPassword())) {
                 $session->addSession('name', $postClean['name']);
-                $session->addSession('id', $userManager->returnData('name', $postClean['name'], 'id'));
+                $session->addSession('id', $user->getId());
+
                 return header('Location: profil');
-            } else {
-                $session->addSession('errorPassword', 'Mot de passe incorrect');
             }
+            $session->addSession('errorPassword', 'Mot de passe incorrect');
         } else {
-            $session->addSession('errorName', 'Nom incorrect');}
+            $session->addSession('errorName', 'Nom incorrect');
+        }
         header('Location: connexion');
     }
 }

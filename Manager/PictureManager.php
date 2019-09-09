@@ -4,20 +4,17 @@ namespace Manager;
 
 use PDO;
 use Model\Picture;
+use Model\DataBase;
 use Manager\userManager;
 
 class PictureManager
 {
     private $_db;
 
-    public function __construct(PDO $db)
+    public function __construct()
     {
-        $this->setDb($db);
-    }
-
-    public function setDb(PDO $db)
-    {
-        $this->_db = $db;
+        $db = new DataBase();
+        $this->_db = $db->connect();
     }
 
     //retourne tous les images

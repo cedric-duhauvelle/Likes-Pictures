@@ -8,33 +8,33 @@ use Manager\PictureManager;
 
 class PageController
 {
-	public function __construct($db, $page)
+	public function __construct($page)
 	{
-		$this->page($db, $page);
+		$this->page($page);
 	}
 
-	public function page($db, $page)
+	public function page($page)
 	{
 		require_once '../View/Template/header.php';
 
-		$this->callClass($db, $page);
+		$this->callClass($page);
 
 		require_once '../View/Template/footer.php';
 	}
 
-	public function callClass($db, $page)
+	public function callClass( $page)
 	{
 		if ('profil' === $page) {
-			$userManager = new UserManager($db);
-			$pictureManager = new PictureManager($db);
-			$user = $userManager->getUser($_SESSION['id']);
+			$userManager = new UserManager();
+			$pictureManager = new PictureManager();
+			$user = $userManager->getUserById($_SESSION['id']);
 			$pictures = $pictureManager->getPicturesUser($_SESSION['id']);
 
 		} elseif ('accueil' === $page) {
-			$pictureManager = new PictureManager($db);
+			$pictureManager = new PictureManager();
 			$pictures = $pictureManager->getLastPictures();
 		} elseif ('galerie' === $page) {
-			$pictureManager = new PictureManager($db);
+			$pictureManager = new PictureManager();
 			$pictures = $pictureManager->getPictures();
 		}
 
