@@ -4,6 +4,7 @@ namespace Model;
 
 use Controller\Controller;
 use Controller\PageController;
+use Model\CustomException;
 
 class Router
 {
@@ -29,7 +30,7 @@ class Router
         } elseif (is_file('../View/' . $page . '.php')) {
             new PageController($page);
         } else {
-            new Exception("Page introuvable", 404);
+            new CustomException("Page introuvable", 404);
         }
     }
 }
