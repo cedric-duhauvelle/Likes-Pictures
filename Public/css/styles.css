@@ -71,18 +71,54 @@ footer{
     margin-bottom: 2px;
     padding: 2%;
 }
-.content_new_home{
+.content_new_post{
     background-color: rgb(205, 211, 219);
     padding: 2%;
     margin-bottom: 2%;
 }
-.avatar_home{
+.avatar_post{
     width: 75px;
     height: 75px;
     border-radius: 50%;
 }
-.picture_home{
-    width: 100%;
+.content_avatar_post{
+    display: flex;
+}
+.content_avatar_post figure{
+    width: 75px;
+}
+.content_avatar_post p{
+    display: flex;
+    align-items: center;
+    width: 40%;
+    margin-left: 2%;
+}
+.content_picture_post{
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+.content_icone_post{
+    position: absolute;
+    top: 40%;
+    right: 7%;
+    display: flex;
+    flex-direction: column;
+}
+.content_icone_post span{
+    font-size: 25px;
+    margin: 20%;
+}
+.picture_post a{
+    display: flex;
+    justify-content: center;
+}
+.picture_post{
+    width: 80%;
+}
+.content_info_post{
+    display: flex;
+    justify-content: space-between;
 }
 /* ---------------------------------------- */
 /* ==       CONNEXION        */
