@@ -17,6 +17,13 @@ class PictureManager
         $this->_db = $db->connect();
     }
 
+    public function getPictureById($id)
+    {
+        $request = $this->_db->query('SELECT * FROM picture WHERE id = '. $id);
+
+        return new Picture($request->fetch(PDO::FETCH_ASSOC));
+    }
+
     //retourne tous les images
     public function getPictures()
     {

@@ -3,6 +3,7 @@
 namespace Systeme;
 
 use PDO;
+use Systeme\CustomException;
 
 class DataBase
 {
@@ -24,8 +25,8 @@ class DataBase
     {
         try {
             return new PDO('mysql:host=' . $this->_host . ';dbname=' . $this->_name . ';charset=utf8', $this->_user, $this->_password);
-        } catch(Exception $e) {
-
+        } catch(CustomException $e) {
+            new CustomException('Erreur de chargement à la base de données', 404);
         }
     }
 }

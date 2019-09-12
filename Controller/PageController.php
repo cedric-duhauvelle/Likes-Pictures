@@ -5,6 +5,7 @@ namespace Controller;
 use Systeme\Router;
 use Manager\UserManager;
 use Manager\PictureManager;
+use Manager\COmmentManager;
 
 class PageController
 {
@@ -33,6 +34,8 @@ class PageController
 		} elseif ('accueil' === $page) {
 			$pictureManager = new PictureManager();
 			$pictures = $pictureManager->getLastPictures();
+			$commentManager = new CommentManager();
+
 		} elseif ('galerie' === $page) {
 			$pictureManager = new PictureManager();
 			$pictures = $pictureManager->getPictures();
