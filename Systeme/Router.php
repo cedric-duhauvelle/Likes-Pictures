@@ -30,7 +30,7 @@ class Router
         } elseif (is_file('../View/' . $page . '.php')) {
             new PageController($page);
         } else {
-            new CustomException("Page introuvable", 404);
+            //new CustomException("Page introuvable", 404);
         }
     }
 }
