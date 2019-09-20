@@ -6,6 +6,7 @@
         <?php
         foreach ($pictures as $picture) {
             $likeNumber = $likeManager->getLikesNumberByElementId($picture->getId());
+            $reportsNumber = $reportManager->getReportsNumberByElementId($picture->getId());
         ?>
             <div class="col-ms-8 content_new_post">
                 <div class="content_avatar_post">
@@ -38,13 +39,13 @@
                         <button type="submit" onclick="callAjax('like_form<?= $picture->getId(); ?>', 'Like')"><span class="far fa-thumbs-up"></span></button>
                     </form>
                     <form method="POST" class="report_form_post" id="report_form<?= $picture->getId(); ?>">
-                        <label for="element<?= $picture->getId() ?>"></label>
-                        <input type="text" name="element" id="elementReport<?= $picture->getId() ?>" value="picture" class="hidden_input" />
+                        <label for="elementReport<?= $picture->getId() ?>"></label>
+                        <input type="text" name="elementReport" id="elementReport<?= $picture->getId() ?>" value="picture" class="hidden_input" />
                         <label for="elementIdReport<?= $picture->getId() ?>"></label>
                         <input type="text" name="elementIdReport" id="elementIdReport<?= $picture->getId() ?>" value="<?= $picture->getId(); ?>" class="hidden_input" />
-                        <label for="userId<?= $picture->getUser()->getId() ?>"></label>
+                        <label for="userIdReport<?= $picture->getUser()->getId() ?>"></label>
                         <input type="text" name="userIdReport" id="userIdReport<?= $picture->getId() ?>" value="<?= $_SESSION['id']; ?>" class="hidden_input" />
-                        <button type="button" onclick="callAjax(<?= $picture->getId(); ?>)"><span class="fas fa-flag"></span></button>
+                        <button type="submit" onclick="callAjax('report_form<?= $picture->getId(); ?>', 'Report')"><span class="fas fa-flag"></span></button>
                     </form>
 
 
@@ -54,7 +55,13 @@
                 $comments = $commentManager->getCommentByPicture($picture->getId());
                 if(!empty($comments) || array_key_exists('id', $_SESSION)) {
                 ?>
-                <p id="content_like<?= $picture->getId() ?>"><?= $likeNumber; ?> personnes aiment cette photo.</p>
+                <p id="content_like<?= $picture->getId(); ?>"><?= $likeNumber; ?> personnes aiment cette photo.</p>
+
+                <p id="content_report<?= $picture->getId(); ?>">
+                    <?php if ($reportsNumber != 0) { ?>
+                    <?= $reportsNumber; ?> personnes ont signalées cette photo.
+                    <?php } ?>
+                </p>
 
 
                 <button class="comment_button_post btn btn-primary" type="button" onclick="displayContentComment(<?= $picture->getId(); ?>)">commentaires</button>
@@ -87,6 +94,8 @@
             </div>
         <?php } ?>
     </div>
+</div>
+<div>
 </div>
 <script src = "../Public/js/displayComment.js" ></script>
 <script type = "text / javascript" src = "/fancybox/lib/jquery.mousewheel-3.0.6.pack.js" ></script>

@@ -4,14 +4,7 @@ use Systeme\Router;
 use Systeme\CustomException;
 
 session_start();
-spl_autoload_register(function ($class) {
-    $class = '../' . str_replace("\\", '/', $class) . '.php';
-    if (is_file($class)) {
-        require_once($class);
-    } else {
-        new Exception('Erreur interne de chargement');
-    }
-});
+include('../Systeme/AutoLoad.php');
 
 $router = new Router();
 $getClean = $router->cleanArray($_GET);

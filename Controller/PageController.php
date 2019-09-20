@@ -7,6 +7,7 @@ use Manager\UserManager;
 use Manager\PictureManager;
 use Manager\CommentManager;
 use Manager\LikeManager;
+use Manager\ReportManager;
 
 class PageController
 {
@@ -37,6 +38,7 @@ class PageController
 			$pictures = $pictureManager->getLastPictures();
 			$commentManager = new CommentManager();
 			$likeManager = new LikeManager();
+			$reportManager = new ReportManager();
 
 		} elseif ('galerie' === $page) {
 			$pictureManager = new PictureManager();

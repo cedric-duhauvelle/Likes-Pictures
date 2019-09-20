@@ -6,10 +6,10 @@ use Manager\UserManager;
 use Manager\PictureManager;
 use Manager\CommentManager;
 
-class Like
+class Report
 {
     private $_id;
-    private $_element; //photo || commentaire
+    private $_element;
     private $_elementId;
     private $_user;
     private $_published;
@@ -58,10 +58,10 @@ class Like
     {
         if ('picture' === $this->getElement()) {
             $picture = new PictureManager();
-            return $picture->getPictureById($this->getElementId());
+            return $picture->getPictureById($this->_elementId);
         }
         $comment = new commentManager();
-        return $comment->getCommentById($this->getElementId());
+        return $comment->getCommentById($this->$this->_elementId);
     }
 
     public function setUser($id)

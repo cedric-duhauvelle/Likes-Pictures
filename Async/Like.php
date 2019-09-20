@@ -33,7 +33,7 @@ foreach ($likes as $like) {
         $likeStatus = 1;
         $likeNumber = $likeManager->getLikesNumberByElementId($postClean['elementId']);
         $data = ["likeStatus" => $likeStatus, "element" => $postClean['element'], "elementId" => $postClean['elementId'], "likeNumber" => $likeNumber];
-
+        $msg = 'Like effacer';
     }
 
 }
@@ -44,7 +44,7 @@ if ($likeStatus === 0) {
     $likeNumber = $likeManager->getLikesNumberByElementId($postClean['elementId']);
     $user = $userManager->getUserById($postClean['userId']);
     $data = ["element" => $postClean['element'], "elementId" => $postClean['elementId'], "userId" => $postClean['userId'], "userName" => $user->getName(), "likeStatus" => $likeStatus, "likeNumber" => $likeNumber];
-
+    $msg = 'Like ajouter';
 
 }
 
