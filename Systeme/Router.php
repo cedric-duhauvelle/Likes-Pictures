@@ -4,6 +4,9 @@ namespace Systeme;
 
 use Controller\Controller;
 use Controller\PageController;
+use Controller\LikeController;
+use Controller\ReportController;
+use Controller\CommentController;
 use Systeme\CustomException;
 
 class Router
@@ -24,13 +27,19 @@ class Router
     private function route($page)
     {
         //Redirection vers les controllers
-        if (strpos($page, 'Controller') && is_file('../Controller/' . $page . '.php')) {
+        if ($page == 'Like') {
+            new LikeController();
+        } elseif($page == 'Report') {
+            new ReportController();
+        } elseif($page == 'Comment') {
+            new CommentController();
+        } elseif (strpos($page, 'Controller') && is_file('../Controller/' . $page . '.php')) {
             new Controller($page);
         //Redirection vers les templates
         } elseif (is_file('../View/' . $page . '.php')) {
             new PageController($page);
         } else {
-            //new CustomException("Page introuvable", 404);
+            new CustomException("Page introuvable", 404);
         }
     }
 }

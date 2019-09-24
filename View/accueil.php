@@ -96,6 +96,12 @@
     </div>
 </div>
 <div>
+<?php
+
+?>
+
+
+
 </div>
 <script src = "../Public/js/displayComment.js" ></script>
 <script type = "text / javascript" src = "/fancybox/lib/jquery.mousewheel-3.0.6.pack.js" ></script>

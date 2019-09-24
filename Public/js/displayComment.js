@@ -16,31 +16,31 @@ var callAjax = function(element, script) {
         var xhr = new XMLHttpRequest();
         var data = new FormData(this);
         xhr.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
+            if (this.readyState == 4 && this.status == 200) {
 console.log(this.response);
-            if (this.response.sucess) {
-                if (script === 'Like') {
-                    like(this.response.data);
-                } else if (script === 'Comment') {
-                    comment(this.response.data);
-                    document.getElementById(element).reset();
-                } else if (script === 'Report') {
-                    report(this.response.data);
+                if (this.response.sucess) {
+                    if (script === 'Like') {
+                        like(this.response.data);
+                    } else if (script === 'Comment') {
+                        comment(this.response.data);
+                        document.getElementById(element).reset();
+                    } else if (script === 'Report') {
+                        report(this.response.data);
+                    }
+                } else {
+alert(this.response.msg);
                 }
-            } else {
-                alert(this.response.msg);
-            }
-        } else if (this.readyState == 4 && this.status == 404) {
-            alert('une erreur est survenue ...');
+            } else if (this.readyState == 4 && this.status == 404) {
+alert('une erreur est survenue ...');
+            };
+            e.stopImmediatePropagation();
         };
-        e.stopImmediatePropagation();
-    };
 
-    xhr.open("POST", '../Async/' + script + '.php', true);
-    xhr.responseType = "json";
-    xhr.send(data);
+        xhr.open("POST", '' + script + '', true);
+        xhr.responseType = "json";
+        xhr.send(data);
 
-    return false;
+        return false;
     });
 };
 
