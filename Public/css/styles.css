@@ -153,12 +153,16 @@ footer{
     padding: 2%;
     position: relative;
 }
+.content_form_like_report_comment{
+    display: flex;
+    justify-content: flex-end;
+}
 .arrow-left{
     position: absolute;
     left: -22px;
-    top: 17%;
+    top: 22%;
     width: 0;
-    height: 66%;
+    height: 56%;
     border-top: 40px solid rgb(214, 230, 233);
     border-bottom: 40px solid rgb(214, 230, 233);
     border-right:20px solid rgb(18, 20, 22);
@@ -169,6 +173,13 @@ footer{
     padding: 2%;
     margin-top: 2%;
     background-color: #f5f5f5;
+}
+.button_icone{
+    border: none;
+    background-color:  rgb(205, 211, 219);
+}
+.button_icone :hover{
+    color: #0069d9;
 }
 .like_form_post{
     width: 100%;

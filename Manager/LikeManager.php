@@ -16,7 +16,7 @@ class LikeManager
         $this->_db = $db->connect();
     }
 
-    public function add($element,int $elementId,int $user)
+    public function add($element, $elementId, $user)
     {
         $request = $this->_db->prepare('INSERT INTO like_element(element, elementId, user, published) VALUES (:element, :elementId, :user, CURRENT_TIME)');
         $request->bindValue(':element', $element);
@@ -35,10 +35,10 @@ class LikeManager
         return $likes;
     }
 
-    public function getLikesByElementId($id)
+    public function getLikesByElementId($id, $element)
     {
         $likes = [];
-        $request = $this->_db->query('SELECT * FROM like_element WHERE elementId = '. $id);
+        $request = $this->_db->query('SELECT * FROM like_element WHERE elementId = '. $id . ' AND element="' . $element . '"');
         while ($data = $request->fetch(PDO::FETCH_ASSOC)) {
             $likes[] = new Like($data);
         }
@@ -46,9 +46,9 @@ class LikeManager
         return $likes;
     }
 
-    public function getLikesNumberByElementId($elementId)
+    public function getLikesNumberByElementId($elementId, $element)
     {
-        $query = $this->_db->query('SELECT COUNT(*) FROM like_element WHERE elementId=' . $elementId . '');
+        $query = $this->_db->query('SELECT COUNT(*) FROM like_element WHERE elementId=' . $elementId . ' AND element="' . $element .'"');
         $likeNumber = $query->fetch(PDO::FETCH_ASSOC);
         return $likeNumber['COUNT(*)'];
     }

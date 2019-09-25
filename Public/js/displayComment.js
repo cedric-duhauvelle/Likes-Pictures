@@ -46,9 +46,7 @@ alert('une erreur est survenue ...');
 
 var comment = function(data) {
     var comment = data;
-
     var container = document.getElementById('container_comment' + comment.pictureId);
-
     container.innerHTML += '<div class="comment_picture_post">\
                                 <figure class="comment_user">\
                                     <img src="../Public/img/upload/avatar/avatar' + comment.userId + '.jpg" alt="avatar" class="picture_comment" />\
@@ -64,18 +62,27 @@ var comment = function(data) {
 
 var like = function(data) {
     var like = data;
-    var contentLike = document.querySelector('#content_like' +  like.elementId);
-    contentLike.innerHTML = like.likeNumber + ' personnes aiment cette photo.';
+    var likeElement = like.element;
+    if (likeElement == 'picture') {
+        var contentLike = document.querySelector('#content_like' +  like.elementId);
+        contentLike.innerHTML = like.likeNumber + ' personnes aiment cette photo.';
+    } else if (likeElement == 'comment') {
+        var contentLike = document.querySelector('#like_comment_content' + like.elementId);
+        contentLike.innerHTML = like.likeNumber;
+    }
 };
 
 var report = function(data) {
     var report = data;
-    var contentReport = document.querySelector('#content_report' +  report.post.elementIdReport);
-    if (report.reportsNumber != 0) {
-        contentReport.innerHTML = report.reportsNumber + ' personnes ont signalées cette photo.';
-    } else {
-        contentReport.innerHTML = "";
+    if (report.post.elementReport == 'picture') {
+        var contentReport = document.querySelector('#content_report' +  report.post.elementIdReport);
+        if (report.reportsNumber != 0) {
+            contentReport.innerHTML = report.reportsNumber + ' personnes ont signalées cette photo.';
+        } else {
+            contentReport.innerHTML = "";
+        }
+    } else if (report.post.elementReport == 'comment') {
+        var contentReport = document.querySelector('#report_comment_content' + report.post.elementIdReport);
+        contentReport.innerHTML = report.reportsNumber;
     }
-
-
 };

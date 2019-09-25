@@ -32,10 +32,10 @@ class ReportManager
         $req->execute();
     }
 
-    public function getReportsByElementId($id)
+    public function getReportsByElementId($id, $element)
     {
         $reports = [];
-        $request = $this->_db->query('SELECT * FROM report WHERE elementId = '. $id);
+        $request = $this->_db->query('SELECT * FROM report WHERE elementId = '. $id . ' AND element="' . $element . '"');
         while ($data = $request->fetch(PDO::FETCH_ASSOC)) {
             $reports[] = new Report($data);
         }
@@ -43,9 +43,9 @@ class ReportManager
         return $reports;
     }
 
-    public function getReportsNumberByElementId($elementId)
+    public function getReportsNumberByElementId($elementId, $element)
     {
-        $query = $this->_db->query('SELECT COUNT(*) FROM report WHERE elementId=' . $elementId . '');
+        $query = $this->_db->query('SELECT COUNT(*) FROM report WHERE elementId=' . $elementId . ' AND element="' . $element .'"');
         $likeNumber = $query->fetch(PDO::FETCH_ASSOC);
         return $likeNumber['COUNT(*)'];
     }

@@ -29,30 +29,25 @@ class LikeController
 
     $userManager =  new UserManager();
 
-    $likes = $likeManager->getLikesbyElementId($postClean['elementId']);
-
-
-
+    $likes = $likeManager->getLikesbyElementId($postClean['elementId'], $postClean['element']);
     foreach ($likes as $like) {
 
         if ($like->getUser()->getId() == $postClean['userId']) {
             $sucess = 1;
             $likeManager->delete($like->getId());
             $likeStatus = 1;
-            $likeNumber = $likeManager->getLikesNumberByElementId($postClean['elementId']);
+            $likeNumber = $likeManager->getLikesNumberByElementId($postClean['elementId'], $postClean['element']);
             $data = ["likeStatus" => $likeStatus, "element" => $postClean['element'], "elementId" => $postClean['elementId'], "likeNumber" => $likeNumber];
             $msg = 'Like effacer';
         }
 
     }
-
-
     if ($likeStatus === 0) {
         $sucess = 1;
         $likeStatus = 0;
 
         $likeManager->add($postClean['element'], $postClean['elementId'], $postClean['userId']);
-        $likeNumber = $likeManager->getLikesNumberByElementId($postClean['elementId']);
+        $likeNumber = $likeManager->getLikesNumberByElementId($postClean['elementId'], $postClean['element']);
 
         $user = $userManager->getUserById($postClean['userId']);
 
@@ -61,7 +56,7 @@ class LikeController
     }
 
 
-    $res = ["sucess" => 1, "msg" => $msg, "data" => $data];
+    $res = ["sucess" => $sucess, "msg" => $msg, "data" => $data];
 
 
     echo json_encode($res);
