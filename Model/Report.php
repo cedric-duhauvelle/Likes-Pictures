@@ -11,7 +11,7 @@ class Report
     private $_id;
     private $_element;
     private $_elementId;
-    private $_user;
+    private $_userId;
     private $_published;
 
     public function __construct(array $data)
@@ -46,33 +46,36 @@ class Report
 
     public function getElement()
     {
-        return $this->_element;
+        if ('picture' == $this->_element) {
+            $picture = new PictureManager();
+
+            return $picture->getPictureById($this->getElementId());
+        } elseif ('comment' == $this->_element) {
+            $comment = new CommentManager();
+
+            return $comment->getCommentById($this->getElementId());
+        }
     }
 
-    public function setElementId($id)
+    public function setElementId($elementId)
     {
-        $this->_elementId = $id;
+        $this->_elementId = $elementId;
     }
 
     public function getElementId()
     {
-        if ('picture' === $this->getElement()) {
-            $picture = new PictureManager();
-            return $picture->getPictureById($this->_elementId);
-        }
-        $comment = new commentManager();
-        return $comment->getCommentById($this->$this->_elementId);
+        return $this->_elementId;
     }
 
-    public function setUser($id)
+    public function setUser($userId)
     {
-        $this->_user = $id;
+        $this->_userId = $userId;
     }
 
     public function getUser()
     {
         $user = new UserManager();
-        return $user->getUserById($this->_user);
+        return $user->getUserById($this->_userId);
     }
 
     public function setPublished($time)
@@ -82,6 +85,6 @@ class Report
 
     public function getPublished()
     {
-        return $this->_published;
+        return date_format(date_create($this->_published), 'd/m/Y à H:i');
     }
 }

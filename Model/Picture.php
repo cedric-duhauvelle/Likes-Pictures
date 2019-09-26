@@ -7,7 +7,7 @@ use Manager\UserManager;
 class Picture
 {
     private $_id;
-    private $_user;
+    private $_userId;
     private $_title;
     private $_upload;
 
@@ -26,11 +26,9 @@ class Picture
         }
     }
 
-    public function setId(int $id)
+    public function setId($id)
     {
-        if ($id > 0) {
-            $this->_id = $id;
-        }
+        $this->_id = $id;
     }
 
     public function getId()
@@ -38,20 +36,18 @@ class Picture
         return $this->_id;
     }
 
-    public function setUser(int $id)
+    public function setUser($userId)
     {
-        if ($id > 0) {
-            $this->_user = $id;
-        }
+        $this->_userId = $userId;
     }
 
     public function getUser()
     {
         $user = new UserManager();
-        return $user->getUserById($this->_user);
+        return $user->getUserById($this->_userId);
     }
 
-    public function setTitle(string $title)
+    public function setTitle($title)
     {
         $this->_title = $title;
     }
@@ -68,6 +64,6 @@ class Picture
 
     public function getUpload()
     {
-        return $this->_upload;
+        return date_format(date_create($this->_upload), 'd/m/Y à H:i');
     }
 }

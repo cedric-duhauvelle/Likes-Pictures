@@ -17,7 +17,7 @@
                 </div>
 
                 <div class="content_info_post">
-                    <p>Publiée le <?= date_format(date_create($picture->getUpload()), 'd/m/Y à H:i'); ?></p>
+                    <p>Publiée le <?= $picture->getUpload(); ?></p>
                 </div>
 
                 <div class="content_picture_post">
@@ -79,7 +79,7 @@
                             </figure>
                             <div class="comment_content">
                                 <div class="arrow-left"></div>
-                                <p>Le <?= date_format(date_create($comment->getPublished()), 'd/m/Y à H:i'); ?></p>
+                                <p>Le <?= $comment->getPublished(); ?></p>
                                 <p id="comment_post<?= $comment->getId(); ?>"><?= $comment->getContent(); ?></p>
                                 <div class="content_form_like_report_comment">
                                     <form method="POST" id="like_form_comment<?= $comment->getId(); ?>">

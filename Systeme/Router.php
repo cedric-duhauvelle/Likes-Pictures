@@ -7,6 +7,7 @@ use Controller\PageController;
 use Controller\LikeController;
 use Controller\ReportController;
 use Controller\CommentController;
+use Controller\AdminController;
 use Systeme\CustomException;
 
 class Router
@@ -33,6 +34,8 @@ class Router
             new ReportController();
         } elseif($page == 'Comment') {
             new CommentController();
+        } elseif($page == 'Admin') {
+            new AdminController();
         } elseif (strpos($page, 'Controller') && is_file('../Controller/' . $page . '.php')) {
             new Controller($page);
         //Redirection vers les templates

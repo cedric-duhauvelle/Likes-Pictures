@@ -26,6 +26,8 @@ console.log(this.response);
                         document.getElementById(element).reset();
                     } else if (script === 'Report') {
                         report(this.response.data);
+                    } else if (script === 'Admin') {
+                        admin(this.response.data);
                     }
                 } else {
 alert(this.response.msg);
@@ -42,6 +44,10 @@ alert('une erreur est survenue ...');
 
         return false;
     });
+};
+
+var admin = function(data) {
+    console.log(data);
 };
 
 var comment = function(data) {

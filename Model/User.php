@@ -80,6 +80,6 @@ class User
 
     public function getInscription()
     {
-        return $this->_inscription;
+        return date_format(date_create($this->_inscription), 'd/m/Y à H:i');
     }
 }

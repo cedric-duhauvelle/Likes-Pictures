@@ -30,7 +30,7 @@ class PageController
 			$userManager = new UserManager();
 			$pictureManager = new PictureManager();
 			$user = $userManager->getUserById($_SESSION['id']);
-			$pictures = $pictureManager->getPicturesUser($_SESSION['id']);
+			$pictures = $pictureManager->getPicturesByUser($_SESSION['id']);
 
 		} elseif ('accueil' === $page) {
 			$pictureManager = new PictureManager();
@@ -42,6 +42,9 @@ class PageController
 		} elseif ('galerie' === $page) {
 			$pictureManager = new PictureManager();
 			$pictures = $pictureManager->getPictures();
+		} elseif ('administrateur' === $page) {
+			$reportManager = new ReportManager();
+			$userManager = new UserManager();
 		}
 
 		require_once '../View/' . $page . '.php';

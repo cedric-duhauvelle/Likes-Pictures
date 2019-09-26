@@ -11,7 +11,7 @@ class Like
     private $_id;
     private $_element; //photo || commentaire
     private $_elementId;
-    private $_user;
+    private $_userId;
     private $_published;
 
     public function __construct(array $data)
@@ -58,21 +58,21 @@ class Like
     {
         if ('picture' === $this->getElement()) {
             $picture = new PictureManager();
-            return $picture->getPictureById($this->getElementId());
+            return $picture->getPictureById($this->_elementId);
         }
-        $comment = new commentManager();
-        return $comment->getCommentById($this->getElementId());
+        $comment = new CommentManager();
+        return $comment->getCommentById($this->_elementId);
     }
 
-    public function setUser($id)
+    public function setUser($userId)
     {
-        $this->_user = $id;
+        $this->_userId = $userId;
     }
 
     public function getUser()
     {
         $user = new UserManager();
-        return $user->getUserById($this->_user);
+        return $user->getUserById($this->_userId);
     }
 
     public function setPublished($time)
@@ -82,6 +82,6 @@ class Like
 
     public function getPublished()
     {
-        return $this->_published;
+        return date_format(date_create($this->_published), 'd/m/Y à H:i');
     }
 }

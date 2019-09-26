@@ -2,6 +2,7 @@
 
 namespace Controller;
 
+use Systeme\Router;
 use Manager\PictureManager;
 
 class PictureController
@@ -13,6 +14,8 @@ class PictureController
 
     public function pictureAdd()
     {
+        $router = new Router();
+        $postClean = $router->cleanArray($_POST);
         $pictureManager = new PictureManager();
 
         if (isset($_FILES['file']['tmp_name']) && ($_FILES['file']['error'] == UPLOAD_ERR_OK) || isset($_FILES['upload_picture']['tmp_name']) && ($_FILES['upload_picture']['error'] == UPLOAD_ERR_OK)) {
@@ -21,7 +24,8 @@ class PictureController
                 $pictureManager->add('file', $route, 'avatar', $_SESSION['id']);
             } elseif (array_key_exists('upload_picture', $_FILES)) {
                 $route = '../Public/img/upload/picture/';
-                $pictureManager->add('upload_picture', $route, $_POST['title'], $_SESSION['id']);
+                $title = str_replace(" ", '-', $postClean['title']);
+                $pictureManager->add('upload_picture', $route, $title, $_SESSION['id']);
             }
         } elseif ($_FILES['file']['error'] || $_FILES['upload_picture']['error']) {
             switch ($_FILES['file']['error']) {

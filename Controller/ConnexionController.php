@@ -27,6 +27,9 @@ class ConnexionController
             if (password_verify($postClean['password'], $user->getPassword())) {
                 $session->addSession('name', $postClean['name']);
                 $session->addSession('id', $user->getId());
+                if ($postClean['name'] === 'admin') {
+                    $session->addSession('admin', 'admin');
+                }
 
                 return header('Location: profil');
             }

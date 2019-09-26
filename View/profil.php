@@ -12,7 +12,7 @@
                 <div id="profil_info" class="col-lg-9">
                     <p><?= $user->getName(); ?></p>
                     <p><?= $user->getEmail(); ?></p>
-                    <p>Inscrit depuis le <?= date_format(date_create($user->getInscription()), 'd/m/Y à H:i:s');;  ?></p>
+                    <p>Inscrit depuis le <?= $user->getInscription();  ?></p>
                 </div>
                 <div class="col-lg-3">
                     <img src="../Public/img/upload/avatar/avatar<?= $_SESSION['id']; ?>.jpg" id="avatar_profil" />

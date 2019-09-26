@@ -5,7 +5,7 @@ namespace Manager;
 use PDO;
 use Model\Picture;
 use Systeme\DataBase;
-use Manager\userManager;
+use Manager\UserManager;
 
 class PictureManager
 {
@@ -19,7 +19,7 @@ class PictureManager
 
     public function getPictureById($id)
     {
-        $request = $this->_db->query('SELECT * FROM picture WHERE id = '. $id);
+        $request = $this->_db->query('SELECT * FROM picture WHERE id = "'. $id .'"');
 
         return new Picture($request->fetch(PDO::FETCH_ASSOC));
     }
@@ -47,7 +47,7 @@ class PictureManager
     }
 
     //retourne toutes les images d'un utilisateur
-    public function getPicturesUser($id)
+    public function getPicturesByUser($id)
     {
         $pictures = [];
         $q = $this->_db->query('SELECT * FROM picture WHERE user = '. $id);
@@ -65,26 +65,25 @@ class PictureManager
             $req->bindValue(':user', $user);
             $req->bindValue(':title', $title);
             $req->execute();
-            $pictureId =  $this->returnLastData('title', $title, 'id');
+            $picture = $this->returnLastData();
+            $pictureId = $picture->getId();
         }
-
-
 
         move_uploaded_file($_FILES[$file]['tmp_name'], $route . $title . $pictureId . '.jpg');
     }
 
     //return donnee image
-    public function returnLastData($champ, $name, $value)
+    public function returnLastData()
     {
-        $resp = $this->_db->prepare('SELECT * FROM picture ORDER BY id DESC');
-        $resp->execute();
-        $responses = $resp->fetchAll();
-        foreach ($responses as $response) {
-            if ($response[$champ] === $name) {
-                return $response[$value];
-            }
-        }
-        return null;
+        $resp = $this->_db->query('SELECT * FROM picture ORDER BY id DESC LIMIT 1');
 
+        return new Picture($resp->fetch(PDO::FETCH_ASSOC));
+    }
+
+    public function delete($id)
+    {
+        $req = $this->_db->prepare('DELETE FROM picture WHERE id=:id LIMIT 1');
+        $req->bindValue(':id', $id);
+        $req->execute();
     }
 }

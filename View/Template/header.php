@@ -49,6 +49,13 @@ new Session();
                             </li>
                             <?php
                             }
+                            if (array_key_exists('admin', $_SESSION)) {
+                            ?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="administrateur">administrateur</a>
+                            </li>
+                            <?php
+                            }
                             ?>
                         </ul>
                     </div>

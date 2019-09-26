@@ -77,6 +77,6 @@ class Comment
 
     public function getPublished()
     {
-        return $this->_published;
+        return date_format(date_create($this->_published), 'd/m/Y à H:i');
     }
 }

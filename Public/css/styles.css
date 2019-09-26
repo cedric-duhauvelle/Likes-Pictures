@@ -452,3 +452,41 @@ ul.tabs, .tabs li{
 #thumbnil{
     width: 400px;
 }
+/* ---------------------------------------- */
+/* ==       ADMINISTRATEUR     */
+/*---------------------------------------- */
+#content_admin{
+    padding: 2%;
+    margin-top: 58px;
+    min-height: 760px;
+}
+.report_comment_admin{
+    width: 100%;
+    padding: 2%;
+    margin: 2%;
+    border: 1px solid #000;
+}
+.picture_content_admin{
+    margin: 2%;
+    padding: 2%;
+    display: flex;
+    justify-content: space-around;
+    border: 1px solid #000;
+}
+.picture_report_admin{
+    width: 25%;
+}
+.content_form_report_admin{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.form_report_admin{
+    display: flex;
+    justify-content: center;
+}
+.form_report_admin button{
+    margin: 2%;
+    width: 75%;
+    border: none;
+}
