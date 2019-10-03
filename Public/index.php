@@ -1,5 +1,6 @@
 <?php
 
+use Systeme\Helper;
 use Systeme\Router;
 use Systeme\CustomException;
 
@@ -7,7 +8,7 @@ session_start();
 include('../Systeme/AutoLoad.php');
 
 $router = new Router();
-$getClean = $router->cleanArray($_GET);
+$getClean = Helper::cleanArray($_GET);
 
 if(array_key_exists('url', $_GET)) {
     $url = $getClean['url'];

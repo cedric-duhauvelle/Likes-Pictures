@@ -6,7 +6,7 @@
 namespace Controller;
 
 use Systeme\Session;
-use Systeme\Router;
+use Systeme\Helper;
 use Manager\UserManager;
 
 class InscriptionController
@@ -18,9 +18,9 @@ class InscriptionController
 
     public function inscription()
     {
-        $router = new Router();
+        $postClean = Helper::cleanArray($_POST);
         $session = new Session();
-        $postClean = $router->cleanArray($_POST);
+
         $userManager = new UserManager();
 
         if ($userManager->getUserByName($postClean['name']) !== false) {

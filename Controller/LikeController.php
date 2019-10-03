@@ -2,7 +2,7 @@
 
 namespace Controller;
 
-use Systeme\Router;
+use Systeme\Helper;
 use Manager\LikeManager;
 use Manager\UserManager;
 
@@ -15,52 +15,60 @@ class LikeController
 
     public function like()
     {
+        $sucess = 0;
+        $likeStatus = 0;
+        $likeNumber = 0;
+        $data = [];
+        $message = "Une erreur est survenue ...";
+        $postClean = Helper::cleanArray($_POST);
 
-    $router = new Router();
-    $postClean = $router->cleanArray($_POST);
+        //Recherche si l'element est like si deja like efface le like
+        $likeManager = new LikeManager();
+        $likes = $likeManager->getLikesbyElementId($postClean['elementId'], $postClean['element']);
+        foreach ($likes as $like) {
+            if ($like->getUser()->getId() == $postClean['userId']) {
+                $sucess = 1;
+                $likeStatus = 1;
 
-    $sucess = 0;
-    $likeStatus = 0;
-    $likeNumber = 0;
-    $data = [];
-    $msg = "Une erreur est survenue ...";
+                $likeManager->delete($like->getId());
+                $likeNumber = $likeManager->getLikesNumberByElementId($postClean['elementId'], $postClean['element']);
 
-    $likeManager = new LikeManager();
-
-    $userManager =  new UserManager();
-
-    $likes = $likeManager->getLikesbyElementId($postClean['elementId'], $postClean['element']);
-    foreach ($likes as $like) {
-
-        if ($like->getUser()->getId() == $postClean['userId']) {
-            $sucess = 1;
-            $likeManager->delete($like->getId());
-            $likeStatus = 1;
-            $likeNumber = $likeManager->getLikesNumberByElementId($postClean['elementId'], $postClean['element']);
-            $data = ["likeStatus" => $likeStatus, "element" => $postClean['element'], "elementId" => $postClean['elementId'], "likeNumber" => $likeNumber];
-            $msg = 'Like effacer';
+                $data = [
+                    "likeStatus" => $likeStatus,
+                    "element" => $postClean['element'],
+                    "elementId" => $postClean['elementId'],
+                    "likeNumber" => $likeNumber,
+                ];
+                $message = 'Like effacer';
+            }
         }
 
-    }
-    if ($likeStatus === 0) {
-        $sucess = 1;
-        $likeStatus = 0;
+        //Ajout un like
+        if (0 === $likeStatus) {
+            $sucess = 1;
+            $likeStatus = 0;
 
-        $likeManager->add($postClean['element'], $postClean['elementId'], $postClean['userId']);
-        $likeNumber = $likeManager->getLikesNumberByElementId($postClean['elementId'], $postClean['element']);
+            $likeManager->add($postClean['element'], $postClean['elementId'], $postClean['userId']);
+            $likeNumber = $likeManager->getLikesNumberByElementId($postClean['elementId'], $postClean['element']);
 
-        $user = $userManager->getUserById($postClean['userId']);
+            $userManager =  new UserManager();
+            $user = $userManager->getUserById($postClean['userId']);
 
-        $data = ["element" => $postClean['element'], "elementId" => $postClean['elementId'], "userId" => $postClean['userId'], "userName" => $user->getName(), "likeStatus" => $likeStatus, "likeNumber" => $likeNumber];
-        $msg = 'Like ajouter';
-    }
+            $data = [
+                "element" => $postClean['element'],
+                "elementId" => $postClean['elementId'],
+                "userId" => $postClean['userId'],
+                "userName" => $user->getName(),
+                "likeStatus" => $likeStatus,
+                "likeNumber" => $likeNumber,
+            ];
+            $message = 'Like ajouter';
+        }
 
-
-    $res = ["sucess" => $sucess, "msg" => $msg, "data" => $data];
-
-
-    echo json_encode($res);
-
-
+        echo json_encode([
+            "sucess" => $sucess,
+            "message" => $message,
+            "data" => $data,
+        ]);
     }
 }

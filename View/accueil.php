@@ -81,6 +81,9 @@
                                 <div class="arrow-left"></div>
                                 <p>Le <?= $comment->getPublished(); ?></p>
                                 <p id="comment_post<?= $comment->getId(); ?>"><?= $comment->getContent(); ?></p>
+                                <?php if (array_key_exists('id', $_SESSION)) { ?>
+
+
                                 <div class="content_form_like_report_comment">
                                     <form method="POST" id="like_form_comment<?= $comment->getId(); ?>">
                                         <label for="elementComment<?= $comment->getId() ?>"></label>
@@ -91,6 +94,11 @@
                                         <input type="text" name="userId" id="userIdComment<?= $comment->getId() ?>" value="<?= $_SESSION['id']; ?>" class="hidden_input" />
                                         <button type="submit" class="button_icone" onclick="callAjax('like_form_comment<?= $comment->getId(); ?>', 'Like')"><span class="far fa-thumbs-up"></span></button>
                                     </form>
+                                    <p id="like_comment_content<?= $comment->getId() ?>">
+                                        <?php if ($likeCommentNumber != 0) { ?>
+                                        <?= $likeCommentNumber; ?>
+                                        <?php } ?>
+                                    </p>
                                     <form method="POST" id="report_form_comment<?= $comment->getId(); ?>">
                                         <label for="elementReportComment<?= $comment->getId() ?>"></label>
                                         <input type="text" name="elementReport" id="elementReportComment<?= $comment->getId() ?>" value="comment" class="hidden_input" />
@@ -100,17 +108,13 @@
                                         <input type="text" name="userIdReport" id="userIdReportComment<?= $comment->getId() ?>" value="<?= $_SESSION['id']; ?>" class="hidden_input" />
                                         <button type="submit" class="button_icone" onclick="callAjax('report_form_comment<?= $comment->getId(); ?>', 'Report')"><span class="fas fa-flag"></span></button>
                                     </form>
-                                    <p id="like_comment_content<?= $comment->getId() ?>">
-                                        <?php if ($likeCommentNumber != 0) { ?>
-                                        <?= $likeCommentNumber; ?>
-                                        <?php } ?>
-                                    </p>
                                     <p id="report_comment_content<?= $comment->getId() ?>">
                                         <?php if ($reportCommentNumber != 0) { ?>
                                         <?= $reportCommentNumber; ?>
                                         <?php } ?>
                                     </p>
                                 </div>
+                                <?php } ?>
                             </div>
                         </div>
                             <?php } ?>
@@ -125,12 +129,6 @@
             </div>
         <?php } ?>
     </div>
-</div>
-<div>
-<?php
-
-?>
-
 </div>
 <script src = "../Public/js/displayComment.js" ></script>
 <script type = "text / javascript" src = "/fancybox/lib/jquery.mousewheel-3.0.6.pack.js" ></script>

@@ -49,4 +49,11 @@ class CommentManager
         $request->bindValue(':content', $content);
         $request->execute();
     }
+
+    public function delete($id)
+    {
+        $req = $this->_db->prepare('DELETE FROM comment WHERE id=:id LIMIT 1');
+        $req->bindValue(':id', $id);
+        $req->execute();
+    }
 }

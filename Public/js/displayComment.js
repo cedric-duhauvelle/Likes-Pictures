@@ -47,7 +47,18 @@ alert('une erreur est survenue ...');
 };
 
 var admin = function(data) {
-    console.log(data);
+    var report = data;
+    if (report.post.element === 'comment') {
+        var containerReport = document.getElementById('report_comment_admin' + report.post.comment_report_id);
+        containerReport.style.display = "none";
+    } else if (report.post.element === 'picture') {
+        var containerReport = document.getElementById('picture_admin' +  report.post.report_id_admin);
+        containerReport.style.display = "none";
+    } else if (report.post.element === 'user') {
+        var containerUser = document.getElementById('container_user_info' + report.post.user_id_admin);
+        containerUser.style.display = "none";
+    }
+
 };
 
 var comment = function(data) {
@@ -62,9 +73,33 @@ var comment = function(data) {
                                     <div class="arrow-left"></div>\
                                     <p>Le ' + comment.published + '</p>\
                                     <p id="comment_post' + comment.commentId + '">' + comment.comment + '</p>\
+                                    <div class="content_form_like_report_comment">\
+                                        <form method="POST" id="like_form_comment' + comment.commentId + '">\
+                                            <label for="elementComment' + comment.commentId + '"></label>\
+                                            <input type="text" name="element" id="elementComment' + comment.commentId + '" value="comment" class="hidden_input" />\
+                                            <label for="elementIdComment' + comment.commentId + '"></label>\
+                                            <input type="text" name="elementId" id="elementIdComment' + comment.commentId + '" value="' + comment.commentId + '" class="hidden_input" />\
+                                            <label for="userIdComment' + comment.commentId + '"></label>\
+                                            <input type="text" name="userId" id="userIdComment' + comment.commentId + '" value="' + comment.userId + '" class="hidden_input" />\
+                                            <button type="submit" class="button_icone" onclick="callAjax(\'like_form_comment' + comment.commentId +'\', \'Like\')"><span class="far fa-thumbs-up"></span></button>\
+                                        </form>\
+                                        <p id="like_comment_content' + comment.commentId + '"></p>\
+                                        <form method="POST" id="report_form_comment' + comment.commentId + '">\
+                                            <label for="elementReportComment' + comment.commentId + '"></label>\
+                                            <input type="text" name="elementReport" id="elementReportComment' + comment.commentId + '" value="comment" class="hidden_input" />\
+                                            <label for="elementIdReportComment' + comment.commentId + '"></label>\
+                                            <input type="text" name="elementIdReport" id="elementIdReportComment' + comment.commentId + '" value="' + comment.commentId + '" class="hidden_input" />\
+                                            <label for="userIdReportComment' + comment.commentId + '"></label>\
+                                            <input type="text" name="userIdReport" id="userIdReportComment' + comment.commentId + '" value="' + comment.userId + '" class="hidden_input" />\
+                                            <button type="submit" class="button_icone" onclick="callAjax(\'report_form_comment' + comment.commentId + '\', \'Report\')"><span class="fas fa-flag"></span></button>\
+                                        </form>\
+                                        <p id="report_comment_content' + comment.commentId + '"></p>\
+                                    </div>\
                                 </div>\
                             </div>';
 };
+
+
 
 var like = function(data) {
     var like = data;

@@ -373,46 +373,20 @@ footer{
 /* ---------------------------------------- */
 /* ==       PROFIL       */
 /*---------------------------------------- */
-.tabs li{
-    float: left;
-    display: block;
-}
-ul.tabs, .tabs li{
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-.tabs a{
-    display: inline-block;
-    background-color: #fff;
-    box-shadow: 0 1px 3px black, 0 1px 2px black;
-    padding: 10px 15px;
-    text-decoration: none;
-    color: inherit;
-}
-.tabs .active a{
-    background-color: #93B5C6;
-}
-.tab_content{
-    display: none;
-}
-.tab_content.active{
-    display: block;
-}
 #content_profil{
-    background-color: #93B5C6;
+    background-color: #fff;
     margin-top: 58px;
     margin-bottom: 2px;
+    min-height: 750px;
+    padding: 2%;
 }
-#content_profil .row{
-    padding: 3%;
-    min-height: 800px;
-    flex-direction: column;
-    justify-content: space-around;
-}
+/*
+ -- profil --
+*/
 #profil{
-
-    flex-direction: column;
+    margin: 0;
+    width: 100%;
+    padding: 2%;
 }
 #avatar_profil{
     width: 175px;
@@ -424,6 +398,18 @@ ul.tabs, .tabs li{
     width: 70%;
     margin-bottom: 2%;
 }
+/*
+ -- photo --
+*/
+#photos{
+    margin: 0;
+ }
+/*
+ -- modification --
+*/
+#update{
+    margin: 0;
+ }
 /* ---------------------------------------- */
 /* ==       AJOUT       */
 /*---------------------------------------- */
@@ -459,19 +445,64 @@ ul.tabs, .tabs li{
     padding: 2%;
     margin-top: 58px;
     min-height: 760px;
+    display: block;
+    flex-direction: column;
+}
+/*
+ -- Comment --
+*/
+.comment_container_report{
+    margin-top: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.comment_container_report h1{
+    text-align: center;
+    padding: 2%;
 }
 .report_comment_admin{
-    width: 100%;
+    box-shadow: 0 1px 3px #000, 0 1px 2px black;
+    border-radius: 10px;
+    width: 96%;
     padding: 2%;
     margin: 2%;
     border: 1px solid #000;
+    height: 100%;
+    background-color: #f5f5f5;
+    display: flex;
 }
+.content_comment_report{
+    width: 60%;
+}
+.content_form_comment_report{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.content_form_comment_report form button{
+    margin: 2% 0;
+    width: 150px;
+}
+.comment_report_display{
+    border: 1px solid #000;
+    border-radius: 10px;
+    padding: 5%;
+}
+/*
+ -- Picture --
+*/
 .picture_content_admin{
     margin: 2%;
     padding: 2%;
     display: flex;
     justify-content: space-around;
     border: 1px solid #000;
+    border-radius: 10px;
+    background-color: #f5f5f5;
+    box-shadow: 0 1px 3px #000, 0 1px 2px black;
 }
 .picture_report_admin{
     width: 25%;
@@ -489,4 +520,60 @@ ul.tabs, .tabs li{
     margin: 2%;
     width: 75%;
     border: none;
+}
+/*
+ -- User --
+*/
+#user h1{
+    text-align: center;
+}
+.user_content_admin{
+    display: flex;
+    margin: 2%;
+}
+.user_content_admin p{
+    width: 60%;
+}
+.content_form_user_admin{
+    display: flex;
+    justify-content: center;
+    width: 40%;
+}
+/* ---------------------------------------- */
+/* ==       TABS     */
+/*---------------------------------------- */
+.tabs li{
+    float: left;
+    display: block;
+}
+ul.tabs, .tabs li{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: block;
+    height: 46px;
+}
+.tabs a{
+    display: inline-block;
+    background-color: #fff;
+    border: 1px solid #000;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: inherit;
+}
+.tabs .active a{
+    box-shadow: 0 1px 3px #000, 0 1px 2px black;
+    background-color: #93B5C6;
+    border-bottom: 2px solid  #93B5C6;
+    color: #f5f5f5;
+}
+.tab_content{
+    background-color: #93B5C6;
+    display: none;
+    border: 1px solid #000;
+    box-shadow: 0 1px 3px black, 0 1px 2px black;
+    margin-top: 46px;
+}
+.tab_content.active{
+    display: block;
 }

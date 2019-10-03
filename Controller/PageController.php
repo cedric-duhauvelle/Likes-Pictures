@@ -2,7 +2,6 @@
 
 namespace Controller;
 
-use Systeme\Router;
 use Manager\UserManager;
 use Manager\PictureManager;
 use Manager\CommentManager;

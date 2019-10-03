@@ -2,7 +2,7 @@
 
 namespace Controller;
 
-use Systeme\Router;
+use Systeme\Helper;
 use Manager\ReportManager;
 
 class ReportController
@@ -14,38 +14,49 @@ class ReportController
 
     public function report()
     {
-        $router = new Router();
-
-        $postClean = $router->cleanArray($_POST);
-
-        $reportManager = new ReportManager();
-
+        $postClean = Helper::cleanArray($_POST);
         $sucess = 0;
         $reportStatus = 0;
         $reportsNumber = 0;
         $data = [];
-        $msg = "Une erreur est survenue ...";
+        $message = "Une erreur est survenue ...";
 
+        //Recherche si l element est report si report efface report
+        $reportManager = new ReportManager();
         $reports = $reportManager->getReportsByElementId($postClean['elementIdReport'], $postClean['elementReport']);
-
         foreach ($reports as $report) {
             if ($report->getUser()->getId() == $postClean['userIdReport']) {
-                $msg = "report effacer";
                 $reportStatus = 1;
                 $sucess = 1;
+
                 $reportManager->delete($report->getId());
+
                 $reportsNumber = $reportManager->getReportsNumberByElementId($postClean['elementIdReport'], $postClean['elementReport']);
-                $data = ["reportsNumber" => $reportsNumber, "post" => $postClean];
+                $data = [
+                    "reportsNumber" => $reportsNumber,
+                    "post" => $postClean,
+                ];
+                $message = "report effacer";
             }
         }
+
+        //Ajout un report
         if ($reportStatus === 0) {
             $sucess = 1;
+
             $reportManager->add($postClean['elementReport'], $postClean['elementIdReport'], $postClean['userIdReport']);
-            $msg = "report ajouter";
             $reportsNumber = $reportManager->getReportsNumberByElementId($postClean['elementIdReport'], $postClean['elementReport']);
-            $data = ["reportsNumber" =>$reportsNumber, "post" => $postClean];
+            $data = [
+                "reportsNumber" => $reportsNumber,
+                "post" => $postClean,
+            ];
+            $message = "report ajouter";
         }
-        $res = ["sucess" => $sucess, "msg" => $msg, "data" => $data];
-        echo json_encode($res);
+
+        echo json_encode([
+            "sucess" => $sucess,
+            "message" => $message,
+            "data" => $data,
+        ]);
     }
 }

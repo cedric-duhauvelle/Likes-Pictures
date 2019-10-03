@@ -2,7 +2,7 @@
 
 namespace Controller;
 
-use Systeme\Router;
+use Systeme\Helper;
 use Manager\PictureManager;
 
 class PictureController
@@ -14,8 +14,7 @@ class PictureController
 
     public function pictureAdd()
     {
-        $router = new Router();
-        $postClean = $router->cleanArray($_POST);
+        $postClean = Helper::cleanArray($_POST);
         $pictureManager = new PictureManager();
 
         if (isset($_FILES['file']['tmp_name']) && ($_FILES['file']['error'] == UPLOAD_ERR_OK) || isset($_FILES['upload_picture']['tmp_name']) && ($_FILES['upload_picture']['error'] == UPLOAD_ERR_OK)) {

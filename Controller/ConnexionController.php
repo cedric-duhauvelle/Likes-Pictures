@@ -2,7 +2,7 @@
 
 namespace Controller;
 
-use Systeme\Router;
+use Systeme\Helper;
 use Systeme\Session;
 use Manager\UserManager;
 
@@ -15,8 +15,7 @@ class ConnexionController
 
     public function connexion()
     {
-        $router = new Router();
-        $postClean = $router->cleanArray($_POST);
+        $postClean = Helper::cleanArray($_POST);
 
         $userManager = new UserManager();
         $session = new Session();

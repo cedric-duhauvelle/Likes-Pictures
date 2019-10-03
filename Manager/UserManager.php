@@ -69,11 +69,34 @@ class UserManager
         $request->execute();
     }
 
-    //return donnee utilisateur
-    public function returnData($name)
+    public function delete($id)
     {
-        $users = $this->getUserByName($name);
+        $req = $this->_db->prepare('DELETE FROM user WHERE id=:id LIMIT 1');
+        $req->bindValue(':id', $id);
+        $req->execute();
+    }
 
-        return $users;
+    public function updateName($id, $name)
+    {
+        $update = $this->_db->prepare('UPDATE user SET name=:name WHERE id=:id');
+        $update->bindValue(':name', $name);
+        $update->bindValue(':id', $id);
+        $update->execute();
+    }
+
+    public function updateEmail($id, $email)
+    {
+        $update = $this->_db->prepare('UPDATE user SET email=:email WHERE id=:id');
+        $update->bindValue(':email', $email);
+        $update->bindValue(':id', $id);
+        $update->execute();
+    }
+
+    public function updatePassword($id, $password)
+    {
+        $update = $this->_db->prepare('UPDATE user SET password=:password WHERE id=:id');
+        $update->bindValue(':password', $password);
+        $update->bindValue(':id', $id);
+        $update->execute();
     }
 }

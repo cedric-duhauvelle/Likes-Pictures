@@ -2,7 +2,7 @@
 
 namespace Controller;
 
-use Systeme\Router;
+use Systeme\Helper;
 use Manager\UserManager;
 use Manager\CommentManager;
 
@@ -10,37 +10,45 @@ class CommentController
 {
     public function __construct()
     {
-        $this->comment();
+        return $this->comment();
     }
 
     public function comment()
     {
-        $router = new Router();
-        $postClean = $router->cleanArray($_POST);
-
+        $postClean = Helper::cleanArray($_POST);
         $sucess = 0;
-        $msg = 'Une erreur est survenue ... (php)';
+        $data = [];
+        $message = 'Une erreur est survenue ... (php)';
 
 
         if ($postClean['comment'] !== "") {
             $sucess = 1;
+
             $userManager = new UserManager();
             $commentManager = new CommentManager();
+
             $user = $userManager->getUserById($postClean['userId']);
             $commentManager->add($postClean['userId'], $postClean['pictureId'], $postClean['comment']);
             $comment = $commentManager->getCommentLast();
-            $commentDate = date_format(date_create($comment->getPublished()), 'd/m/Y à H:i');
 
-            $data = ["comment" => $postClean['comment'], "pictureId" => $postClean['pictureId'], "userName" => $user->getName(), "userId" => $user->getId(), "published" => $commentDate, "commentId" => $comment->getId()];
-            $msg = "";
+            $data = [
+                "comment" => $postClean['comment'],
+                "pictureId" => $postClean['pictureId'],
+                "userName" => $user->getName(),
+                "userId" => $user->getId(),
+                "published" => $comment->getPublished(),
+                "commentId" => $comment->getId(),
+            ];
+            $message = "Commentaire ajouté";
 
         } else {
-            $data = [];
-            $msg = "Veuillez écrire un commentaire";
+            $message = "Veuillez écrire un commentaire";
         }
 
-        $res = ["sucess" => $sucess, "msg" => $msg, "data" => $data];
-
-        echo json_encode($res);
+        echo json_encode([
+            "sucess" => $sucess,
+            "message" => $message,
+            "data" => $data,
+        ]);
     }
 }
