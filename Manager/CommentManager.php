@@ -18,7 +18,7 @@ class CommentManager
 
     public function getCommentById(int $id)
     {
-        $request = $this->_db->query('SELECT * FROM comment WHERE comment_id = "'. $id .'"');
+        $request = $this->_db->query('SELECT * FROM comment WHERE comment_id ="'. $id . '"');
 
         return new Comment($request->fetch(PDO::FETCH_ASSOC));
     }

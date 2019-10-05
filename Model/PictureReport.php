@@ -4,7 +4,6 @@ namespace Model;
 
 use Manager\UserManager;
 use Manager\PictureManager;
-use Manager\CommentManager;
 
 class PictureReport
 {
@@ -35,7 +34,7 @@ class PictureReport
         }
     }
 
-    public function setPictureReportId($id)
+    public function setPictureReportId(int $id)
     {
         $this->_pictureReportId = $id;
     }
@@ -45,7 +44,7 @@ class PictureReport
         return $this->_pictureReportId;
     }
 
-    public function setPictureId($pictureId)
+    public function setPictureId(int $pictureId)
     {
         $this->_pictureId = $pictureId;
     }
@@ -57,7 +56,7 @@ class PictureReport
         return $picture->getPictureById($this->_pictureId);
     }
 
-    public function setUserId($userId)
+    public function setUserId(int $userId)
     {
         $this->_userId = $userId;
     }

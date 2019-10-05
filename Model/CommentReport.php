@@ -53,7 +53,7 @@ class CommentReport
     {
         $comment = new CommentManager();
 
-        return $comment->getCommentsReportsByCommentId($this->_commentLikeId);
+        return $comment->getCommentById($this->_commentId);
     }
 
     public function setUserId(int $userId)

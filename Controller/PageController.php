@@ -46,7 +46,8 @@ class PageController
 			$pictureManager = new PictureManager();
 			$pictures = $pictureManager->getPictures();
 		} elseif ('administrateur' === $page) {
-			$reportManager = new ReportManager();
+			$pictureReportManager = new PictureReportManager();
+			$commentReportManager = new CommentReportManager();
 			$userManager = new UserManager();
 		}
 

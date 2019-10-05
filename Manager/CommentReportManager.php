@@ -31,6 +31,17 @@ class CommentReportManager
         $req->execute();
     }
 
+    public function getCommentsReports()
+    {
+        $reports = [];
+        $request = $this->_db->query('SELECT * FROM comment_report');
+        while ($data = $request->fetch(PDO::FETCH_ASSOC)) {
+            $reports[] = new CommentReport($data);
+        }
+
+        return $reports;
+    }
+
     public function getCommentsReportsByCommentId($commentId)
     {
         $reports = [];

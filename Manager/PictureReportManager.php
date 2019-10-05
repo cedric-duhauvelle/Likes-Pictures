@@ -42,6 +42,17 @@ class PictureReportManager
         return $reports;
     }
 
+    public function getPicturesReports()
+    {
+        $reports = [];
+        $request = $this->_db->query('SELECT * FROM picture_report');
+        while ($data = $request->fetch(PDO::FETCH_ASSOC)) {
+            $reports[] = new PictureReport($data);
+        }
+
+        return $reports;
+    }
+
     public function getPicturesReportsNumberByPictureId($pictureId)
     {
         $query = $this->_db->query('SELECT COUNT(*) FROM picture_report WHERE picture_id="' . $pictureId . '"');
