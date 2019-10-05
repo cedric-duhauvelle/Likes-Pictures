@@ -18,7 +18,7 @@ class CommentManager
 
     public function getCommentById(int $id)
     {
-        $request = $this->_db->query('SELECT * FROM comment WHERE id = "'. $id .'"');
+        $request = $this->_db->query('SELECT * FROM comment WHERE comment_id = "'. $id .'"');
 
         return new Comment($request->fetch(PDO::FETCH_ASSOC));
     }
@@ -26,7 +26,7 @@ class CommentManager
     public function getCommentByPicture($pictureId)
     {
         $comments = [];
-        $request = $this->_db->query('SELECT * FROM comment WHERE picture = "'. $pictureId .'"');
+        $request = $this->_db->query('SELECT * FROM comment WHERE picture_id = "'. $pictureId .'"');
         while ($data =  $request->fetch(PDO::FETCH_ASSOC)) {
             $comments[] = new Comment($data);
         }
@@ -41,18 +41,18 @@ class CommentManager
         return new Comment($request->fetch(PDO::FETCH_ASSOC));
     }
 
-    public function add($user, int $picture, $content)
+    public function add($userId, int $pictureId, $content)
     {
-        $request = $this->_db->prepare('INSERT INTO comment(user, picture, content, published) VALUES (:user, :picture, :content, CURRENT_TIME)');
-        $request->bindValue(':user', $user);
-        $request->bindValue(':picture', $picture);
+        $request = $this->_db->prepare('INSERT INTO comment(user_id, picture_id, content, published) VALUES (:user_id, :picture_id, :content, CURRENT_TIME)');
+        $request->bindValue(':user_id', $userId);
+        $request->bindValue(':picture_id', $pictureId);
         $request->bindValue(':content', $content);
         $request->execute();
     }
 
     public function delete($id)
     {
-        $req = $this->_db->prepare('DELETE FROM comment WHERE id=:id LIMIT 1');
+        $req = $this->_db->prepare('DELETE FROM comment WHERE comment_id=:id LIMIT 1');
         $req->bindValue(':id', $id);
         $req->execute();
     }

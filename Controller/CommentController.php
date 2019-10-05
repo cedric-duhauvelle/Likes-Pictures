@@ -35,9 +35,9 @@ class CommentController
                 "comment" => $postClean['comment'],
                 "pictureId" => $postClean['pictureId'],
                 "userName" => $user->getName(),
-                "userId" => $user->getId(),
+                "userId" => $user->getUserId(),
                 "published" => $comment->getPublished(),
-                "commentId" => $comment->getId(),
+                "commentId" => $comment->getCommentId(),
             ];
             $message = "Commentaire ajouté";
 

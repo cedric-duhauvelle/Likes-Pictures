@@ -4,7 +4,7 @@ namespace Model;
 
 class User
 {
-    private $_id;
+    private $_userId;
     private $_name;
     private $_email;
     private $_password;
@@ -18,6 +18,10 @@ class User
     public function hydrate(array $data)
     {
         foreach ($data as $key => $value) {
+            if (strpos($key, '_')) {
+                $arrayKey = explode('_', $key);
+                $key = $arrayKey[0] . ucfirst($arrayKey[1]);
+            }
             $method = 'set' . ucfirst($key);
             if (method_exists($this, $method)) {
                 $this->$method($value);
@@ -25,16 +29,16 @@ class User
         }
     }
 
-    public function setId(int $id)
+    public function setUserId(int $id)
     {
         if ($id > 0) {
-            $this->_id = $id;
+            $this->_userId = $id;
         }
     }
 
-    public function getId()
+    public function getUserId()
     {
-        return $this->_id;
+        return $this->_userId;
     }
 
     public function setName($name)

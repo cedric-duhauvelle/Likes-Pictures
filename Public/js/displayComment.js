@@ -19,13 +19,15 @@ var callAjax = function(element, script) {
             if (this.readyState == 4 && this.status == 200) {
 console.log(this.response);
                 if (this.response.sucess) {
-                    if (script === 'Like') {
+                    if (script === 'pictureLike' || script === 'commentLike') {
                         like(this.response.data);
                     } else if (script === 'Comment') {
                         comment(this.response.data);
                         document.getElementById(element).reset();
-                    } else if (script === 'Report') {
+                    } else if (script === 'pictureReport' || script === 'commentReport') {
                         report(this.response.data);
+                    } else if (script === 'Profil') {
+                        Profil();
                     } else if (script === 'Admin') {
                         admin(this.response.data);
                     }
@@ -81,7 +83,7 @@ var comment = function(data) {
                                             <input type="text" name="elementId" id="elementIdComment' + comment.commentId + '" value="' + comment.commentId + '" class="hidden_input" />\
                                             <label for="userIdComment' + comment.commentId + '"></label>\
                                             <input type="text" name="userId" id="userIdComment' + comment.commentId + '" value="' + comment.userId + '" class="hidden_input" />\
-                                            <button type="submit" class="button_icone" onclick="callAjax(\'like_form_comment' + comment.commentId +'\', \'Like\')"><span class="far fa-thumbs-up"></span></button>\
+                                            <button type="submit" class="button_icone" onclick="callAjax(\'like_form_comment' + comment.commentId +'\', \'commentLike\')"><span class="far fa-thumbs-up"></span></button>\
                                         </form>\
                                         <p id="like_comment_content' + comment.commentId + '"></p>\
                                         <form method="POST" id="report_form_comment' + comment.commentId + '">\
@@ -91,15 +93,13 @@ var comment = function(data) {
                                             <input type="text" name="elementIdReport" id="elementIdReportComment' + comment.commentId + '" value="' + comment.commentId + '" class="hidden_input" />\
                                             <label for="userIdReportComment' + comment.commentId + '"></label>\
                                             <input type="text" name="userIdReport" id="userIdReportComment' + comment.commentId + '" value="' + comment.userId + '" class="hidden_input" />\
-                                            <button type="submit" class="button_icone" onclick="callAjax(\'report_form_comment' + comment.commentId + '\', \'Report\')"><span class="fas fa-flag"></span></button>\
+                                            <button type="submit" class="button_icone" onclick="callAjax(\'report_form_comment' + comment.commentId + '\', \'commentReport\')"><span class="fas fa-flag"></span></button>\
                                         </form>\
                                         <p id="report_comment_content' + comment.commentId + '"></p>\
                                     </div>\
                                 </div>\
                             </div>';
 };
-
-
 
 var like = function(data) {
     var like = data;

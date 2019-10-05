@@ -11,7 +11,7 @@
             ?>
 
             <figure class="slider_content">
-                <img src="img/upload/picture/<?= $picture->getTitle() . $picture->getId(); ?>.jpg" />
+                <img src="img/upload/picture/<?= $picture->getTitle() . $picture->getPictureId(); ?>.jpg" />
             </figure>
 
 

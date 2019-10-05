@@ -6,11 +6,10 @@ use Manager\UserManager;
 use Manager\PictureManager;
 use Manager\CommentManager;
 
-class Report
+class PictureReport
 {
-    private $_id;
-    private $_element;
-    private $_elementId;
+    private $_pictureReportId;
+    private $_pictureId;
     private $_userId;
     private $_published;
 
@@ -22,6 +21,13 @@ class Report
     public function hydrate(array $data)
     {
         foreach ($data as $key => $value) {
+            if (strpos($key, '_')) {
+                $arrayKey = explode('_', $key);
+                $key = $arrayKey[0] . ucfirst($arrayKey[1]);
+                if (array_key_exists(2, $arrayKey)) {
+                    $key = $arrayKey[0] . ucfirst($arrayKey[1]) . ucfirst($arrayKey[2]);
+                }
+            }
             $method = 'set' . ucfirst($key);
             if (method_exists($this, $method)) {
                 $this->$method($value);
@@ -29,50 +35,34 @@ class Report
         }
     }
 
-    public function setId($id)
+    public function setPictureReportId($id)
     {
-        $this->_id = $id;
+        $this->_pictureReportId = $id;
     }
 
-    public function getId()
+    public function getPictureReportId()
     {
-        return $this->_id;
+        return $this->_pictureReportId;
     }
 
-    public function setElement($element)
+    public function setPictureId($pictureId)
     {
-        $this->_element = $element;
+        $this->_pictureId = $pictureId;
     }
 
-    public function getElement()
+    public function getPictureId()
     {
-        if ('picture' == $this->_element) {
-            $picture = new PictureManager();
+        $picture = new PictureManager();
 
-            return $picture->getPictureById($this->getElementId());
-        } elseif ('comment' == $this->_element) {
-            $comment = new CommentManager();
-
-            return $comment->getCommentById($this->getElementId());
-        }
+        return $picture->getPictureById($this->_pictureId);
     }
 
-    public function setElementId($elementId)
-    {
-        $this->_elementId = $elementId;
-    }
-
-    public function getElementId()
-    {
-        return $this->_elementId;
-    }
-
-    public function setUser($userId)
+    public function setUserId($userId)
     {
         $this->_userId = $userId;
     }
 
-    public function getUser()
+    public function getUserId()
     {
         $user = new UserManager();
         return $user->getUserById($this->_userId);

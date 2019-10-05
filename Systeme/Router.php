@@ -4,8 +4,10 @@ namespace Systeme;
 
 use Controller\Controller;
 use Controller\PageController;
-use Controller\LikeController;
-use Controller\ReportController;
+use Controller\PictureLikeController;
+use Controller\PictureReportController;
+use Controller\CommentLikeController;
+use Controller\CommentReportController;
 use Controller\CommentController;
 use Controller\ProfilController;
 use Controller\AdminController;
@@ -23,10 +25,14 @@ class Router
     private function route($page)
     {
         //Redirection vers les controllers
-        if ($page == 'Like') {
-            new LikeController();
-        } elseif($page == 'Report') {
-            new ReportController();
+        if ($page == 'pictureLike') {
+            new PictureLikeController();
+        } elseif($page == 'pictureReport') {
+            new PictureReportController();
+        }  elseif($page == 'commentLike') {
+            new CommentLikeController();
+        } elseif($page == 'commentReport') {
+            new CommentReportController();
         } elseif($page == 'Comment') {
             new CommentController();
         } elseif($page == 'Admin') {
@@ -39,7 +45,7 @@ class Router
         } elseif (is_file('../View/' . $page . '.php')) {
             new PageController($page);
         } else {
-            //new CustomException("Page introuvable", 404);
+            new CustomException("Page introuvable", 404);
         }
     }
 }

@@ -5,8 +5,10 @@ namespace Controller;
 use Manager\UserManager;
 use Manager\PictureManager;
 use Manager\CommentManager;
-use Manager\LikeManager;
-use Manager\ReportManager;
+use Manager\PictureLikeManager;
+use Manager\PictureReportManager;
+use Manager\CommentLikeManager;
+use Manager\CommentReportManager;
 
 class PageController
 {
@@ -35,8 +37,10 @@ class PageController
 			$pictureManager = new PictureManager();
 			$pictures = $pictureManager->getLastPictures();
 			$commentManager = new CommentManager();
-			$likeManager = new LikeManager();
-			$reportManager = new ReportManager();
+			$pictureLikeManager = new PictureLikeManager();
+			$pictureReportManager = new PictureReportManager();
+			$commentLikeManager = new CommentLikeManager();
+			$commentReportManager = new CommentReportManager();
 
 		} elseif ('galerie' === $page) {
 			$pictureManager = new PictureManager();

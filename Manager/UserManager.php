@@ -20,7 +20,7 @@ class UserManager
     public function getUserById($id)
     {
         $id = (int) $id;
-        $request = $this->_db->query('SELECT * FROM user WHERE id = '. $id);
+        $request = $this->_db->query('SELECT * FROM user WHERE user_id = '. $id);
 
         return new User($request->fetch(PDO::FETCH_ASSOC));
     }
@@ -71,7 +71,7 @@ class UserManager
 
     public function delete($id)
     {
-        $req = $this->_db->prepare('DELETE FROM user WHERE id=:id LIMIT 1');
+        $req = $this->_db->prepare('DELETE FROM user WHERE user_id=:id LIMIT 1');
         $req->bindValue(':id', $id);
         $req->execute();
     }

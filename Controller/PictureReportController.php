@@ -3,9 +3,9 @@
 namespace Controller;
 
 use Systeme\Helper;
-use Manager\ReportManager;
+use Manager\PictureReportManager;
 
-class ReportController
+class PictureReportController
 {
     public function __construct()
     {
@@ -22,16 +22,16 @@ class ReportController
         $message = "Une erreur est survenue ...";
 
         //Recherche si l element est report si report efface report
-        $reportManager = new ReportManager();
-        $reports = $reportManager->getReportsByElementId($postClean['elementIdReport'], $postClean['elementReport']);
+        $pictureReportManager = new PictureReportManager();
+        $reports = $pictureReportManager->getPicturesReportsByPictureId($postClean['elementIdReport']);
         foreach ($reports as $report) {
-            if ($report->getUser()->getId() == $postClean['userIdReport']) {
+            if ($report->getUserId()->getUserId() == $postClean['userIdReport']) {
                 $reportStatus = 1;
                 $sucess = 1;
 
-                $reportManager->delete($report->getId());
+                $pictureReportManager->delete($report->getPictureReportId());
 
-                $reportsNumber = $reportManager->getReportsNumberByElementId($postClean['elementIdReport'], $postClean['elementReport']);
+                $reportsNumber = $pictureReportManager->getPicturesReportsNumberByPictureId($postClean['elementIdReport']);
                 $data = [
                     "reportsNumber" => $reportsNumber,
                     "post" => $postClean,
@@ -44,8 +44,8 @@ class ReportController
         if ($reportStatus === 0) {
             $sucess = 1;
 
-            $reportManager->add($postClean['elementReport'], $postClean['elementIdReport'], $postClean['userIdReport']);
-            $reportsNumber = $reportManager->getReportsNumberByElementId($postClean['elementIdReport'], $postClean['elementReport']);
+            $pictureReportManager->add($postClean['elementIdReport'], $postClean['userIdReport']);
+            $reportsNumber = $pictureReportManager->getPicturesReportsNumberByPictureId($postClean['elementIdReport']);
             $data = [
                 "reportsNumber" => $reportsNumber,
                 "post" => $postClean,

@@ -3,10 +3,10 @@
 namespace Controller;
 
 use Systeme\Helper;
-use Manager\LikeManager;
+use Manager\CommentLikeManager;
 use Manager\UserManager;
 
-class LikeController
+class CommentLikeController
 {
     public function __construct()
     {
@@ -23,15 +23,15 @@ class LikeController
         $postClean = Helper::cleanArray($_POST);
 
         //Recherche si l'element est like si deja like efface le like
-        $likeManager = new LikeManager();
-        $likes = $likeManager->getLikesbyElementId($postClean['elementId'], $postClean['element']);
+        $commentLikeManager = new CommentLikeManager();
+        $likes = $commentLikeManager->getCommentsLikesbyCommentId($postClean['elementId']);
         foreach ($likes as $like) {
-            if ($like->getUser()->getId() == $postClean['userId']) {
+            if ($like->getUserId()->getUserId() == $postClean['userId']) {
                 $sucess = 1;
                 $likeStatus = 1;
 
-                $likeManager->delete($like->getId());
-                $likeNumber = $likeManager->getLikesNumberByElementId($postClean['elementId'], $postClean['element']);
+                $commentLikeManager->delete($like->getCommentLikeId());
+                $likeNumber = $commentLikeManager->getCommentsLikesNumberByCommentId($postClean['elementId']);
 
                 $data = [
                     "likeStatus" => $likeStatus,
@@ -48,8 +48,8 @@ class LikeController
             $sucess = 1;
             $likeStatus = 0;
 
-            $likeManager->add($postClean['element'], $postClean['elementId'], $postClean['userId']);
-            $likeNumber = $likeManager->getLikesNumberByElementId($postClean['elementId'], $postClean['element']);
+            $commentLikeManager->add($postClean['elementId'], $postClean['userId']);
+            $likeNumber = $commentLikeManager->getCommentsLikesNumberByCommentId($postClean['elementId']);
 
             $userManager =  new UserManager();
             $user = $userManager->getUserById($postClean['userId']);

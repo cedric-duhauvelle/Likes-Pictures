@@ -6,7 +6,7 @@ use Manager\UserManager;
 
 class Picture
 {
-    private $_id;
+    private $_pictureId;
     private $_userId;
     private $_title;
     private $_upload;
@@ -19,6 +19,10 @@ class Picture
     public function hydrate(array $data)
     {
         foreach ($data as $key => $value) {
+            if (strpos($key, '_')) {
+                $arrayKey = explode('_', $key);
+                $key = $arrayKey[0] . ucfirst($arrayKey[1]);
+            }
             $method = 'set' . ucfirst($key);
             if (method_exists($this, $method)) {
                 $this->$method($value);
@@ -26,22 +30,22 @@ class Picture
         }
     }
 
-    public function setId($id)
+    public function setPictureId($id)
     {
-        $this->_id = $id;
+        $this->_pictureId = $id;
     }
 
-    public function getId()
+    public function getPictureId()
     {
-        return $this->_id;
+        return $this->_pictureId;
     }
 
-    public function setUser($userId)
+    public function setUserId($userId)
     {
         $this->_userId = $userId;
     }
 
-    public function getUser()
+    public function getUserId()
     {
         $user = new UserManager();
         return $user->getUserById($this->_userId);

@@ -7,9 +7,9 @@ use Manager\PictureManager;
 
 class Comment
 {
-    private $_id;
-    private $_user;
-    private $_picture;
+    private $_commentId;
+    private $_userId;
+    private $_pictureId;
     private $_content;
     private $_published;
 
@@ -21,6 +21,10 @@ class Comment
     public function hydrate(array $data)
     {
         foreach ($data as $key => $value) {
+            if (strpos($key, '_')) {
+                $arrayKey = explode('_', $key);
+                $key = $arrayKey[0] . ucfirst($arrayKey[1]);
+            }
             $method = 'set' . ucfirst($key);
             if (method_exists($this, $method)) {
                 $this->$method($value);
@@ -28,36 +32,36 @@ class Comment
         }
     }
 
-    public function setId(int $id)
+    public function setCommentId(int $id)
     {
-        $this->_id = $id;
+        $this->_commentId = $id;
     }
 
-    public function getId()
+    public function getCommentId()
     {
-        return $this->_id;
+        return $this->_commentId;
     }
 
-    public function setUser(int $id)
+    public function setUserId(int $id)
     {
-        $this->_user = $id;
+        $this->_userId = $id;
     }
 
-    public function getUser()
+    public function getUserId()
     {
         $user = new UserManager();
-        return $user->getUserById($this->_user);
+        return $user->getUserById($this->_userId);
     }
 
-    public function setPicture(int $id)
+    public function setPictureId(int $id)
     {
-        $this->_Picture = $id;
+        $this->_pictureId = $id;
     }
 
-    public function getPicture()
+    public function getPictureId()
     {
         $picture = new PictureManager();
-        return $picture->getPictureById($this->_user);
+        return $picture->getPictureById($this->_pictureId);
     }
 
     public function setContent(string $value)
