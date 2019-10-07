@@ -20,7 +20,6 @@ class CommentController
         $data = [];
         $message = 'Une erreur est survenue ... (php)';
 
-
         if ($postClean['comment'] !== "") {
             $sucess = 1;
 
@@ -44,7 +43,6 @@ class CommentController
         } else {
             $message = "Veuillez écrire un commentaire";
         }
-
         echo json_encode([
             "sucess" => $sucess,
             "message" => $message,
