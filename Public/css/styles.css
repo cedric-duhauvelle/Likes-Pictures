@@ -66,15 +66,17 @@ footer{
 /*---------------------------------------- */
 #content_accueil{
     min-height: 800px;
-    background-color: #93B5C6;
     margin-top: 58px;
     margin-bottom: 2px;
     padding: 2%;
 }
 .content_new_post{
-    background-color: rgb(205, 211, 219);
+    box-shadow: 0 1px 4px #000;
+    border: 1px solid #000;
+    border-radius: 10px;
     padding: 2%;
     margin-bottom: 2%;
+    background-color: #fff;
 }
 .avatar_post{
     width: 75px;
@@ -115,6 +117,7 @@ footer{
     margin:  0 40%;
 }
 .comment_content_post{
+    box-shadow: 0 1px 3px #000, 0 1px 2px black;
     display: none;
     margin: 2% 0;
     padding: 2%;
@@ -146,6 +149,7 @@ footer{
     margin: 0;
 }
 .comment_content{
+    box-shadow: 0 1px 3px #000, 0 1px 2px black;
     width: 45%;
     border: 1px solid rgb(18, 20, 22);
     background-color: #fff;
@@ -168,6 +172,7 @@ footer{
     border-right:20px solid rgb(18, 20, 22);
 }
 .comment_content_form{
+    box-shadow: 0 1px 3px #000, 0 1px 2px black;
     border-radius: 15px;
     border: 1px solid #000;
     padding: 2%;
@@ -176,14 +181,16 @@ footer{
 }
 .button_icone{
     border: none;
-    background-color:  rgb(205, 211, 219);
+    background-color: #fff;
 }
 .button_icone :hover{
     color: #0069d9;
 }
-.like_form_post{
+.like_form_post, .report_form_post{
     width: 100%;
     margin-top: 2%;
+    display: flex;
+    justify-content: flex-end;
 }
 .comment_form_print{
     margin: 0 10%;
@@ -215,16 +222,25 @@ footer{
     flex-direction: column;
     justify-content: space-around;
 }
+#content_connexion .row p a{
+    color: #000;
+}
+#content_connexion .row p a:hover{
+    color: #0069d9;
+}
 #form_connexion{
     padding: 3%;
-    background-color: #f5f5f5;
+
     display: flex;
     flex-direction: column !important;
     align-items: center;
 }
 #content_form_connexion{
-    width: 30%;
-    margin: 0 35%;
+    width: 50%;
+    margin: 0 25%;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px #000, 0 1px 2px black;
+    background-color: #f5f5f5;
 }
 .form-connexion{
     margin: 0 30%;
@@ -261,6 +277,8 @@ footer{
 #form_inscription{
     padding: 3%;
     background-color: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px #000, 0 1px 2px black;
 }
 .form-inscription{
     display: flex !important;
@@ -295,8 +313,8 @@ footer{
 }
 .slider_content img{
     border: 2px solid white;
-    width: 800px;
-    height: 550px;
+    width: 450px;
+    height: auto;
 }
 .slider_button_stop_start{
     width: 100%;
@@ -363,7 +381,9 @@ footer{
 #slider_container{
     height: 100%;
 }
-/*--Comment*/
+/*
+ --Comment--
+*/
 #content_comments{
     height: 100%;
     width: 80%;
@@ -375,10 +395,14 @@ footer{
 /*---------------------------------------- */
 #content_profil{
     background-color: #fff;
-    margin-top: 58px;
+    margin-top: 18px;
     margin-bottom: 2px;
     min-height: 750px;
     padding: 2%;
+}
+#content_profil h1{
+    text-align: center;
+    text-shadow: #ffffff 1px 1px, #ffffff -1px 1px, #ffffff -1px -1px, #ffffff 1px -1px;
 }
 /*
  -- profil --
@@ -393,23 +417,82 @@ footer{
     height: 175px;
     border-radius: 50%;
     border: 2px solid #fff;
-}
-.picture_profil{
-    width: 70%;
     margin-bottom: 2%;
+}
+#container_info_profil{
+    display: flex;
+    padding: 2%;
+}
+#profil_info p{
+    width: 50%;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px #000, 0 1px 2px black;
+    padding: 1%;
 }
 /*
  -- photo --
 */
 #photos{
     margin: 0;
- }
+}
+.picture_upload{
+    max-width: 340px;
+    max-width: 230px;
+    width: 100%;
+    margin: 2%;
+}
+.container_picture_profil{
+    display: flex;
+    justify-content: space-around;
+    margin: 2%;
+    background-color: #f5f5f5;
+    box-shadow: 0 1px 3px #000, 0 1px 2px black;
+    border-radius: 10px;
+}
+.container_picture_profil figure{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.form_delete_picture_profil{
+    display: flex;
+    justify-content: center;
+}
+.container_picture_info_upload{
+    margin: 2%;
+}
+.container_picture_info_upload p{
+    margin: 25% 0 30% 0;
+    background-color: #fff;
+    box-shadow: 0 1px 3px #000, 0 1px 2px black;
+    padding: 5%;
+    border-radius: 10px;
+}
 /*
  -- modification --
 */
 #update{
     margin: 0;
- }
+}
+#container_update_profil{
+    width: 80%;
+    margin: 6% 10%;
+
+}
+#container_update_profil form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f5f5f5;
+    box-shadow: 0 1px 3px #000, 0 1px 2px black;
+    padding: 2%;
+    border-radius: 10px;
+    margin: 2%;
+}
 /* ---------------------------------------- */
 /* ==       AJOUT       */
 /*---------------------------------------- */
@@ -418,13 +501,19 @@ footer{
     background-color: #93B5C6;
     margin-top: 58px;
     margin-bottom: 2px;
+    padding-top: 5%;
 }
-#content_upload_picture .row{
+#container_upload_picture_form{
+    background-color: #f5f5f5;
+    box-shadow: 0 1px 3px #000, 0 1px 2px black;
+    width: 80%;
+    margin: 5% 10%;
     min-height: 400px;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 2%;
+    border-radius: 10px;
 }
 #form_upload_picture{
     display: flex;
@@ -434,6 +523,10 @@ footer{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+#button_upload_picture{
+    width: 60%;
+    margin: 2% 15%;
 }
 #thumbnil{
     width: 400px;

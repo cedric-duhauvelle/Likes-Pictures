@@ -40,7 +40,7 @@ if (!array_key_exists('admin', $_SESSION)) {
                                 <label for="comment_report_id<?= $commentReport->getCommentReportId(); ?>"></label>
                                 <input type="text" name="comment_report_id" value="<?= $commentReport->getCommentReportId(); ?>" class="hidden_input" />
                                 <label for="commentId_report_id<?= $commentReport->getCommentReportId(); ?>"></label>
-                                <input type="text" name="commentId_report_id" value="<?= $commentReport->getCommentReportId(); ?>" id="commentId_report_id<?= $commentReport->getCommentReportId(); ?>" class="hidden_input">
+                                <input type="text" name="commentId_report_id" value="<?= $commentReport->getCommentId()->getCommentId(); ?>" id="commentId_report_id<?= $commentReport->getCommentReportId(); ?>" class="hidden_input">
                                 <label for="comment_report_element<?= $commentReport->getCommentReportId(); ?>"></label>
                                 <input type="text" name="element" value="comment" class="hidden_input" id="comment_report_element<?= $commentReport->getCommentReportId(); ?>" />
                                 <button type="submit" class="btn btn-danger" onclick="callAjax('form_delete_comment_admin<?= $commentReport->getCommentReportId(); ?>', 'Admin')">Commentaire</button>

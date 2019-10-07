@@ -1,8 +1,5 @@
 <div id="content_accueil">
     <div class="starter-template">
-        <h1>Accueil</h1>
-        <p class="lead">Nouveautés</p>
-
         <?php
         foreach ($pictures as $picture) {
             $likeNumber = $pictureLikeManager->getPicturesLikesNumberByPictureId($picture->getPictureId());
@@ -15,11 +12,9 @@
                     </figure>
                     <p><?= $picture->getUserId()->getName(); ?></p>
                 </div>
-
                 <div class="content_info_post">
                     <p>Publiée le <?= $picture->getUpload(); ?></p>
                 </div>
-
                 <div class="content_picture_post">
                     <figure class="picture_post">
                         <a class="fancybox" rel="group" href="img/upload/picture/<?= $picture->getTitle() . $picture->getPictureId(); ?>.jpg">
@@ -60,10 +55,7 @@
                     <?= $reportsNumber; ?> personnes ont signalées cette photo.
                     <?php } ?>
                 </p>
-
-
                 <button class="comment_button_post btn btn-primary" type="button" onclick="displayContentComment(<?= $picture->getPictureId(); ?>)">commentaires</button>
-
                 <?php } ?>
                 <div class="comment_content_post post<?= $picture->getPictureId(); ?>">
                     <div id="container_comment<?= $picture->getPictureId(); ?>">
@@ -82,8 +74,6 @@
                                 <p>Le <?= $comment->getPublished(); ?></p>
                                 <p id="comment_post<?= $comment->getCommentId(); ?>"><?= $comment->getContent(); ?></p>
                                 <?php if (array_key_exists('id', $_SESSION)) { ?>
-
-
                                 <div class="content_form_like_report_comment">
                                     <form method="POST" id="like_form_comment<?= $comment->getCommentId(); ?>">
                                         <label for="elementComment<?= $comment->getCommentId(); ?>"></label>
@@ -125,7 +115,6 @@
                         include('Template/comment.php');
                     } ?>
                 </div>
-
             </div>
         <?php } ?>
     </div>
