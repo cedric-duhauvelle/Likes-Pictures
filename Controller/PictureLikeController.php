@@ -64,7 +64,6 @@ class PictureLikeController
             ];
             $message = 'Like ajouter';
         }
-
         echo json_encode([
             "sucess" => $sucess,
             "message" => $message,
