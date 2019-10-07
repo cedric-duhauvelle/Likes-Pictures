@@ -52,7 +52,6 @@ class PictureReportController
             ];
             $message = "report ajouter";
         }
-
         echo json_encode([
             "sucess" => $sucess,
             "message" => $message,
