@@ -64,7 +64,6 @@ class CommentLikeController
             ];
             $message = 'Like ajouter';
         }
-
         echo json_encode([
             "sucess" => $sucess,
             "message" => $message,
