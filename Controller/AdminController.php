@@ -64,7 +64,6 @@ class AdminController
             "post" => $postClean,
             "message" => $message,
         ];
-
         echo json_encode([
             "sucess" => $sucess,
             "data" => $data,
