@@ -24,10 +24,13 @@ class DataBase
     public function connect()
     {
         try {
-            return new PDO('mysql:host=' . $this->getHost() . ';dbname=' . $this->getName() . ';charset=utf8', $this->getUser(), $this->getPassword());
+            $db = new PDO('mysql:host=' . $this->getHost() . ';dbname=' . $this->getName() . ';charset=utf8', $this->getUser(), $this->getPassword());
         } catch(CustomException $e) {
             new CustomException('Erreur de chargement à la base de données', 404);
         }
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        return $db;
     }
 
     public function getHost()
