@@ -5,6 +5,7 @@ use Systeme\Router;
 use Systeme\CustomException;
 
 session_start();
+
 spl_autoload_register(function ($class) {
     $class = '../' . str_replace("\\", '/', $class) . '.php';
     if (is_file($class)) {
