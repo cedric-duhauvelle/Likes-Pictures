@@ -5,7 +5,9 @@ namespace Controller;
 use Systeme\Helper;
 use Systeme\Session;
 use Manager\UserManager;
-
+/**
+ * Gere la connexion utilisateur
+ */
 class ConnexionController
 {
     public function __construct()
@@ -20,9 +22,11 @@ class ConnexionController
         $userManager = new UserManager();
         $session = new Session();
 
+        //Verife si le nom est deja utilise
         if ($userManager->getUserByName($postClean['name'])) {
             $user = $userManager->getUserByName($postClean['name']);
 
+            //Verifie si le mot de passe correspont a l utilisateur
             if (password_verify($postClean['password'], $user->getPassword())) {
                 $session->addSession('name', $postClean['name']);
                 $session->addSession('id', $user->getUserId());

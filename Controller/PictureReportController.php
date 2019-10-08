@@ -5,6 +5,9 @@ namespace Controller;
 use Systeme\Helper;
 use Manager\PictureReportManager;
 
+/**
+ * Gere l ajout et la suppression des signalements sur les photos
+ */
 class PictureReportController
 {
     public function __construct()
@@ -40,7 +43,7 @@ class PictureReportController
             }
         }
 
-        //Ajout un report
+        //Ajout Report
         if ($reportStatus === 0) {
             $sucess = 1;
 

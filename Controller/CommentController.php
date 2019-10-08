@@ -6,6 +6,9 @@ use Systeme\Helper;
 use Manager\UserManager;
 use Manager\CommentManager;
 
+/**
+ * Ajout un commentaire
+ */
 class CommentController
 {
     public function __construct()

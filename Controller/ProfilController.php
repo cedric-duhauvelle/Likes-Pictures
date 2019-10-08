@@ -6,6 +6,9 @@ use Manager\PictureManager;
 use Manager\UserManager;
 use Systeme\Helper;
 
+/**
+ * Gere profil utilisateur
+ */
 class ProfilController
 {
     public function __construct()
@@ -22,6 +25,7 @@ class ProfilController
 
         if (array_key_exists('element', $postClean)) {
             if('picture' === $postClean['element']) {
+                //Efface une photo
                 $sucess = 1;
                 $message = 'Photo effacée';
 
@@ -30,11 +34,10 @@ class ProfilController
                 unlink('img/upload/picture/' . $postClean['pictureName'] . $postClean['pictureId'] . '.jpg');
 
             } elseif ('update' === $postClean['element']) {
-
-
                 $userManager = new UserManager;
                 if ('name' === $postClean['element_update']) {
                     if ($userManager->getUserByName($postClean['new_name']) === false) {
+                        //Modifie le nom utilsateur
                         $sucess = 1;
                         $message = 'Nom modifié';
 
@@ -44,6 +47,7 @@ class ProfilController
                     }
                 } elseif ('email' === $postClean['element_update']) {
                     if ($userManager->getUserByEmail($postClean['new_email']) === false) {
+                        //Modifie l email utilisateur
                         $sucess = 1;
                         $message = 'Email modifié';
 
@@ -53,6 +57,7 @@ class ProfilController
                     }
                 } elseif ('password' === $postClean['element_update']) {
                     if ($postClean['new_password'] === $postClean['password_confirm']) {
+                        //Modifie le mot de passe utilisateur
                         $sucess = 1;
                         $message = 'Mot de passe modifié';
 
@@ -63,10 +68,10 @@ class ProfilController
                 }
             }
         }
-
         echo json_encode([
             "sucess" => $sucess,
             "message" => $message,
+            "postClean" => $postClean,
         ]);
     }
 }

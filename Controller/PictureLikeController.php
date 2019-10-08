@@ -6,6 +6,9 @@ use Systeme\Helper;
 use Manager\PictureLikeManager;
 use Manager\UserManager;
 
+/**
+ * Gere l ajout et la suppression des likes sur les photos
+ */
 class PictureLikeController
 {
     public function __construct()

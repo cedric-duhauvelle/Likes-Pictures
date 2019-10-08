@@ -5,6 +5,9 @@ namespace Controller;
 use Systeme\Helper;
 use Manager\PictureManager;
 
+/**
+ * Gere l ajout des images
+ */
 class PictureController
 {
     public function __construct()

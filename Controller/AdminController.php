@@ -16,6 +16,9 @@ class AdminController
         return $this->admin();
     }
 
+    /**
+     * Gere la suppresion des elements signales et des utilisateurs
+     */
     public function admin()
     {
         $sucess = 0;
@@ -27,7 +30,9 @@ class AdminController
         $pictureReportManager = new PictureReportManager();
         $commentReportManager = new CommentReportManager();
 
+
         if (array_key_exists('picture_id_admin', $postClean)) {
+            //Efface une photo signalee
             $sucess = 1;
             $message = 'Photo effacée';
 
@@ -36,11 +41,13 @@ class AdminController
             $pictureManager->delete($postClean['picture_id_admin']);
             unlink('img/upload/picture/' . $postClean['picture_title_admin'] . $postClean['picture_id_admin'] . '.jpg');
         } elseif (array_key_exists('report_id_admin', $postClean)) {
+            //Efface un signalement d une photo signalee
             $sucess = 1;
             $message = 'Report effacé';
 
             $pictureReportManager->delete($postClean['report_id_admin']);
         } elseif (array_key_exists('commentId_report_id', $postClean)) {
+            //Efface un commentaire signale
             $sucess = 1;
             $message = 'Commentaire effacé';
 
@@ -48,11 +55,13 @@ class AdminController
             $comment = new CommentManager();
             $comment->delete($postClean['commentId_report_id']);
         } elseif (array_key_exists('comment_report_id', $postClean)) {
+            //Efface le signalement d un commentaire
             $sucess = 1;
             $message = 'Report effacé';
 
             $commentReportManager->delete($postClean['comment_report_id']);
         } elseif (array_key_exists('user_id_admin', $postClean)) {
+            //Efface un utilisateur
             $sucess = 1;
             $message = 'Utilisateur effacé';
 

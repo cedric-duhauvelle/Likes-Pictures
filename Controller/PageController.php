@@ -10,6 +10,9 @@ use Manager\PictureReportManager;
 use Manager\CommentLikeManager;
 use Manager\CommentReportManager;
 
+/**
+ * Gere la redirection des pages
+ */
 class PageController
 {
 	public function __construct($page)

@@ -6,6 +6,9 @@ use Systeme\Helper;
 use Manager\CommentLikeManager;
 use Manager\UserManager;
 
+/**
+ * Gere l ajout et la suppression des likes sur les commentaires
+ */
 class CommentLikeController
 {
     public function __construct()

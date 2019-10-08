@@ -2,6 +2,9 @@
 
 namespace Controller;
 
+/**
+ * Deconnect l utilisateur
+ */
 class DeconnexionController
 {
     public function __construct()

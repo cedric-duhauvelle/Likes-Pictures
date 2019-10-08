@@ -5,6 +5,9 @@ namespace Controller;
 use Systeme\Helper;
 use Manager\CommentReportManager;
 
+/**
+ * Gere l ajout et la suppression des sigalements des commentaires
+ */
 class CommentReportController
 {
     public function __construct()
