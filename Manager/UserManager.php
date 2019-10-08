@@ -6,6 +6,9 @@ use PDO;
 use Model\User;
 use Systeme\Database;
 
+/**
+ * Gere les appelles a la base de donnee pour les utilisateurs
+ */
 class UserManager
 {
     private $_db;
@@ -16,7 +19,11 @@ class UserManager
         $this->_db = $db->connect();
     }
 
-    //retourne un utilisateur
+    /**
+     * Retourne un utilisateur par son ID
+     *
+     * @return array
+     */
     public function getUserById($id)
     {
         $id = (int) $id;
@@ -25,7 +32,11 @@ class UserManager
         return new User($request->fetch(PDO::FETCH_ASSOC));
     }
 
-    //retourne un utilisateur
+    /**
+     * Retourne un utilisateur par son nom
+     *
+     * @return object
+     */
     public function getUserByName($name)
     {
         $request = $this->_db->query('SELECT * FROM user WHERE name="' . $name . '"');
@@ -37,7 +48,11 @@ class UserManager
         return false;
     }
 
-    //retourne un utilisateur
+    /**
+     * Retourne un utilisateur par son email
+     *
+     * @return array
+     */
     public function getUserByEmail($email)
     {
         $request = $this->_db->query('SELECT * FROM user WHERE email="' . $email . '"');
@@ -49,7 +64,11 @@ class UserManager
         return false;
     }
 
-    //retourne tous les utilisateurs
+    /**
+     * Retourne tous les utilsateurs
+     *
+     * @return array
+     */
     public function getUsers()
     {
         $users = [];
@@ -60,6 +79,9 @@ class UserManager
         return $users;
     }
 
+    /**
+     * Ajoute un utilisateur a la base de donnee
+     */
     public function add($name, $email, $password)
     {
         $request = $this->_db->prepare('INSERT INTO user(name, email, password, inscription) VALUES (:name, :email, :password, CURRENT_TIME)');
@@ -69,6 +91,9 @@ class UserManager
         $request->execute();
     }
 
+    /**
+     * Efface un utilisateur par son ID
+     */
     public function delete($id)
     {
         $req = $this->_db->prepare('DELETE FROM user WHERE user_id=:id LIMIT 1');
@@ -76,6 +101,9 @@ class UserManager
         $req->execute();
     }
 
+    /**
+     * Modifie le nom utilisateur
+     */
     public function updateName($id, $name)
     {
         $update = $this->_db->prepare('UPDATE user SET name=:name WHERE id=:id');
@@ -84,6 +112,9 @@ class UserManager
         $update->execute();
     }
 
+    /**
+     * Modifie l email utilisateur
+     */
     public function updateEmail($id, $email)
     {
         $update = $this->_db->prepare('UPDATE user SET email=:email WHERE id=:id');
@@ -92,6 +123,9 @@ class UserManager
         $update->execute();
     }
 
+    /**
+     * Modifie le mot de passe utilisateur
+     */
     public function updatePassword($id, $password)
     {
         $update = $this->_db->prepare('UPDATE user SET password=:password WHERE id=:id');

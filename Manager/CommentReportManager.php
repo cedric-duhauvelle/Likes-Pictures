@@ -6,6 +6,9 @@ use PDO;
 use Systeme\DataBase;
 use Model\CommentReport;
 
+/**
+ * Gere les appelles a la base de donnee pour les signalement des commentaires
+ */
 class CommentReportManager
 {
     private $_db;
@@ -16,6 +19,9 @@ class CommentReportManager
         $this->_db = $db->connect();
     }
 
+    /**
+     * Ajout un signalement
+     */
     public function add($commentId, $userId)
     {
         $request = $this->_db->prepare('INSERT INTO comment_report(comment_id, user_id, published) VALUES (:comment_id, :user_id, CURRENT_TIME)');
@@ -24,6 +30,9 @@ class CommentReportManager
         $request->execute();
     }
 
+    /**
+     * Efface un signalement par son ID
+     */
     public function delete($id)
     {
         $req = $this->_db->prepare('DELETE FROM comment_report WHERE comment_report_id=:id LIMIT 1');
@@ -31,6 +40,11 @@ class CommentReportManager
         $req->execute();
     }
 
+    /**
+     * Retourne les signalement sur les commentaires
+     *
+     * @return array
+     */
     public function getCommentsReports()
     {
         $reports = [];
@@ -42,6 +56,11 @@ class CommentReportManager
         return $reports;
     }
 
+    /**
+     * Retourne les signalements d un commentaire par son ID
+     *
+     * @return array
+     */
     public function getCommentsReportsByCommentId($commentId)
     {
         $reports = [];
@@ -53,6 +72,11 @@ class CommentReportManager
         return $reports;
     }
 
+    /**
+     * Retourne le nombre de siganlement sur un commentaire par son ID
+     *
+     * @return int
+     */
     public function getCommentsReportsNumberByCommentId($commentId)
     {
         $query = $this->_db->query('SELECT COUNT(*) FROM comment_report WHERE comment_id="' . $commentId . '"');

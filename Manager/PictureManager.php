@@ -7,6 +7,9 @@ use Model\Picture;
 use Systeme\DataBase;
 use Manager\UserManager;
 
+/**
+ * Gere les appelles a la base de donnee des photos
+ */
 class PictureManager
 {
     private $_db;
@@ -17,6 +20,11 @@ class PictureManager
         $this->_db = $db->connect();
     }
 
+    /**
+     * Retourne un photo par son ID
+     *
+     * @return object
+     */
     public function getPictureById($id)
     {
         $request = $this->_db->query('SELECT * FROM picture WHERE picture_id = "'. $id .'"');
@@ -24,7 +32,11 @@ class PictureManager
         return new Picture($request->fetch(PDO::FETCH_ASSOC));
     }
 
-    //retourne tous les images
+    /**
+     * Retourne tous les images
+     *
+     * @return array
+     */
     public function getPictures()
     {
         $pictures = [];
@@ -32,10 +44,15 @@ class PictureManager
         while ($data =  $q->fetch(PDO::FETCH_ASSOC)) {
            $pictures[] = new Picture($data);
         }
+
         return $pictures;
     }
 
-    //retourne les images a partir du dernier ajout
+    /**
+     * Retourne les photos a partir du dernier ajout
+     *
+     * @return array
+     */
     public function getLastPictures()
     {
         $pictures = [];
@@ -43,10 +60,15 @@ class PictureManager
         while ($data =  $q->fetch(PDO::FETCH_ASSOC)) {
            $pictures[] = new Picture($data);
         }
+
         return $pictures;
     }
 
-    //retourne toutes les images d'un utilisateur
+    /**
+     * Retourne toutes les images d'un utilisateur par son ID
+     *
+     * @return array
+     */
     public function getPicturesByUser($userId)
     {
         $pictures = [];
@@ -54,9 +76,13 @@ class PictureManager
         while ($data =  $q->fetch(PDO::FETCH_ASSOC)) {
            $pictures[] = new Picture($data);
         }
+
         return $pictures;
     }
 
+    /**
+     * Ajoute une photo dans la base de donnee
+     */
     public function add($file, $route, $title, $user)
     {
         $pictureId = $user;
@@ -72,7 +98,11 @@ class PictureManager
         move_uploaded_file($_FILES[$file]['tmp_name'], $route . $title . $pictureId . '.jpg');
     }
 
-    //return donnee image
+    /**
+     * Retourne la derniere photo ajoutee
+     *
+     * @return object
+     */
     public function getLastPicture()
     {
         $resp = $this->_db->query('SELECT * FROM picture ORDER BY picture_id DESC LIMIT 1');
@@ -80,6 +110,9 @@ class PictureManager
         return new Picture($resp->fetch(PDO::FETCH_ASSOC));
     }
 
+    /**
+     * Efface une photo par son ID
+     */
     public function delete($id)
     {
         $req = $this->_db->prepare('DELETE FROM picture WHERE picture_id=:id LIMIT 1');

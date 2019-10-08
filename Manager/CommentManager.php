@@ -6,6 +6,9 @@ use PDO;
 use Model\Comment;
 use Systeme\DataBase;
 
+/**
+ * Gere les appelles a la base de donnee pour les commentaires
+ */
 class CommentManager
 {
     private $_db;
@@ -16,6 +19,11 @@ class CommentManager
         $this->_db = $db->connect();
     }
 
+    /**
+     * Retourne un commentaire par son ID
+     *
+     * @return  object
+     */
     public function getCommentById(int $id)
     {
         $request = $this->_db->query('SELECT * FROM comment WHERE comment_id ="'. $id . '"');
@@ -23,6 +31,11 @@ class CommentManager
         return new Comment($request->fetch(PDO::FETCH_ASSOC));
     }
 
+    /**
+     * Retourne les commentaires d une photo par son ID
+     *
+     * @return array
+     */
     public function getCommentByPicture($pictureId)
     {
         $comments = [];
@@ -34,6 +47,11 @@ class CommentManager
         return $comments;
     }
 
+    /**
+     * Retourne le dernier Commentaire
+     *
+     * @return object
+     */
     public function getCommentLast()
     {
         $request = $this->_db->query('SELECT * FROM comment ORDER BY published DESC');
@@ -41,6 +59,9 @@ class CommentManager
         return new Comment($request->fetch(PDO::FETCH_ASSOC));
     }
 
+    /**
+     * Ajoute un commenteire a la base de donnee
+     */
     public function add($userId, int $pictureId, $content)
     {
         $request = $this->_db->prepare('INSERT INTO comment(user_id, picture_id, content, published) VALUES (:user_id, :picture_id, :content, CURRENT_TIME)');
@@ -50,6 +71,9 @@ class CommentManager
         $request->execute();
     }
 
+    /**
+     * Efface un commentaire par son ID
+     */
     public function delete($id)
     {
         $req = $this->_db->prepare('DELETE FROM comment WHERE comment_id=:id LIMIT 1');

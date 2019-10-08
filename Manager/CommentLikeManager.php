@@ -6,6 +6,9 @@ use PDO;
 use Systeme\Database;
 use Model\CommentLike;
 
+/**
+ * Gere les appelles a la base de donnee pour les likes sur les commentaires
+ */
 class CommentLikeManager
 {
     private $_db;
@@ -16,6 +19,9 @@ class CommentLikeManager
         $this->_db = $db->connect();
     }
 
+    /**
+     * Ajoute un like sur un commentaire dans la base de donnee
+     */
     public function add($commentId, $userId)
     {
         $request = $this->_db->prepare('INSERT INTO comment_like(comment_id, user_id, published) VALUES (:comment_id, :user_id, CURRENT_TIME)');
@@ -24,6 +30,11 @@ class CommentLikeManager
         $request->execute();
     }
 
+    /**
+     * Retourne tous les likes sur les commentaires
+     *
+     * @return array
+     */
     public function getCommentsLikes()
     {
         $comments = [];
@@ -35,6 +46,11 @@ class CommentLikeManager
         return $comments;
     }
 
+    /**
+     * Retourne les likes d un commentaire par sont ID
+     *
+     * @return array
+     */
     public function getCommentsLikesByCommentId($commentId)
     {
         $comments = [];
@@ -46,6 +62,11 @@ class CommentLikeManager
         return $comments;
     }
 
+     /**
+     * Retourne le nombre de likes d un commentaire par son ID
+     *
+     * @return array
+     */
     public function getCommentsLikesNumberByCommentId($commentId)
     {
         $query = $this->_db->query('SELECT COUNT(*) FROM comment_like WHERE comment_id="' . $commentId . '"');
@@ -54,7 +75,9 @@ class CommentLikeManager
         return $likeNumber['COUNT(*)'];
     }
 
-    //Efface un like
+     /**
+     * Efface un like par son ID
+     */
     public function delete($id)
     {
         $req = $this->_db->prepare('DELETE FROM comment_like WHERE comment_like_id=:id LIMIT 1');
