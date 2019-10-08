@@ -4,6 +4,9 @@ namespace Model;
 
 use Manager\UserManager;
 
+/**
+ *
+ */
 class Picture
 {
     private $_pictureId;

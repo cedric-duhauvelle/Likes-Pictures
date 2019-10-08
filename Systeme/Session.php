@@ -2,9 +2,14 @@
 
 namespace Systeme;
 
+/**
+ *
+ */
 class Session
 {
-    //Cree une variable session
+    /**
+     * Cree une variable $_SESSION
+     */
     public function addSession($name, $value)
     {
         $_SESSION[$name] = $value;

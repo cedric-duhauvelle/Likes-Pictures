@@ -5,6 +5,9 @@ namespace Model;
 use Manager\CommentManager;
 use Manager\UserManager;
 
+/**
+ *
+ */
 class CommentReport
 {
     private $_commentReportId;

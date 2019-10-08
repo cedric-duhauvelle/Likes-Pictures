@@ -13,15 +13,22 @@ use Controller\ProfilController;
 use Controller\AdminController;
 use Systeme\CustomException;
 
+/**
+ *
+ */
 class Router
 {
-    //Recupere url
+    /**
+     * Recupere l url
+     */
     public function setUrl($url)
     {
         $this->route($url);
     }
 
-    //Redection vers la page souhaitee
+    /**
+     * Redirection vers la page appellee
+     */
     private function route($page)
     {
         //Redirection vers les controllers

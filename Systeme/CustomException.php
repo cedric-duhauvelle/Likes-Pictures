@@ -5,6 +5,9 @@ namespace Systeme;
 use Exception;
 use Systeme\Session;
 
+/**
+ *
+ */
 class CustomException extends Exception
 {
 	public function __construct($message = null, $code = 0)

@@ -5,6 +5,9 @@ namespace Model;
 use Manager\UserManager;
 use Manager\PictureManager;
 
+/**
+ *
+ */
 class PictureLike
 {
     private $_pictureLikeId;

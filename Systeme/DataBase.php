@@ -5,6 +5,9 @@ namespace Systeme;
 use PDO;
 use Systeme\CustomException;
 
+/**
+ * Connection a la base de donnee
+ */
 class DataBase
 {
     private $_host;
