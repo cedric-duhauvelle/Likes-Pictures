@@ -33,7 +33,7 @@ class Picture
         }
     }
 
-    public function setPictureId($id)
+    public function setPictureId(int $id)
     {
         $this->_pictureId = $id;
     }
@@ -43,7 +43,7 @@ class Picture
         return $this->_pictureId;
     }
 
-    public function setUserId($userId)
+    public function setUserId(int $userId)
     {
         $this->_userId = $userId;
     }

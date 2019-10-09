@@ -36,7 +36,7 @@ class CommentManager
      *
      * @return array
      */
-    public function getCommentByPicture($pictureId)
+    public function getCommentByPictureId($pictureId)
     {
         $comments = [];
         $request = $this->_db->query('SELECT * FROM comment WHERE picture_id = "'. $pictureId .'"');
@@ -74,7 +74,7 @@ class CommentManager
     /**
      * Efface un commentaire par son ID
      */
-    public function delete($id)
+    public function delete(int $id)
     {
         $req = $this->_db->prepare('DELETE FROM comment WHERE comment_id=:id LIMIT 1');
         $req->bindValue(':id', $id);

@@ -37,7 +37,7 @@ class PictureLike
         }
     }
 
-    public function setPictureLikeId($id)
+    public function setPictureLikeId(int $id)
     {
         $this->_pictureLikeId = $id;
     }
@@ -47,7 +47,7 @@ class PictureLike
         return $this->_pictureLikeId;
     }
 
-    public function setPictureId($id)
+    public function setPictureId(int $id)
     {
         $this->_pictureId = $id;
     }
@@ -58,7 +58,7 @@ class PictureLike
         return $picture->getPictureById($this->_pictureId);
     }
 
-    public function setUserId($userId)
+    public function setUserId(int $userId)
     {
         $this->_userId = $userId;
     }

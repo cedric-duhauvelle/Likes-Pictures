@@ -2,12 +2,15 @@
 
 namespace Controller;
 
+use Manager\CommentManager;
 use Manager\PictureManager;
+use Manager\PictureLikeManager;
+use Manager\PictureReportManager;
 use Manager\UserManager;
 use Systeme\Helper;
 
 /**
- * Gere profil utilisateur
+ * Gere le profil utilisateur
  */
 class ProfilController
 {
@@ -30,11 +33,12 @@ class ProfilController
                 $message = 'Photo effacée';
 
                 $pictureManager = new PictureManager();
+
                 $pictureManager->delete($postClean['pictureId']);
                 unlink('img/upload/picture/' . $postClean['pictureName'] . $postClean['pictureId'] . '.jpg');
 
             } elseif ('update' === $postClean['element']) {
-                $userManager = new UserManager;
+                $userManager = new UserManager();
                 if ('name' === $postClean['element_update']) {
                     if ($userManager->getUserByName($postClean['new_name']) === false) {
                         //Modifie le nom utilsateur

@@ -45,7 +45,7 @@
                 </div>
                 <?php } ?>
                 <?php
-                $comments = $commentManager->getCommentByPicture($picture->getPictureId());
+                $comments = $commentManager->getCommentByPictureId($picture->getPictureId());
                 if(!empty($comments) || array_key_exists('id', $_SESSION)) {
                 ?>
                 <p id="content_like<?= $picture->getPictureId(); ?>"><?= $likeNumber; ?> personnes aiment cette photo.</p>

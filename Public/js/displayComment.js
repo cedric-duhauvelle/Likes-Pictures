@@ -25,9 +25,9 @@ console.log(this.response);
                         comment(this.response.data);
                         document.getElementById(element).reset();
                     } else if (script === 'pictureReport' || script === 'commentReport') {
-                        report(this.response.data);
+                        report(this.response);
                     } else if (script === 'Profil') {
-                        Profil();
+                        profil(this.response);
                     } else if (script === 'Admin') {
                         admin(this.response.data);
                     }
@@ -46,6 +46,12 @@ alert('une erreur est survenue ...');
 
         return false;
     });
+};
+
+var profil = function(data) {
+    var picture = data;
+    var containerPicture = document.getElementById('container_picture_profil' + picture.postClean.pictureId);
+    containerPicture.style.display = "none";
 };
 
 var admin = function(data) {

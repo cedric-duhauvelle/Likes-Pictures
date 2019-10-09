@@ -31,24 +31,23 @@
                 <?php
                 foreach ($pictures as $picture) {
                 ?>
-                    <div class="container_picture_profil">
-                        <figure>
-                            <img src="img/upload/picture/<?= $picture->getTitle() . $picture->getPictureId(); ?>.jpg" class="picture_upload" />
-                        </figure>
-                        <div class="container_picture_info_upload">
-                            <p>Ajoutée le <?= $picture->getUpload(); ?></p>
-                            <form method="post" id="form_delete_picture_user<?= $picture->getPictureId(); ?>" class="form_delete_picture_profil">
-                                <label for="pictureId<?= $picture->getPictureId(); ?>"></label>
-                                <input type="text" name="pictureId" id="pictureId<?= $picture->getPictureId(); ?>" value="<?= $picture->getPictureId(); ?>" class="hidden_input" />
-                                <label for="pictureName<?= $picture->getPictureId(); ?>"></label>
-                                <input type="text" name="pictureName" id="pictureName<?= $picture->getPictureId(); ?>" value="<?= $picture->getTitle(); ?>" class="hidden_input" />
-                                <label for="element<?= $picture->getPictureId(); ?>"></label>
-                                <input type="text" name="element" id="element<?= $picture->getPictureId(); ?>" value="picture" class="hidden_input" />
-                                <button type="submit" class="btn btn-danger" onclick="callAjax('form_delete_picture_user<?= $picture->getPictureId(); ?>', 'Profil')">Effacer</button>
-                            </form>
-                        </div>
-
+                <div class="container_picture_profil" id="container_picture_profil<?= $picture->getPictureId(); ?>">
+                    <figure>
+                        <img src="img/upload/picture/<?= $picture->getTitle() . $picture->getPictureId(); ?>.jpg" class="picture_upload" />
+                    </figure>
+                    <div class="container_picture_info_upload">
+                        <p>Ajoutée le <?= $picture->getUpload(); ?></p>
+                        <form method="post" id="form_delete_picture_user<?= $picture->getPictureId(); ?>" class="form_delete_picture_profil">
+                            <label for="pictureId<?= $picture->getPictureId(); ?>"></label>
+                            <input type="text" name="pictureId" id="pictureId<?= $picture->getPictureId(); ?>" value="<?= $picture->getPictureId(); ?>" class="hidden_input" />
+                            <label for="pictureName<?= $picture->getPictureId(); ?>"></label>
+                            <input type="text" name="pictureName" id="pictureName<?= $picture->getPictureId(); ?>" value="<?= $picture->getTitle(); ?>" class="hidden_input" />
+                            <label for="element<?= $picture->getPictureId(); ?>"></label>
+                            <input type="text" name="element" id="element<?= $picture->getPictureId(); ?>" value="picture" class="hidden_input" />
+                            <button type="submit" class="btn btn-danger" onclick="callAjax('form_delete_picture_user<?= $picture->getPictureId(); ?>', 'Profil')">Effacer</button>
+                        </form>
                     </div>
+                </div>
 
                 <?php
                 }
