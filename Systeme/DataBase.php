@@ -17,7 +17,7 @@ class DataBase
 
     public function __construct()
     {
-        require ('../Systeme/Private/adressDataBase.php');
+        require (__DIR__ . '/Private/adressDataBase.php');
         $this->_host = $db['host'];
         $this->_name = $db['name'];
         $this->_user = $db['user'];
