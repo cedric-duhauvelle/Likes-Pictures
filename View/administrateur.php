@@ -12,7 +12,6 @@ if (!array_key_exists('admin', $_SESSION)) {
         </ul>
         <div class="tabs_content">
             <div id="comment_report" class="tab_content active">
-
                 <div class="comment_container_report">
                 <h1>Commentaires</h1>
                     <?php

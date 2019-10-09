@@ -25,7 +25,7 @@ console.log(this.response);
                         comment(this.response.data);
                         document.getElementById(element).reset();
                     } else if (script === 'pictureReport' || script === 'commentReport') {
-                        report(this.response);
+                        report(this.response.data);
                     } else if (script === 'Profil') {
                         profil(this.response);
                     } else if (script === 'Admin') {
@@ -66,7 +66,6 @@ var admin = function(data) {
         var containerUser = document.getElementById('container_user_info' + report.post.user_id_admin);
         containerUser.style.display = "none";
     }
-
 };
 
 var comment = function(data) {
@@ -130,6 +129,10 @@ var report = function(data) {
         }
     } else if (report.post.elementReport == 'comment') {
         var contentReport = document.querySelector('#report_comment_content' + report.post.elementIdReport);
-        contentReport.innerHTML = report.reportsNumber;
+        if (report.reportsNumber != 0) {
+            contentReport.innerHTML = report.reportsNumber;
+        } else {
+            contentReport.innerHTML = "";
+        }
     }
 };

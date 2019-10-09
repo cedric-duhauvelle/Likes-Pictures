@@ -47,7 +47,7 @@ class InscriptionController
         //Ajout un utlisateur a l a base de donnee
         $userManager->add($postClean['name'], $postClean['email'], password_hash($postClean['password'], PASSWORD_DEFAULT));
         $user = $userManager->getUserByName($postClean['name']);
-        $session->addSession('id', $user->getId());
+        $session->addSession('id', $user->getUserId());
         $session->addSession('name', $user->getName());
         header('Location: profil');
     }
