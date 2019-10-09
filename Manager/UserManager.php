@@ -4,7 +4,7 @@ namespace Manager;
 
 use PDO;
 use Model\User;
-use Systeme\Database;
+use Systeme\DataBase;
 
 /**
  * Gere les appelles a la base de donnee pour les utilisateurs

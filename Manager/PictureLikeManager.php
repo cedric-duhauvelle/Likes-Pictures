@@ -3,7 +3,7 @@
 namespace Manager;
 
 use PDO;
-use Systeme\Database;
+use Systeme\DataBase;
 use Model\PictureLike;
 
 /**
