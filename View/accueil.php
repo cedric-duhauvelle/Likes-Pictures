@@ -8,7 +8,11 @@
             <div class="col-ms-8 content_new_post">
                 <div class="content_avatar_post">
                     <figure>
-                        <img src="../Public/img/upload/avatar/avatar<?= $picture->getUserId()->getUserId(); ?>.jpg" class="avatar_post" />
+                    <?php if(is_file('../Public/img/upload/avatar/avatar' . $picture->getUserId()->getUserId() . '.jpg')) { ?>
+                        <img src="../Public/img/upload/avatar/avatar<?= $picture->getUserId()->getUserId(); ?>.jpg" class="avatar_post" alt="avatar_picture" />
+                    <?php } else { ?>
+                        <img src="../Public/img/avatar-default.jpg" class="avatar_post" />
+                    <?php } ?>
                     </figure>
                     <p><?= $picture->getUserId()->getName(); ?></p>
                 </div>
@@ -65,7 +69,11 @@
                             ?>
                         <div class="comment_picture_post">
                             <figure class="comment_user">
-                                <img src="../Public/img/upload/avatar/avatar<?= $comment->getUserId()->getUserId(); ?>.jpg" alt="avatar" class="picture_comment" />
+                            <?php if(is_file('../Public/img/upload/avatar/avatar' . $comment->getUserId()->getUserId() . '.jpg')) { ?>
+                                <img src="../Public/img/upload/avatar/avatar<?= $comment->getUserId()->getUserId(); ?>.jpg" class="picture_comment" />
+                            <?php } else { ?>
+                                <img src="../Public/img/avatar-default.jpg" class="picture_comment" />
+                            <?php } ?>
                                 <p><?= $comment->getUserId()->getName(); ?></p>
                             </figure>
                             <div class="comment_content">

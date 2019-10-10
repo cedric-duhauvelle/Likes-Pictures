@@ -14,7 +14,11 @@
                         <p><strong>Email : </strong><?= $user->getEmail(); ?></p>
                         <p>Inscrit depuis le <?= $user->getInscription();  ?></p>
                     </div>
+                    <?php if(is_file('../Public/img/upload/avatar/avatar' . $_SESSION['id'] . '.jpg')) { ?>
                     <img src="../Public/img/upload/avatar/avatar<?= $_SESSION['id']; ?>.jpg" id="avatar_profil" />
+                    <?php } else { ?>
+                        <img src="../Public/img/avatar-default.jpg" id="avatar_profil" />
+                    <?php } ?>
                 </div>
                 <div id="container_form_upload_avatar">
                     <form action="PictureController" method="POST" enctype="multipart/form-data">
@@ -96,5 +100,5 @@
         </div>
     </div>
 </div>
-<script type="application/javascript" src="./Public/js/callAjax.js"></script>
-<script type="application/javascript" src="./Public/js/tabs.js"></script>
+<script type="application/javascript" src="./js/callAjax.js"></script>
+<script type="application/javascript" src="./js/tabs.js"></script>

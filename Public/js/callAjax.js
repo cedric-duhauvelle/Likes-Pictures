@@ -70,7 +70,7 @@ var comment = function(data) {
     var container = document.getElementById('container_comment' + comment.pictureId);
     container.innerHTML += '<div class="comment_picture_post">\
                                 <figure class="comment_user">\
-                                    <img src="../Public/img/upload/avatar/avatar' + comment.userId + '.jpg" alt="avatar" class="picture_comment" />\
+                                    <img src="' + comment.userAvatar + '" alt="avatar" class="picture_comment" />\
                                     <p>' + comment.userName + '</p>\
                                 </figure>\
                                 <div class="comment_content">\

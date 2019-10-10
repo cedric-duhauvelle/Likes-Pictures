@@ -33,6 +33,12 @@ class CommentController
             $commentManager->add($postClean['userId'], $postClean['pictureId'], $postClean['comment']);
             $comment = $commentManager->getCommentLast();
 
+            if (is_file('../Public/img/upload/avatar/avatar' . $postClean['userId'] . '.jpg')) {
+                $userAvatar = '../Public/img/upload/avatar/avatar' . $postClean['userId'] . '.jpg';
+            } else {
+                $userAvatar = '../Public/img/avatar-default.jpg';
+            }
+
             $data = [
                 "comment" => $postClean['comment'],
                 "pictureId" => $postClean['pictureId'],
@@ -40,6 +46,7 @@ class CommentController
                 "userId" => $user->getUserId(),
                 "published" => $comment->getPublished(),
                 "commentId" => $comment->getCommentId(),
+                "userAvatar" => $userAvatar,
             ];
             $message = "Commentaire ajouté";
 
