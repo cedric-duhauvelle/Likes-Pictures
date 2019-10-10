@@ -96,5 +96,5 @@
         </div>
     </div>
 </div>
-<script type="application/javascript" src="../Public/js/callAjax.js"></script>
-<script type="application/javascript" src="../Public/js/tabs.js"></script>
+<script type="application/javascript" src="./Public/js/callAjax.js"></script>
+<script type="application/javascript" src="./Public/js/tabs.js"></script>
