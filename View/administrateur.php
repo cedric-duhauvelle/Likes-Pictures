@@ -124,5 +124,5 @@ if (!array_key_exists('admin', $_SESSION)) {
 </div>
 
 
-<script src="../Public/js/displayComment.js"></script>
-<script src="../Public/js/tabs.js"></script>
+<script type="application/javascript" src="../Public/js/displayComment.js"></script>
+<script type="application/javascript" src="../Public/js/tabs.js"></script>

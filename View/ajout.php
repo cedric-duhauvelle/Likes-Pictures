@@ -15,4 +15,4 @@
         </div>
     </div>
 </div>
-<script src="../Public/js/callPictures.js"></script>
+<script type="application/javascript" src="../Public/js/callPictures.js"></script>
