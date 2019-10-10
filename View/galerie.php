@@ -9,12 +9,9 @@
             foreach ($pictures as $picture) {
                 if ($picture) {
             ?>
-
             <figure class="slider_content">
                 <img src="img/upload/picture/<?= $picture->getTitle() . $picture->getPictureId(); ?>.jpg" />
             </figure>
-
-
             <?php
                 }
             }
