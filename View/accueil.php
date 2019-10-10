@@ -9,9 +9,9 @@
                 <div class="content_avatar_post">
                     <figure>
                     <?php if(is_file('../Public/img/upload/avatar/avatar' . $picture->getUserId()->getUserId() . '.jpg')) { ?>
-                        <img src="../Public/img/upload/avatar/avatar<?= $picture->getUserId()->getUserId(); ?>.jpg" class="avatar_post" alt="avatar_picture" />
+                        <img src="img/upload/avatar/avatar<?= $picture->getUserId()->getUserId(); ?>.jpg" class="avatar_post" alt="avatar_picture" />
                     <?php } else { ?>
-                        <img src="../Public/img/avatar-default.jpg" class="avatar_post" />
+                        <img src="img/avatar-default.jpg" class="avatar_post" />
                     <?php } ?>
                     </figure>
                     <p><?= $picture->getUserId()->getName(); ?></p>
@@ -70,9 +70,9 @@
                         <div class="comment_picture_post">
                             <figure class="comment_user">
                             <?php if(is_file('../Public/img/upload/avatar/avatar' . $comment->getUserId()->getUserId() . '.jpg')) { ?>
-                                <img src="../Public/img/upload/avatar/avatar<?= $comment->getUserId()->getUserId(); ?>.jpg" class="picture_comment" />
+                                <img src="img/upload/avatar/avatar<?= $comment->getUserId()->getUserId(); ?>.jpg" class="picture_comment" />
                             <?php } else { ?>
-                                <img src="../Public/img/avatar-default.jpg" class="picture_comment" />
+                                <img src="img/avatar-default.jpg" class="picture_comment" />
                             <?php } ?>
                                 <p><?= $comment->getUserId()->getName(); ?></p>
                             </figure>

@@ -15,9 +15,9 @@
                         <p>Inscrit depuis le <?= $user->getInscription();  ?></p>
                     </div>
                     <?php if(is_file('../Public/img/upload/avatar/avatar' . $_SESSION['id'] . '.jpg')) { ?>
-                    <img src="../Public/img/upload/avatar/avatar<?= $_SESSION['id']; ?>.jpg" id="avatar_profil" />
+                    <img src="img/upload/avatar/avatar<?= $_SESSION['id']; ?>.jpg" id="avatar_profil" />
                     <?php } else { ?>
-                        <img src="../Public/img/avatar-default.jpg" id="avatar_profil" />
+                        <img src="img/avatar-default.jpg" id="avatar_profil" />
                     <?php } ?>
                 </div>
                 <div id="container_form_upload_avatar">
