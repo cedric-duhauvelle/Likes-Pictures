@@ -1,5 +1,3 @@
-
-
 var displayContentComment = function(id) {
     element = document.querySelector('.post' + id);
     if (element.classList.contains('active')) {
@@ -10,7 +8,6 @@ var displayContentComment = function(id) {
 };
 
 var callAjax = function(element, script) {
-
     document.getElementById(element).addEventListener('submit', function(e) {
         e.preventDefault();
         var xhr = new XMLHttpRequest();
