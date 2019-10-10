@@ -24,5 +24,5 @@
     </div>
 </div>
 
-<script src="../Public/js/slider.js"></script>
-<script src="../Public/js/main.js"></script>
+<script type="text/javascript" src="../Public/js/slider.js"></script>
+<script type="text/javascript" src="../Public/js/main.js"></script>

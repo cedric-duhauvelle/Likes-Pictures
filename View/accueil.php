@@ -119,4 +119,4 @@
         <?php } ?>
     </div>
 </div>
-<script src ="../Public/js/displayComment.js" ></script>
+<script  type="text/javascript" src ="../Public/js/displayComment.js" ></script>

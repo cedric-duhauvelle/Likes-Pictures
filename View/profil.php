@@ -96,5 +96,5 @@
         </div>
     </div>
 </div>
-<script src="../Public/js/displayComment.js"></script>
-<script src="../Public/js/tabs.js"></script>
+<script type="text/javascript" src="../Public/js/displayComment.js"></script>
+<script type="text/javascript" src="../Public/js/tabs.js"></script>
