@@ -49,7 +49,6 @@
                 if(!empty($comments) || array_key_exists('id', $_SESSION)) {
                 ?>
                 <p id="content_like<?= $picture->getPictureId(); ?>"><?= $likeNumber; ?> personnes aiment cette photo.</p>
-
                 <p id="content_report<?= $picture->getPictureId(); ?>">
                     <?php if ($reportsNumber != 0) { ?>
                     <?= $reportsNumber; ?> personnes ont signalées cette photo.
@@ -119,5 +118,4 @@
         <?php } ?>
     </div>
 </div>
-
-<script type="text/javascript" src="../Public/js/callAjax.js"></script>
+<script type="application/javascript" src="./js/callAjax.js" async></script>
