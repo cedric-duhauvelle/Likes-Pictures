@@ -45,6 +45,6 @@ class PictureController
                     break;
             }
         }
-        header('Location: galerie');
+        header('Location: accueil');
     }
 }

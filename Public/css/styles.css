@@ -100,6 +100,21 @@ footer{
     justify-content: center;
     position: relative;
 }
+.icone_like{
+    color: #000;
+}
+.icone_like.active{
+    color: #0069d9
+}
+.icone_report{
+    color: #000;
+}
+.icone_report:hover{
+    color:  #d10303 !important;
+}
+.icone_report.active{
+    color:  #d10303;
+}
 .picture_post a{
     display: flex;
     justify-content: center;
@@ -290,105 +305,6 @@ footer{
 }
 #button_inscription{
     margin-top: 10px;
-}
-/* ---------------------------------------- */
-/* ==       GALERIE       */
-/*---------------------------------------- */
-#content_galerie{
-    margin-top: 58px;
-    min-height: 800px;
-    background-color: #93B5C6;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    margin-bottom: 2px;
-}
-/*-- slider */
-.slider_content{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.slider_content img{
-    border: 2px solid white;
-    width: 450px;
-    height: auto;
-}
-.slider_button_stop_start{
-    width: 100%;
-    height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 15px;
-}
-.slider_stop, .slider_play{
-    transform: translateX(-50%);
-    text-align: center;
-    height: 40px;
-    width: 40px;
-    padding: 5px;
-    border-radius: 50%;
-    cursor: pointer;
-    background: url('../img/pause.png') no-repeat center #fff;
-
-}
-.slider_stop:hover, .slider_play:hover{
-    border: 2px solid #000;
-}
-/*--Button play*/
-.slider_play{
-    background: url('../img/play.png') no-repeat center #fff;
-}
-#slider{
-    margin: 0px;
-    width: 100%;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-.slider_next, .slider_prev{
-    cursor: pointer;
-    position: absolute;
-    margin-top: -50px;
-    top: 50%;
-    width: 40px;
-    height: 40px;
-    padding: 5px;
-    border-radius: 50%;
-    background-color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.slider_next:hover, .slider_prev:hover{
-    border: 2px solid #000;
-}
-.slider_next img, .slider_prev img{
-    height: 30px;
-    width: 30px;
-}
-.slider_prev{
-    left: -55px;
-}
-.slider_next{
-    right: -55px;
-}
-#slider_container{
-    height: 100%;
-}
-/*
- --Comment--
-*/
-#content_comments{
-    height: 100%;
-    width: 80%;
-    margin: 0 10%;
-    background-color: red;
 }
 /* ---------------------------------------- */
 /* ==       PROFIL       */

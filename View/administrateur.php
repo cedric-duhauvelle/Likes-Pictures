@@ -60,7 +60,7 @@ if (!array_key_exists('admin', $_SESSION)) {
                     if ($pictureReport) {
                 ?>
                 <div class="picture_content_admin" id="picture_admin<?= $pictureReport->getPictureReportId(); ?>">
-                    <img class="picture_report_admin" src="../Public/img/upload/picture/<?= $pictureReport->getPictureId()->getTitle() . $pictureReport->getPictureId()->getPictureId(); ?>.jpg" alt="<?= $pictureReport->getPictureId()->getTitle(); ?>" />
+                    <img class="picture_report_admin" src="img/upload/picture/<?= $pictureReport->getPictureId()->getTitle() . $pictureReport->getPictureId()->getPictureId(); ?>.jpg" alt="<?= $pictureReport->getPictureId()->getTitle(); ?>" />
                     <div class="picture_report_admin_info">
                         <div class="picture_report_admin_info_user">
                             <p>Signalé par <?= $pictureReport->getUserId()->getName(); ?></p>

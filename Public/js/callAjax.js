@@ -113,6 +113,11 @@ var like = function(data) {
         var contentLike = document.querySelector('#like_comment_content' + like.elementId);
         contentLike.innerHTML = like.likeNumber;
     }
+    if (like.likeNumber != 0) {
+        document.getElementById('icone_like' + like.elementId).classList.add('active');
+    } else {
+        document.getElementById('icone_like' + like.elementId).classList.remove('active');
+    }
 };
 
 var report = function(data) {
@@ -131,5 +136,10 @@ var report = function(data) {
         } else {
             contentReport.innerHTML = "";
         }
+    }
+    if (report.reportsNumber != 0) {
+        document.getElementById('icone_report' + report.post.elementIdReport).classList.add('active');
+    } else {
+        document.getElementById('icone_report' + report.post.elementIdReport).classList.remove('active');
     }
 };

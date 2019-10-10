@@ -4,6 +4,16 @@
         foreach ($pictures as $picture) {
             $likeNumber = $pictureLikeManager->getPicturesLikesNumberByPictureId($picture->getPictureId());
             $reportsNumber = $pictureReportManager->getPicturesReportsNumberByPictureId($picture->getPictureId());
+            if ($likeNumber != 0) {
+                $classActiveLikePicture = 'active';
+            } else {
+                $classActiveLikePicture = '';
+            }
+            if ($reportsNumber != 0) {
+                $classActiveReportPicture = 'active';
+            } else {
+                $classActiveReportPicture = '';
+            }
         ?>
             <div class="col-ms-8 content_new_post">
                 <div class="content_avatar_post">
@@ -35,7 +45,7 @@
                         <input type="text" name="elementId" id="elementId<?= $picture->getPictureId(); ?>" value="<?= $picture->getPictureId(); ?>" class="hidden_input" />
                         <label for="userId<?= $picture->getUserId()->getUserId(); ?>"></label>
                         <input type="text" name="userId" id="userId<?= $picture->getPictureId(); ?>" value="<?= $_SESSION['id']; ?>" class="hidden_input" />
-                        <button type="submit" class="button_icone" onclick="callAjax('like_form<?= $picture->getPictureId(); ?>', 'pictureLike')"><span class="far fa-thumbs-up"></span></button>
+                        <button type="submit" class="button_icone" onclick="callAjax('like_form<?= $picture->getPictureId(); ?>', 'pictureLike')"><span id="icone_like<?= $picture->getPictureId(); ?>" class="far fa-thumbs-up icone_like <?= $classActiveLikePicture; ?>"></span></button>
                     </form>
                     <form method="POST" class="report_form_post" id="report_form<?= $picture->getPictureId(); ?>">
                         <label for="elementReport<?= $picture->getPictureId(); ?>"></label>
@@ -44,7 +54,7 @@
                         <input type="text" name="elementIdReport" id="elementIdReport<?= $picture->getPictureId(); ?>" value="<?= $picture->getPictureId(); ?>" class="hidden_input" />
                         <label for="userIdReport<?= $picture->getUserId()->getUserId(); ?>"></label>
                         <input type="text" name="userIdReport" id="userIdReport<?= $picture->getPictureId(); ?>" value="<?= $_SESSION['id']; ?>" class="hidden_input" />
-                        <button type="submit" class="button_icone" onclick="callAjax('report_form<?= $picture->getPictureId(); ?>', 'pictureReport')"><span class="fas fa-flag"></span></button>
+                        <button type="submit" class="button_icone" onclick="callAjax('report_form<?= $picture->getPictureId(); ?>', 'pictureReport')"><span id="icone_report<?= $picture->getPictureId(); ?>" class="far fa-flag icone_report <?= $classActiveReportPicture; ?>"></span></button>
                     </form>
                 </div>
                 <?php } ?>
@@ -66,6 +76,16 @@
                             <?php if ($comment) {
                                 $likeCommentNumber = $commentLikeManager->getCommentsLikesNumberByCommentId($comment->getCommentId());
                                 $reportCommentNumber = $commentReportManager->getCommentsReportsNumberByCommentId($comment->getCommentId());
+                                if ($likeCommentNumber != 0) {
+                                    $classActiveLikeComment = 'active';
+                                } else {
+                                    $classActiveLikeComment = '';
+                                }
+                                if ($reportCommentNumber != 0) {
+                                    $classActiveReportComment = 'active';
+                                } else {
+                                    $classActiveReportComment = '';
+                                }
                             ?>
                         <div class="comment_picture_post">
                             <figure class="comment_user">
@@ -89,7 +109,7 @@
                                         <input type="text" name="elementId" id="elementIdComment<?= $comment->getCommentId(); ?>" value="<?= $comment->getCommentId(); ?>" class="hidden_input" />
                                         <label for="userIdComment<?= $comment->getUserId()->getUserId(); ?>"></label>
                                         <input type="text" name="userId" id="userIdComment<?= $comment->getCommentId() ?>" value="<?= $_SESSION['id']; ?>" class="hidden_input" />
-                                        <button type="submit" class="button_icone" onclick="callAjax('like_form_comment<?= $comment->getCommentId(); ?>', 'commentLike')"><span class="far fa-thumbs-up"></span></button>
+                                        <button type="submit" class="button_icone" onclick="callAjax('like_form_comment<?= $comment->getCommentId(); ?>', 'commentLike')"><span id="icone_like<?= $comment->getCommentId(); ?>" class="far fa-thumbs-up icone_like <?= $classActiveLikeComment; ?>"></span></button>
                                     </form>
                                     <p id="like_comment_content<?= $comment->getCommentId() ?>">
                                         <?php if ($likeCommentNumber != 0) { ?>
@@ -103,7 +123,7 @@
                                         <input type="text" name="elementIdReport" id="elementIdReportComment<?= $comment->getCommentId(); ?>" value="<?= $comment->getCommentId(); ?>" class="hidden_input" />
                                         <label for="userIdReportComment<?= $comment->getUserId()->getUserId(); ?>"></label>
                                         <input type="text" name="userIdReport" id="userIdReportComment<?= $comment->getCommentId(); ?>" value="<?= $_SESSION['id']; ?>" class="hidden_input" />
-                                        <button type="submit" class="button_icone" onclick="callAjax('report_form_comment<?= $comment->getCommentId(); ?>', 'commentReport')"><span class="fas fa-flag"></span></button>
+                                        <button type="submit" class="button_icone" onclick="callAjax('report_form_comment<?= $comment->getCommentId(); ?>', 'commentReport')"><span id="icone_report<?= $comment->getCommentId(); ?>" class="far fa-flag icone_report <?= $classActiveReportComment; ?>"></span></button>
                                     </form>
                                     <p id="report_comment_content<?= $comment->getCommentId(); ?>">
                                         <?php if ($reportCommentNumber != 0) { ?>

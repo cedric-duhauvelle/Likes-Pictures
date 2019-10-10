@@ -29,9 +29,6 @@ new Session();
                             <li class="nav-item active">
                                 <a class="nav-link" href="accueil">Accueil <span class="sr-only">(current)</span></a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="galerie">Galerie</a>
-                            </li>
                             <?php
                             if (array_key_exists('name', $_SESSION)) {
                             ?>
