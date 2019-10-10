@@ -34,9 +34,9 @@ class CommentController
             $comment = $commentManager->getCommentLast();
 
             if (is_file('../Public/img/upload/avatar/avatar' . $postClean['userId'] . '.jpg')) {
-                $userAvatar = '../Public/img/upload/avatar/avatar' . $postClean['userId'] . '.jpg';
+                $userAvatar = 'img/upload/avatar/avatar' . $postClean['userId'] . '.jpg';
             } else {
-                $userAvatar = '../Public/img/avatar-default.jpg';
+                $userAvatar = 'img/avatar-default.jpg';
             }
 
             $data = [
