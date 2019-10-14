@@ -29,7 +29,7 @@
                 </div>
                 <div class="content_picture_post">
                     <figure class="picture_post">
-                        <a class="fancybox" href="img/upload/picture/<?= $picture->getTitle() . $picture->getPictureId(); ?>.jpg" alt="<?= $picture->getTitle(); ?>">
+                        <a class="fancybox" href="img/upload/picture/<?= $picture->getTitle() . $picture->getPictureId(); ?>.jpg">
                             <img src="img/upload/picture/<?= $picture->getTitle() . $picture->getPictureId(); ?>.jpg" alt="<?= $picture->getTitle(); ?>" class="picture_post"/>
                         </a>
                     </figure>
@@ -88,9 +88,9 @@
                         <div class="comment_picture_post">
                             <figure class="comment_user">
                             <?php if(is_file('../Public/img/upload/avatar/avatar' . $comment->getUserId()->getUserId() . '.jpg')) { ?>
-                                <img src="img/upload/avatar/avatar<?= $comment->getUserId()->getUserId(); ?>.jpg" class="picture_comment" />
+                                <img src="img/upload/avatar/avatar<?= $comment->getUserId()->getUserId(); ?>.jpg" class="picture_comment" alt="avatar" />
                             <?php } else { ?>
-                                <img src="img/avatar-default.jpg" class="picture_comment" />
+                                <img src="img/avatar-default.jpg" class="picture_comment" alt="avatar" />
                             <?php } ?>
                                 <p><?= $comment->getUserId()->getName(); ?></p>
                             </figure>
