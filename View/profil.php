@@ -14,21 +14,15 @@
                         <p><strong>Email : </strong><?= $user->getEmail(); ?></p>
                         <p>Inscrit depuis le <?= $user->getInscription();  ?></p>
                     </div>
-                    <?php if(is_file('../Public/img/upload/avatar/avatar' . $_SESSION['id'] . '.jpg')) { ?>
-                    <img src="img/upload/avatar/avatar<?= $_SESSION['id']; ?>.jpg" id="avatar_profil" />
-                    <?php } else { ?>
+                    <figure id="container_avatar_profil">
+                        <?php if(is_file('../Public/img/upload/avatar/avatar' . $_SESSION['id'] . '.jpg')) { ?>
+                        <img src="img/upload/avatar/avatar<?= $_SESSION['id']; ?>.jpg" id="avatar_profil" />
+                        <?php } else { ?>
                         <img src="img/avatar-default.jpg" id="avatar_profil" />
-                    <?php } ?>
+                        <?php } ?>
+                    </figure>
                 </div>
-                <div id="container_form_upload_avatar">
-                    <form action="PictureController" method="POST" enctype="multipart/form-data">
-                        <label for="file">Sélectionner un Avatar: </label>
-                        <input type="hidden" name="MAX_FILE_SIZE" value="2097152" />
-                        <input type="file" id="file" name="file" />
-                        <input type="submit" />
-                    </form>
-                </div>
-                <p><a href="DeconnexionController">Déconnexion</a></p>
+                <p id="container_deconnexion"><a href="DeconnexionController">Déconnexion</a></p>
             </div>
             <div class="tab_content" id="photos">
                 <h1>Photos</h1>
@@ -94,6 +88,12 @@
                         <label for="user_id_password<?= $_SESSION['id']; ?>"></label>
                         <input type="text" name="user_id" id="user_id_password<?= $_SESSION['id']; ?>" value="<?= $_SESSION['id']; ?>" class="hidden_input" />
                         <button type="submit" class="btn btn-primary" onclick="callAjax('form_update_user_password<?= $user->getUserId(); ?>', 'Profil')">validé</button>
+                    </form>
+                    <form action="PictureController" method="POST" enctype="multipart/form-data" id="form_upload_avatar">
+                        <label for="file">Sélectionner un Avatar: </label>
+                        <input type="hidden" name="MAX_FILE_SIZE" value="2097152" />
+                        <input type="file" id="file" name="file" accept=".png, .jpg, .jpeg" />
+                        <input type="submit" class="btn btn-primary" />
                     </form>
                 </div>
             </div>

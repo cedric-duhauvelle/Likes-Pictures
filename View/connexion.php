@@ -5,11 +5,11 @@
             <form action="ConnexionController" method="POST" id="form_connexion">
                 <div class="form-group form-connexion">
                     <label for="name_connection">Nom</label>
-                    <?php 
+                    <?php
                     if (array_key_exists('errorName', $_SESSION)) {
                     ?>
                     <p class="text-danger"><?= $_SESSION['errorName'] ?></p>
-                    <?php 
+                    <?php
                     unset($_SESSION['errorName']);
                     }
                     ?>
@@ -17,11 +17,11 @@
                 </div>
                 <div class="form-group form-connexion">
                     <label for="password_connexion">Mot de passe</label>
-                    <?php 
+                    <?php
                     if (array_key_exists('errorPassword', $_SESSION)) {
                     ?>
                     <p class="text-danger"><?= $_SESSION['errorPassword'] ?></p>
-                    <?php 
+                    <?php
                     unset($_SESSION['errorPassword']);
                     }
                     ?>
@@ -30,6 +30,6 @@
                 <input type="submit" class="btn btn-primary" name="connexion" id="button_connexion" value="Connexion" />
             </form>
         </div>
-        <p><a href="inscription">Inscription</a></p>
+        <p id="container_inscription"><a href="inscription">Inscription</a></p>
     </div>
 </div>
