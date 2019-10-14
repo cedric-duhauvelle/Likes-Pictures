@@ -57,7 +57,7 @@ class ProfilController
 
                         $userManager->updateEmail($postClean['user_id'], $postClean['new_email']);
                     } else {
-                        $message = 'Email déjà utilé';
+                        $message = 'Email déjà utilisé';
                     }
                 } elseif ('password' === $postClean['element_update']) {
                     if ($postClean['new_password'] === $postClean['password_confirm']) {

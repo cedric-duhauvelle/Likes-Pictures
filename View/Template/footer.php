@@ -1,4 +1,5 @@
         </div>
+        <div id="container_message_flash"></div>
         <footer>
             <nav id="social_network">
                 <a href="https://www.facebook.com/sharer/sharer.php?u=http://projetformation.five.projetformationduhauvelle.fr/"><span class="fab fa-facebook-f" aria-hidden="true"></span></a>

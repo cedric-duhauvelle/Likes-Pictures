@@ -18,7 +18,6 @@ new Session();
     <body>
         <div class="container" id="content_body">
             <header class="row" id="content_header">
-
                 <nav class="navbar fixed-top navbar-expand-lg navbar-dark pink scrolling-navbar" id="navbar-header">
                     <a class="navbar-brand" href="accueil"><strong>Likes Pictures</strong></a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

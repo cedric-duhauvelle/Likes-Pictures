@@ -42,7 +42,7 @@ class CommentLikeController
                     "elementId" => $postClean['elementId'],
                     "likeNumber" => $likeNumber,
                 ];
-                $message = 'Like effacer';
+                $message = 'Like effacé';
             }
         }
 
@@ -65,7 +65,7 @@ class CommentLikeController
                 "likeStatus" => $likeStatus,
                 "likeNumber" => $likeNumber,
             ];
-            $message = 'Like ajouter';
+            $message = 'Like ajouté';
         }
         echo json_encode([
             "sucess" => $sucess,

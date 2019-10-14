@@ -14,8 +14,8 @@ var callAjax = function(element, script) {
         var data = new FormData(this);
         xhr.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-console.log(this.response);
                 if (this.response.sucess) {
+                    messageFlash(this.response.message);
                     if (script === 'pictureLike' || script === 'commentLike') {
                         like(this.response.data);
                     } else if (script === 'Comment') {
@@ -29,10 +29,10 @@ console.log(this.response);
                         admin(this.response.data);
                     }
                 } else {
-alert(this.response.msg);
+                    messageFlash(this.response.message);
                 }
             } else if (this.readyState == 4 && this.status == 404) {
-alert('une erreur est survenue ...');
+                messageFlash('Une erreur est survenue ...');
             };
             e.stopImmediatePropagation();
         };
@@ -85,7 +85,7 @@ var comment = function(data) {
                                             <input type="text" name="elementId" id="elementIdComment' + comment.commentId + '" value="' + comment.commentId + '" class="hidden_input" />\
                                             <label for="userIdComment' + comment.commentId + '"></label>\
                                             <input type="text" name="userId" id="userIdComment' + comment.commentId + '" value="' + comment.userId + '" class="hidden_input" />\
-                                            <button type="submit" class="button_icone" onclick="callAjax(\'like_form_comment' + comment.commentId +'\', \'commentLike\')"><span class="far fa-thumbs-up"></span></button>\
+                                            <button type="submit" class="button_icone" onclick="callAjax(\'like_form_comment' + comment.commentId +'\', \'commentLike\')"><span id="icone_like' + comment.commentId + '" class="far fa-thumbs-up icone_like"></span></button>\
                                         </form>\
                                         <p id="like_comment_content' + comment.commentId + '"></p>\
                                         <form method="POST" id="report_form_comment' + comment.commentId + '">\
@@ -95,7 +95,7 @@ var comment = function(data) {
                                             <input type="text" name="elementIdReport" id="elementIdReportComment' + comment.commentId + '" value="' + comment.commentId + '" class="hidden_input" />\
                                             <label for="userIdReportComment' + comment.commentId + '"></label>\
                                             <input type="text" name="userIdReport" id="userIdReportComment' + comment.commentId + '" value="' + comment.userId + '" class="hidden_input" />\
-                                            <button type="submit" class="button_icone" onclick="callAjax(\'report_form_comment' + comment.commentId + '\', \'commentReport\')"><span class="fas fa-flag"></span></button>\
+                                            <button type="submit" class="button_icone" onclick="callAjax(\'report_form_comment' + comment.commentId + '\', \'commentReport\')"><span id="icone_report' + comment.commentId + '" class="far fa-flag icone_report"></span></button>\
                                         </form>\
                                         <p id="report_comment_content' + comment.commentId + '"></p>\
                                     </div>\
@@ -142,4 +142,16 @@ var report = function(data) {
     } else {
         document.getElementById('icone_report' + report.post.elementIdReport).classList.remove('active');
     }
+};
+
+var timer;
+var messageFlash = function(message) {
+    var container = document.getElementById('container_message_flash');
+    clearInterval(timer);
+    container.style.display ="block";
+    container.innerHTML = "";
+    container.innerHTML += message;
+    timer = setInterval(() => {
+        container.style.display ="none";
+    }, 5000);
 };

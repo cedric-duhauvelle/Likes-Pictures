@@ -39,7 +39,7 @@ class PictureReportController
                     "reportsNumber" => $reportsNumber,
                     "post" => $postClean,
                 ];
-                $message = "report effacer";
+                $message = "report effacé";
             }
         }
 
@@ -53,7 +53,7 @@ class PictureReportController
                 "reportsNumber" => $reportsNumber,
                 "post" => $postClean,
             ];
-            $message = "report ajouter";
+            $message = "report ajouté";
         }
         echo json_encode([
             "sucess" => $sucess,
