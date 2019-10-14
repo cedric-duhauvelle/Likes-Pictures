@@ -19,9 +19,9 @@
                 <div class="content_avatar_post">
                     <figure>
                     <?php if(is_file('../Public/img/upload/avatar/avatar' . $picture->getUserId()->getUserId() . '.jpg')) { ?>
-                        <img src="img/upload/avatar/avatar<?= $picture->getUserId()->getUserId(); ?>.jpg" class="avatar_post" alt="avatar_picture" />
+                        <img src="img/upload/avatar/avatar<?= $picture->getUserId()->getUserId(); ?>.jpg" class="avatar_post" alt="avatar" />
                     <?php } else { ?>
-                        <img src="img/avatar-default.jpg" class="avatar_post" />
+                        <img src="img/avatar-default.jpg" class="avatar_post" alt="avatar" />
                     <?php } ?>
                     </figure>
                     <p><strong><?= $picture->getUserId()->getName(); ?></strong></p>
@@ -29,8 +29,8 @@
                 </div>
                 <div class="content_picture_post">
                     <figure class="picture_post">
-                        <a class="fancybox" rel="group" href="img/upload/picture/<?= $picture->getTitle() . $picture->getPictureId(); ?>.jpg">
-                            <img src="img/upload/picture/<?= $picture->getTitle() . $picture->getPictureId(); ?>.jpg" alt = "<?= $picture->getTitle(); ?>" class="picture_post"/>
+                        <a class="fancybox" href="img/upload/picture/<?= $picture->getTitle() . $picture->getPictureId(); ?>.jpg" alt="<?= $picture->getTitle(); ?>">
+                            <img src="img/upload/picture/<?= $picture->getTitle() . $picture->getPictureId(); ?>.jpg" alt="<?= $picture->getTitle(); ?>" class="picture_post"/>
                         </a>
                     </figure>
                 </div>
@@ -66,7 +66,7 @@
                     <?= $reportsNumber; ?> personnes ont signalées cette photo.
                     <?php } ?>
                 </p>
-                <button class="comment_button_post btn btn-primary" type="button" onclick="displayContentComment(<?= $picture->getPictureId(); ?>)" title="Afficher commentaires">commentaires</button>
+                <button class="comment_button_post btn btn-primary" type="button" onclick="displayContentComment(<?= $picture->getPictureId(); ?>)" title="Afficher commentaires">Commentaires</button>
                 <?php } ?>
                 <div class="comment_content_post post<?= $picture->getPictureId(); ?>">
                     <div id="container_comment<?= $picture->getPictureId(); ?>">
