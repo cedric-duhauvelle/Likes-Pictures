@@ -100,8 +100,8 @@ footer p{
     font-family: 'Mansalva', cursive;
 }
 .avatar_post{
-    width: 75px;
-    height: 75px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
 }
 .content_avatar_post{
@@ -113,16 +113,8 @@ footer p{
 .content_avatar_post p{
     display: flex;
     align-items: center;
-    width: 40%;
+    width: 50%;
     margin-left: 2%;
-}
-.content_date_post{
-    width: 30%;
-}
-.content_date_post p{
-    width: 100%;
-    margin: 0;
-    font-family: 'Mansalva', cursive;
 }
 .content_picture_post{
     display: flex;
@@ -149,7 +141,7 @@ footer p{
     justify-content: center;
 }
 .picture_post{
-    width: 80%;
+    width: 100%;
 }
 .comment_button_post{
     width: 30%;
@@ -246,6 +238,12 @@ footer p{
 }
 .hidden_input{
     display: none;
+}
+.content_icone{
+    display: flex;
+}
+.report_form_post{
+    justify-content: flex-start;
 }
 /* ---------------------------------------- */
 /* ==       CONNEXION        */
@@ -510,11 +508,9 @@ footer p{
 /* ==       ADMINISTRATEUR     */
 /*---------------------------------------- */
 #content_admin{
-    padding: 2%;
     margin-top: 58px;
-    min-height: 760px;
+    min-height: 550px;
     display: block;
-    flex-direction: column;
 }
 /*
  -- Comment --
@@ -597,6 +593,8 @@ footer p{
 */
 #user h1{
     text-align: center;
+    padding-bottom: 1%;
+    border-bottom: 1px solid #000;
 }
 .user_content_admin{
     display: flex;
@@ -634,15 +632,14 @@ ul.tabs, .tabs li{
 }
 .tabs .active a{
     box-shadow: 0 1px 3px #000, 0 1px 2px black;
-    background-color: #93B5C6;
-    border-bottom: 2px solid  #93B5C6;
+    background-color: #094074;
+    border-bottom: none;
     color: #f5f5f5;
 }
 .tab_content{
     display: none;
-    border: 1px solid #000;
     box-shadow: 0 1px 3px black, 0 1px 2px black;
-    margin-top: 46px;
+    padding: 2%;
 }
 .tab_content.active{
     display: block;
@@ -683,6 +680,12 @@ ul.tabs, .tabs li{
 /*---------------------------------------- */
 @media screen and (min-width: 1024px){
     /* ---------------------------------------- */
+    /* ==       ACCUEIL   */
+    /*---------------------------------------- */
+    .content_avatar_post p{
+        font-size: 20px;
+    }
+    /* ---------------------------------------- */
     /* ==       CONNEXION   */
     /*---------------------------------------- */
     #content_connexion{
@@ -699,5 +702,18 @@ ul.tabs, .tabs li{
     /*---------------------------------------- */
     #content_profil{
         min-height: 750px;
+    }
+    /* ---------------------------------------- */
+    /* ==       AJOUT   */
+    /*---------------------------------------- */
+    #form_upload_picture{
+        width: 70%;
+        margin: 10% 15%;
+    }
+    /* ---------------------------------------- */
+    /* ==       ADMINISTRATEUR   */
+    /*---------------------------------------- */
+    #content_admin{
+        min-height: 765px;
     }
 }

@@ -25,9 +25,7 @@
                     <?php } ?>
                     </figure>
                     <p><strong><?= $picture->getUserId()->getName(); ?></strong></p>
-                    <div class="content_date_post">
-                        <p>Publiée le <?= $picture->getUpload(); ?></p>
-                    </div>
+                    <p>Publiée le <?= $picture->getUpload(); ?></p>
                 </div>
                 <div class="content_picture_post">
                     <figure class="picture_post">
