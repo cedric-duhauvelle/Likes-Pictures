@@ -6,7 +6,7 @@ use Manager\UserManager;
 use Manager\PictureManager;
 
 /**
- *
+ * Entity Comment
  */
 class Comment
 {

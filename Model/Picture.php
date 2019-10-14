@@ -5,7 +5,7 @@ namespace Model;
 use Manager\UserManager;
 
 /**
- *
+ * Entity Picture
  */
 class Picture
 {

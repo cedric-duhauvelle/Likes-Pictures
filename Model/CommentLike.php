@@ -6,7 +6,7 @@ use Manager\CommentManager;
 use Manager\UserManager;
 
 /**
- *
+ * Entity CommentLike
  */
 class CommentLike
 {

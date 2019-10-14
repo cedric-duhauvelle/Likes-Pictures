@@ -3,7 +3,7 @@
 namespace Model;
 
 /**
- *
+ * Entity User
  */
 class User
 {
