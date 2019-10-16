@@ -8,7 +8,7 @@
             <input type="text" name="title" id="title_picture" required />
             <label for="upload_picture">Ajouter une photo: </label>
             <input type="hidden" name="MAX_FILE_SIZE" value="2097152" />
-            <input type="file" id="upload_picture" name="upload_picture" onchange="showMyImage(this)" />
+            <input type="file" id="upload_picture_input" name="upload_picture" onchange="showMyImage(this)" />
             <input type="submit" class="btn btn-primary" id="button_upload_picture" title="Ajouter photo" />
         </form>
     </div>
