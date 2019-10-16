@@ -23,11 +23,7 @@
 /*---------------------------------------- */
 body{
 	background-color: #f5f5f5;
-	width: 100%;
-}
-#content_body{
-	width: 100%;
-	padding: 0;
+    width: 100%;
 }
 .col-lg-offset-3 {
     margin-left: 25%;
@@ -48,6 +44,15 @@ body{
     box-shadow: 0 1px 3px #000, 0 1px 2px black;
     font-family: 'Mansalva', cursive;
     opacity: 0.9;
+}
+.content{
+    margin-top: 58px;
+    margin-bottom: 2%;
+    padding: 2%;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    min-height: 550px;
 }
 /* ---------------------------------------- */
 /* ==       HEADER       */
@@ -71,7 +76,8 @@ body{
 /*---------------------------------------- */
 footer{
 	margin: 0;
-	background-color: #094074;
+    background-color: #094074;
+    width: 100%;
 	height: 150px;
 	display: flex;
 	flex-direction: column;
@@ -85,12 +91,6 @@ footer p{
 /* ---------------------------------------- */
 /* ==       ACCUEIL     */
 /*---------------------------------------- */
-#content_accueil{
-    min-height: 800px;
-    margin-top: 58px;
-    margin-bottom: 2px;
-    padding: 2%;
-}
 .content_new_post{
     box-shadow: 0 1px 4px #000;
     border: 1px solid #000;
@@ -145,8 +145,8 @@ footer p{
     width: 100%;
 }
 .comment_button_post{
-    width: 30%;
-    margin: 0 35%;
+    width: 40%;
+    margin: 0 30%;
     padding: 2% 1%;
 }
 .comment_content_post{
@@ -249,10 +249,6 @@ footer p{
 /* ---------------------------------------- */
 /* ==       CONNEXION        */
 /*---------------------------------------- */
-#content_connexion{
-    margin-top: 58px;
-    margin-bottom: 2px;
-}
 #content_connexion h1{
     text-align: center;
 }
@@ -306,10 +302,6 @@ footer p{
 /* ---------------------------------------- */
 /* ==       INSCRIPTION        */
 /*---------------------------------------- */
-#content_inscription{
-    margin-top: 58px;
-    margin-bottom: 2px;
-}
 #content_inscription h1{
     text-align: center;
 }
@@ -343,13 +335,6 @@ footer p{
 /* ---------------------------------------- */
 /* ==       PROFIL       */
 /*---------------------------------------- */
-#content_profil{
-    background-color: #f5f5f5;
-    margin-top: 18px;
-    margin-bottom: 2px;
-    min-height: 500px;
-    padding: 2%;
-}
 #content_profil h1{
     text-align: center;
     text-shadow: #ffffff 1px 1px, #ffffff -1px 1px, #ffffff -1px -1px, #ffffff 1px -1px;
@@ -472,12 +457,6 @@ footer p{
 /* ---------------------------------------- */
 /* ==       AJOUT       */
 /*---------------------------------------- */
-#content_upload_picture{
-    min-height: 800px;
-    margin-top: 58px;
-    margin-bottom: 2px;
-    padding-top: 5%;
-}
 #container_upload_picture_form{
     background-color: #fff;
     box-shadow: 0 1px 3px #000, 0 1px 2px black;
@@ -509,11 +488,6 @@ footer p{
 /* ---------------------------------------- */
 /* ==       ADMINISTRATEUR     */
 /*---------------------------------------- */
-#content_admin{
-    margin-top: 58px;
-    min-height: 550px;
-    display: block;
-}
 /*
  -- Comment --
 */
@@ -552,7 +526,7 @@ footer p{
 }
 .content_form_comment_report form button{
     margin: 2% 0;
-    width: 150px;
+    width: 120px;
 }
 .comment_report_display{
     border: 1px solid #000;
@@ -575,6 +549,7 @@ footer p{
 }
 .picture_report_admin{
     width: 50%;
+    height: auto;
 }
 .content_form_report_admin{
     display: flex;
@@ -651,6 +626,12 @@ ul.tabs, .tabs li{
 /*---------------------------------------- */
 @media screen and (min-width: 640px){
     /* ---------------------------------------- */
+    /* ==       BODY  */
+    /*---------------------------------------- */
+    .content{
+        min-height: 800px;
+    }
+    /* ---------------------------------------- */
     /* ==       ACCUEIL   */
     /*---------------------------------------- */
     .icone_like, .icone_report{
@@ -682,10 +663,23 @@ ul.tabs, .tabs li{
 /*---------------------------------------- */
 @media screen and (min-width: 1024px){
     /* ---------------------------------------- */
+    /* ==       BODY   */
+    /*---------------------------------------- */
+    .content{
+        max-width: 1024px;
+        margin-top: 58px;
+        margin-bottom: 2%;
+        padding: 2%;
+        width: 60%;
+        margin-left: 20%;
+        margin-right: 20%;
+    }
+    /* ---------------------------------------- */
     /* ==       ACCUEIL   */
     /*---------------------------------------- */
     .content_new_post{
         font-size: 20px;
+        margin: 2%;
     }
     .content_avatar_post p{
         font-size: 20px;
@@ -697,25 +691,10 @@ ul.tabs, .tabs li{
         padding: 1%;
     }
     /* ---------------------------------------- */
-    /* ==       CONNEXION   */
-    /*---------------------------------------- */
-    #content_connexion{
-        min-height: 750px;
-    }
-    /* ---------------------------------------- */
-    /* ==       INSCRIPTION   */
-    /*---------------------------------------- */
-    #content_inscription{
-        min-height: 750px;
-    }
-    /* ---------------------------------------- */
     /* ==       PROFIL   */
     /*---------------------------------------- */
     #profil{
         font-size: 20px;
-    }
-    #content_profil{
-        min-height: 750px;
     }
     #profil_info p{
         width: 60%;
@@ -733,11 +712,5 @@ ul.tabs, .tabs li{
     #form_upload_picture{
         width: 70%;
         margin: 10% 15%;
-    }
-    /* ---------------------------------------- */
-    /* ==       ADMINISTRATEUR   */
-    /*---------------------------------------- */
-    #content_admin{
-        min-height: 765px;
     }
 }

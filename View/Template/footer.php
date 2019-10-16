@@ -1,4 +1,3 @@
-        </div>
         <div id="container_message_flash"></div>
         <footer>
             <nav id="social_network">

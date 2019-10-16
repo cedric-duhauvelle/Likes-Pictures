@@ -1,4 +1,4 @@
-<div id="content_upload_picture">
+<div id="content_upload_picture" class="content">
     <div id="container_upload_picture_form">
         <div id="upload_picture">
             <img id="thumbnil" src="" alt="" />
