@@ -15,7 +15,7 @@
                 <input type="text" name="name" id="name_inscription" placeholder="Nom" required />
             </div>
             <div class="form-group form-inscription">
-                <label for="email_connexion">Email</label>
+                <label for="email_inscription">Email</label>
                 <?php
                 if (array_key_exists('errorEmail', $_SESSION)) {
                 ?>
@@ -27,7 +27,7 @@
                 <input type="email" name="email" id="email_inscription" placeholder="Email" required />
             </div>
             <div class="form-group form-inscription">
-                <label for="password_connexion">Mot de passe</label>
+                <label for="password_inscription">Mot de passe</label>
                 <input type="password" name="password" id="password_inscription" placeholder="Mot de passe" required />
             </div>
             <div class="form-group form-inscription">
