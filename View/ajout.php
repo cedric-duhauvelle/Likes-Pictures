@@ -11,7 +11,6 @@
             <input type="file" id="upload_picture" name="upload_picture" onchange="showMyImage(this)" />
             <input type="submit" class="btn btn-primary" id="button_upload_picture" title="Ajouter photo" />
         </form>
-
     </div>
 </div>
 <script src="./js/displayPictures.js"></script>

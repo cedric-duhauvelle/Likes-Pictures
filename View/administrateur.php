@@ -28,18 +28,13 @@ if (!array_key_exists('admin', $_SESSION)) {
                     <div class="content_form_comment_report">
                         <p>Effacer :</p>
                         <form method="post" class="form_report_admin" id="form_delete_report_admin<?= $commentReport->getCommentReportId(); ?>">
-                            <label for="comment_report_id<?= $commentReport->getCommentReportId(); ?>"></label>
                             <input type="text" name="comment_report_id" value="<?= $commentReport->getCommentReportId(); ?>" class="hidden_input" id="comment_report_id<?= $commentReport->getCommentReportId(); ?>" />
-                            <label for="comment_report_element<?= $commentReport->getCommentReportId(); ?>"></label>
                             <input type="text" name="element" value="comment" class="hidden_input" id="comment_report_element<?= $commentReport->getCommentReportId(); ?>" />
                             <button type="submit" class="btn btn-danger" onclick="callAjax('form_delete_report_admin<?= $commentReport->getCommentReportId(); ?>', 'Admin')">Signalement</button>
                         </form>
                         <form method="post" class="form_report_admin" id="form_delete_comment_admin<?= $commentReport->getCommentReportId(); ?>">
-                            <label for="comment_report_id<?= $commentReport->getCommentReportId(); ?>"></label>
                             <input type="text" name="comment_report_id" value="<?= $commentReport->getCommentReportId(); ?>" class="hidden_input" />
-                            <label for="commentId_report_id<?= $commentReport->getCommentReportId(); ?>"></label>
                             <input type="text" name="commentId_report_id" value="<?= $commentReport->getCommentId()->getCommentId(); ?>" id="commentId_report_id<?= $commentReport->getCommentReportId(); ?>" class="hidden_input">
-                            <label for="comment_report_element<?= $commentReport->getCommentReportId(); ?>"></label>
                             <input type="text" name="element" value="comment" class="hidden_input" id="comment_report_element<?= $commentReport->getCommentReportId(); ?>" />
                             <button type="submit" class="btn btn-danger" onclick="callAjax('form_delete_comment_admin<?= $commentReport->getCommentReportId(); ?>', 'Admin')">Commentaire</button>
                         </form>
@@ -70,18 +65,13 @@ if (!array_key_exists('admin', $_SESSION)) {
                         <form method="POST" id="form_delete_report<?= $pictureReport->getPictureReportId(); ?>" class="form_report_admin">
                             <label for="report_id_admin<?= $pictureReport->getPictureReportId(); ?>"></label>
                             <input type="text" name="report_id_admin" value="<?= $pictureReport->getPictureReportId(); ?>" class="hidden_input" id="report_id_admin<?= $pictureReport->getPictureReportId(); ?>" />
-                            <label for="report_element_admin<?= $pictureReport->getPictureReportId(); ?>"></label>
                             <input type="text" name="element" value="picture" class="hidden_input" id="report_element_admin<?= $pictureReport->getPictureReportId(); ?>" />
                             <button type="submit" class="btn btn-danger" onclick="callAjax('form_delete_report<?= $pictureReport->getPictureReportId(); ?>', 'Admin')">Signalement</button>
                         </form>
                         <form method="POST" id="form_delete_picture<?= $pictureReport->getPictureReportId(); ?>" class="form_report_admin">
-                            <label for="report_id_admin<?= $pictureReport->getPictureReportId(); ?>"></label>
                             <input type="text" name="report_id_admin" value="<?= $pictureReport->getPictureReportId(); ?>" class="hidden_input" id="report_id_admin<?= $pictureReport->getPictureReportId(); ?>" />
-                            <label for="picture_id_admin<?= $pictureReport->getPictureReportId(); ?>"></label>
                             <input type="text" name="picture_id_admin" value="<?= $pictureReport->getPictureId()->getPictureId(); ?>" class="hidden_input" id="picture_id_admin<?= $pictureReport->getPictureReportId(); ?>" />
-                            <label for="picture_title_admin<?= $pictureReport->getPictureReportId(); ?>"></label>
                             <input type="text" name="picture_title_admin" value="<?= $pictureReport->getPictureId()->getTitle(); ?>" class="hidden_input" id="picture_title_admin<?= $pictureReport->getPictureReportId(); ?>" />
-                            <label for="report_element_admin<?= $pictureReport->getPictureReportId(); ?>"></label>
                             <input type="text" name="element" value="picture" class="hidden_input" id="report_element_admin<?= $pictureReport->getPictureReportId(); ?>" />
                             <button type="submit" class="btn btn-danger" onclick="callAjax('form_delete_picture<?= $pictureReport->getPictureReportId(); ?>', 'Admin')">Photo</button>
                         </form>
@@ -104,9 +94,7 @@ if (!array_key_exists('admin', $_SESSION)) {
                 <p><?= $user->getName(); ?> / <?= $user->getEmail(); ?> / <?= $user->getInscription(); ?></p>
                 <div class="content_form_user_admin">
                     <form method="POST" id="form_delete_user<?= $user->getUserId(); ?>" class="form_user_admin">
-                        <label for="usert_id_admin<?= $user->getUserId(); ?>"></label>
                         <input type="text" name="user_id_admin" value="<?= $user->getUserId(); ?>" class="hidden_input" id="user_id_admin<?= $user->getUserId(); ?>" />
-                        <label for="user_element_admin<?= $user->getUserId(); ?>"></label>
                         <input type="text" name="element" value="user" class="hidden_input" id="user_element_admin<?= $user->getUserId(); ?>" />
                         <button type="submit" class="btn btn-danger" onclick="callAjax('form_delete_user<?= $user->getUserId(); ?>', 'Admin')">Effacer</button>
                     </form>
@@ -119,6 +107,5 @@ if (!array_key_exists('admin', $_SESSION)) {
         </div>
     </div>
 </div>
-
 <script src="./js/callAjax.js" async></script>
 <script src="./js/tabs.js"></script>
