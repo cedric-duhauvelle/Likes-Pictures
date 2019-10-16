@@ -100,5 +100,5 @@
         </div>
     </div>
 </div>
-<script type="text/javascript" src="./js/callAjax.js"></script>
-<script type="text/javascript" src="./js/tabs.js"></script>
+<script src="./js/callAjax.js"></script>
+<script src="./js/tabs.js"></script>

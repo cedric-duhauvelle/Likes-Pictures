@@ -14,4 +14,4 @@
 
     </div>
 </div>
-<script type="text/javascript" src="./js/displayPictures.js"></script>
+<script src="./js/displayPictures.js"></script>
