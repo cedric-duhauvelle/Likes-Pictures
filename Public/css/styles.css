@@ -1,21 +1,49 @@
 /* ---------------------------------------- */
 /* ==       SOMMAIRE           */
 /*---------------------------------------- */
-/*L-   -1- Colors code*/
-/*L-   -2- Body*/
-/*L-   -3- Header*/
+/*L-   -1- Colors code */
+/*L-   -2- Police */
+/*L-   -3- Reglage petit ecran (>640px) */
+/*L-   -3.1- Body */
+/*L-   -3.2- Header */
+/*L-   -3.3- Footer */
+/*L-   -3.4- Accueil */
+/*L-   -3.5- Connexion */
+/*L-   -3.6- Inscription */
+/*L-   -3.7- Profil */
+/*L-   -3.7.1- Profil */
+/*L-   -3.7.2- Picture */
+/*L-   -3.7.3- Modification */
+/*L-   -3.8- Ajout */
+/*L-   -3.9- Administrateur */
+/*L-   -3.9.1- Comment */
+/*L-   -3.9.2- Picture */
+/*L-   -3.9.3- User */
+/*L-   -3.10- Tabs */
+/*L-   -4- Reglage ecran tablette (640px <> 1024px) */
+/*L-   -4.1- Body */
+/*L-   -4.2- Accueil */
+/*L-   -4.3- Profil */
+/*L-   -4.3.1- Profil */
+/*L-   -4.3.2- Picture */
+/*L-   -5- Reglage grand ecran (>1024px) */
+/*L-   -5.1- Body */
+/*L-   -5.2- Accueil */
+/*L-   -5.3- Profil */
+/*L-   -5.4- Ajout */
 /* ---------------------------------------- */
 /* ==       COLORS CODE          */
 /*---------------------------------------- */
 /*
-  -content: #93B5C6
-  1F252D
-  0E7C7B
-  F1FEC6
-  -navbar/footer: #094074
+  - body: #f5f5f5
+  - div: #fff
+  - navbar/footer: #094074
+  - icone-like: #0069d9
+  - icone-report: #d10303
+  - border: #000
 */
 /* ---------------------------------------- */
-/* ==       POLICE ""        */
+/* ==       POLICE "MANSALVA"        */
 /*---------------------------------------- */
 @import url('https://fonts.googleapis.com/css?family=Mansalva&display=swap');
 /* ---------------------------------------- */
@@ -58,7 +86,6 @@ body{
 /* ==       HEADER       */
 /*---------------------------------------- */
 #header{
-	background-color: #bdbebf;
 	width: 100%;
 }
 #navbar-header{
@@ -275,7 +302,7 @@ footer p{
     margin: 10% 10%;
     border-radius: 10px;
     box-shadow: 0 1px 3px #000, 0 1px 2px black;
-    background-color: #f9f9f9;
+    background-color: #f5f5f5;
 }
 .form-connexion{
     margin: 0 30%;
@@ -387,7 +414,7 @@ footer p{
     font-family: 'Mansalva', cursive;
 }
 /*
- -- photo --
+ -- picture --
 */
 #photos{
     margin: 0;
@@ -513,7 +540,7 @@ footer p{
     margin: 2%;
     border: 1px solid #000;
     height: 100%;
-    background-color: #f9f9f9;
+    background-color: #f5f5f5;
     display: flex;
 }
 .content_comment_report{
