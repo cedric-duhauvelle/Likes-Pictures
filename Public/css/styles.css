@@ -292,6 +292,9 @@ footer p{
 }
 #container_inscription{
     margin: 5% 0;
+    text-align: center;
+    font-family: 'Mansalva', cursive;
+    font-size: 20px;
 }
 #container_inscription a{
     color: #000 !important;
@@ -696,8 +699,11 @@ ul.tabs, .tabs li{
     #profil{
         font-size: 20px;
     }
+    #profil_info{
+        width: 50%;
+    }
     #profil_info p{
-        width: 60%;
+        width: 80%;
         font-size: 20px;
     }
     #container_avatar_profil{
