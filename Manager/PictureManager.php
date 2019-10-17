@@ -27,9 +27,9 @@ class PictureManager
      */
     public function getPictureById($id)
     {
-        $request = $this->_db->query('SELECT * FROM picture WHERE picture_id = "'. $id .'"');
+        $query = $this->_db->query('SELECT * FROM picture WHERE picture_id = "'. $id .'"');
 
-        return new Picture($request->fetch(PDO::FETCH_ASSOC));
+        return new Picture($query->fetch(PDO::FETCH_ASSOC));
     }
 
     /**
@@ -40,8 +40,8 @@ class PictureManager
     public function getPictures()
     {
         $pictures = [];
-        $q = $this->_db->query('SELECT * FROM picture');
-        while ($data =  $q->fetch(PDO::FETCH_ASSOC)) {
+        $query = $this->_db->query('SELECT * FROM picture');
+        while ($data =  $query->fetch(PDO::FETCH_ASSOC)) {
            $pictures[] = new Picture($data);
         }
 
@@ -56,8 +56,8 @@ class PictureManager
     public function getLastPictures()
     {
         $pictures = [];
-        $q = $this->_db->query('SELECT * FROM picture ORDER BY upload DESC');
-        while ($data =  $q->fetch(PDO::FETCH_ASSOC)) {
+        $query = $this->_db->query('SELECT * FROM picture ORDER BY upload DESC');
+        while ($data =  $query->fetch(PDO::FETCH_ASSOC)) {
            $pictures[] = new Picture($data);
         }
 
@@ -72,8 +72,8 @@ class PictureManager
     public function getPicturesByUser($userId)
     {
         $pictures = [];
-        $q = $this->_db->query('SELECT * FROM picture WHERE user_id = '. $userId);
-        while ($data =  $q->fetch(PDO::FETCH_ASSOC)) {
+        $query = $this->_db->query('SELECT * FROM picture WHERE user_id = '. $userId);
+        while ($data =  $query->fetch(PDO::FETCH_ASSOC)) {
            $pictures[] = new Picture($data);
         }
 
@@ -87,10 +87,10 @@ class PictureManager
     {
         $pictureId = $user;
         if ('upload_picture' === $file) {
-            $req = $this->_db->prepare('INSERT INTO picture(user_id, title, upload) VALUES (:user_id, :title, CURRENT_TIME)');
-            $req->bindValue(':user_id', $user);
-            $req->bindValue(':title', $title);
-            $req->execute();
+            $query = $this->_db->prepare('INSERT INTO picture(user_id, title, upload) VALUES (:user_id, :title, CURRENT_TIME)');
+            $query->bindValue(':user_id', $user);
+            $query->bindValue(':title', $title);
+            $query->execute();
             $picture = $this->getLastPicture();
             $pictureId = $picture->getPictureId();
         }
@@ -105,9 +105,9 @@ class PictureManager
      */
     public function getLastPicture()
     {
-        $resp = $this->_db->query('SELECT * FROM picture ORDER BY picture_id DESC LIMIT 1');
+        $query = $this->_db->query('SELECT * FROM picture ORDER BY picture_id DESC LIMIT 1');
 
-        return new Picture($resp->fetch(PDO::FETCH_ASSOC));
+        return new Picture($query->fetch(PDO::FETCH_ASSOC));
     }
 
     /**
@@ -115,8 +115,8 @@ class PictureManager
      */
     public function delete($id)
     {
-        $req = $this->_db->prepare('DELETE FROM picture WHERE picture_id=:id LIMIT 1');
-        $req->bindValue(':id', $id);
-        $req->execute();
+        $query = $this->_db->prepare('DELETE FROM picture WHERE picture_id=:id LIMIT 1');
+        $query->bindValue(':id', $id);
+        $query->execute();
     }
 }

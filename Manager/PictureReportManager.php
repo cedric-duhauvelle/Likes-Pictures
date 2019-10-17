@@ -24,10 +24,10 @@ class PictureReportManager
      */
     public function add($pictureId, $userId)
     {
-        $request = $this->_db->prepare('INSERT INTO picture_report(picture_id, user_id, published) VALUES (:picture_id, :user_id, CURRENT_TIME)');
-        $request->bindValue(':picture_id', $pictureId);
-        $request->bindValue(':user_id', $userId);
-        $request->execute();
+        $query = $this->_db->prepare('INSERT INTO picture_report(picture_id, user_id, published) VALUES (:picture_id, :user_id, CURRENT_TIME)');
+        $query->bindValue(':picture_id', $pictureId);
+        $query->bindValue(':user_id', $userId);
+        $query->execute();
     }
 
     /**
@@ -35,9 +35,9 @@ class PictureReportManager
      */
     public function delete($id)
     {
-        $req = $this->_db->prepare('DELETE FROM picture_report WHERE picture_report_id=:id LIMIT 1');
-        $req->bindValue(':id', $id);
-        $req->execute();
+        $query = $this->_db->prepare('DELETE FROM picture_report WHERE picture_report_id=:id LIMIT 1');
+        $query->bindValue(':id', $id);
+        $query->execute();
     }
 
     /**
@@ -48,8 +48,8 @@ class PictureReportManager
     public function getPicturesReportsByPictureId($pictureId)
     {
         $reports = [];
-        $request = $this->_db->query('SELECT * FROM picture_report WHERE picture_id ="' . $pictureId . '"');
-        while ($data = $request->fetch(PDO::FETCH_ASSOC)) {
+        $query = $this->_db->query('SELECT * FROM picture_report WHERE picture_id ="' . $pictureId . '"');
+        while ($data = $query->fetch(PDO::FETCH_ASSOC)) {
             $reports[] = new PictureReport($data);
         }
 
@@ -64,8 +64,8 @@ class PictureReportManager
     public function getPicturesReports()
     {
         $reports = [];
-        $request = $this->_db->query('SELECT * FROM picture_report');
-        while ($data = $request->fetch(PDO::FETCH_ASSOC)) {
+        $query = $this->_db->query('SELECT * FROM picture_report');
+        while ($data = $query->fetch(PDO::FETCH_ASSOC)) {
             $reports[] = new PictureReport($data);
         }
 
@@ -74,6 +74,8 @@ class PictureReportManager
 
     /**
      * Retourne le nombre de signalements d une photo par son ID
+     *
+     * @return int
      */
     public function getPicturesReportsNumberByPictureId($pictureId)
     {

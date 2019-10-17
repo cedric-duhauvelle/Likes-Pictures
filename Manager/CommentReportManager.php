@@ -24,10 +24,10 @@ class CommentReportManager
      */
     public function add($commentId, $userId)
     {
-        $request = $this->_db->prepare('INSERT INTO comment_report(comment_id, user_id, published) VALUES (:comment_id, :user_id, CURRENT_TIME)');
-        $request->bindValue(':comment_id', $commentId);
-        $request->bindValue(':user_id', $userId);
-        $request->execute();
+        $query = $this->_db->prepare('INSERT INTO comment_report(comment_id, user_id, published) VALUES (:comment_id, :user_id, CURRENT_TIME)');
+        $query->bindValue(':comment_id', $commentId);
+        $query->bindValue(':user_id', $userId);
+        $query->execute();
     }
 
     /**
@@ -35,9 +35,9 @@ class CommentReportManager
      */
     public function delete($id)
     {
-        $req = $this->_db->prepare('DELETE FROM comment_report WHERE comment_report_id=:id LIMIT 1');
-        $req->bindValue(':id', $id);
-        $req->execute();
+        $query = $this->_db->prepare('DELETE FROM comment_report WHERE comment_report_id=:id LIMIT 1');
+        $query->bindValue(':id', $id);
+        $query->execute();
     }
 
     /**
@@ -48,8 +48,8 @@ class CommentReportManager
     public function getCommentsReports()
     {
         $reports = [];
-        $request = $this->_db->query('SELECT * FROM comment_report');
-        while ($data = $request->fetch(PDO::FETCH_ASSOC)) {
+        $query = $this->_db->query('SELECT * FROM comment_report');
+        while ($data = $queryt->fetch(PDO::FETCH_ASSOC)) {
             $reports[] = new CommentReport($data);
         }
 
@@ -64,8 +64,8 @@ class CommentReportManager
     public function getCommentsReportsByCommentId($commentId)
     {
         $reports = [];
-        $request = $this->_db->query('SELECT * FROM comment_report WHERE comment_id ="' . $commentId . '"');
-        while ($data = $request->fetch(PDO::FETCH_ASSOC)) {
+        $query = $this->_db->query('SELECT * FROM comment_report WHERE comment_id ="' . $commentId . '"');
+        while ($data = $query->fetch(PDO::FETCH_ASSOC)) {
             $reports[] = new CommentReport($data);
         }
 

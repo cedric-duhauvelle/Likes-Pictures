@@ -18,7 +18,6 @@ class PageController
 	public function __construct($page)
 	{
 		$this->page($page);
-
 	}
 
 	public function page($page)
@@ -35,7 +34,6 @@ class PageController
 			$pictureManager = new PictureManager();
 			$user = $userManager->getUserById($_SESSION['id']);
 			$pictures = $pictureManager->getPicturesByUser($_SESSION['id']);
-
 		} elseif ('accueil' === $page) {
 			$pictureManager = new PictureManager();
 			$pictures = $pictureManager->getLastPictures();
@@ -44,10 +42,6 @@ class PageController
 			$pictureReportManager = new PictureReportManager();
 			$commentLikeManager = new CommentLikeManager();
 			$commentReportManager = new CommentReportManager();
-
-		} elseif ('galerie' === $page) {
-			$pictureManager = new PictureManager();
-			$pictures = $pictureManager->getPictures();
 		} elseif ('administrateur' === $page) {
 			$pictureReportManager = new PictureReportManager();
 			$commentReportManager = new CommentReportManager();
