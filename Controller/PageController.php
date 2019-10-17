@@ -20,6 +20,9 @@ class PageController
 		$this->page($page);
 	}
 
+	/**
+	 * Assemble les templates
+	 */
 	public function page($page)
 	{
 		require_once '../View/Template/header.php';
@@ -27,13 +30,18 @@ class PageController
 		require_once '../View/Template/footer.php';
 	}
 
+	/**
+	 * Instancie les managers pour la redirection des pages
+	 */
 	public function callClass($page)
 	{
+		//Profil
 		if ('profil' === $page) {
 			$userManager = new UserManager();
 			$pictureManager = new PictureManager();
 			$user = $userManager->getUserById($_SESSION['id']);
 			$pictures = $pictureManager->getPicturesByUser($_SESSION['id']);
+		//accueil
 		} elseif ('accueil' === $page) {
 			$pictureManager = new PictureManager();
 			$pictures = $pictureManager->getLastPictures();
@@ -42,6 +50,7 @@ class PageController
 			$pictureReportManager = new PictureReportManager();
 			$commentLikeManager = new CommentLikeManager();
 			$commentReportManager = new CommentReportManager();
+		//administrateur
 		} elseif ('administrateur' === $page) {
 			$pictureReportManager = new PictureReportManager();
 			$commentReportManager = new CommentReportManager();

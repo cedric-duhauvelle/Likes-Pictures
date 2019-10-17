@@ -7,6 +7,9 @@ use Controller\DeconnexionController;
 use Controller\InscriptionController;
 use Controller\PictureController;
 
+/**
+ * Gere les controllers
+ */
 class Controller
 {
     public function __construct($page)

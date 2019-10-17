@@ -19,6 +19,9 @@ class ProfilController
         return $this->profil();
     }
 
+    /**
+     * Gere supression des photos et modification de profil
+     */
     public function profil()
     {
         $sucess = 0;
@@ -27,21 +30,22 @@ class ProfilController
         $postClean = Helper::cleanArray($_POST);
 
         if (array_key_exists('element', $postClean)) {
+            //Gere la supression des photos
             if('picture' === $postClean['element']) {
-                //Efface une photo
                 $sucess = 1;
                 $message = 'Photo effacée';
 
                 $pictureManager = new PictureManager();
-
+                //Efface une photo
                 $pictureManager->delete($postClean['pictureId']);
                 unlink('img/upload/picture/' . $postClean['pictureName'] . $postClean['pictureId'] . '.jpg');
 
             } elseif ('update' === $postClean['element']) {
                 $userManager = new UserManager();
+                //Modifie le nom utilsateur
                 if ('name' === $postClean['element_update']) {
+                    //Verifie si nom est non utilise
                     if ($userManager->getUserByName($postClean['new_name']) === false) {
-                        //Modifie le nom utilsateur
                         $sucess = 1;
                         $message = 'Nom modifié';
 
@@ -49,9 +53,10 @@ class ProfilController
                     } else {
                         $message = 'Nom déjà utilisé';
                     }
+                //Modifie l email utilisateur
                 } elseif ('email' === $postClean['element_update']) {
+                    //Verifie si email est non utilise
                     if ($userManager->getUserByEmail($postClean['new_email']) === false) {
-                        //Modifie l email utilisateur
                         $sucess = 1;
                         $message = 'Email modifié';
 
@@ -59,9 +64,10 @@ class ProfilController
                     } else {
                         $message = 'Email déjà utilisé';
                     }
+                //Modifie le mot de passe utilisateur
                 } elseif ('password' === $postClean['element_update']) {
+                    //Verifie si mots de passe sont identiques
                     if ($postClean['new_password'] === $postClean['password_confirm']) {
-                        //Modifie le mot de passe utilisateur
                         $sucess = 1;
                         $message = 'Mot de passe modifié';
 

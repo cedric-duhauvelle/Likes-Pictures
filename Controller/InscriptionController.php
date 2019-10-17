@@ -16,6 +16,9 @@ class InscriptionController
         $this->inscription();
     }
 
+    /**
+     * Gere et verifie les informations utilisateur pour l inscription
+     */
     public function inscription()
     {
         $postClean = Helper::cleanArray($_POST);

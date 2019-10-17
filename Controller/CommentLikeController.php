@@ -16,6 +16,9 @@ class CommentLikeController
         return $this->like();
     }
 
+    /**
+     * Gere les likes des commentaires
+     */
     public function like()
     {
         $sucess = 0;
@@ -25,17 +28,17 @@ class CommentLikeController
         $message = "Une erreur est survenue ...";
         $postClean = Helper::cleanArray($_POST);
 
-        //Recherche si l'element est like si deja like efface le like
         $commentLikeManager = new CommentLikeManager();
         $likes = $commentLikeManager->getCommentsLikesbyCommentId($postClean['elementId']);
         foreach ($likes as $like) {
+            //Verifie si l utilisateur a deja liker le commentaire si like efface like
             if ($like->getUserId()->getUserId() == $postClean['userId']) {
                 $sucess = 1;
                 $likeStatus = 1;
-
+                //Efface like commentaire
                 $commentLikeManager->delete($like->getCommentLikeId());
+                //Nombre de like commentaire
                 $likeNumber = $commentLikeManager->getCommentsLikesNumberByCommentId($postClean['elementId']);
-
                 $data = [
                     "likeStatus" => $likeStatus,
                     "element" => $postClean['element'],
@@ -50,8 +53,9 @@ class CommentLikeController
         if (0 === $likeStatus) {
             $sucess = 1;
             $likeStatus = 0;
-
+            //Ajout like a la base de donnees
             $commentLikeManager->add($postClean['elementId'], $postClean['userId']);
+            //Nombre de like commentaire
             $likeNumber = $commentLikeManager->getCommentsLikesNumberByCommentId($postClean['elementId']);
 
             $userManager =  new UserManager();

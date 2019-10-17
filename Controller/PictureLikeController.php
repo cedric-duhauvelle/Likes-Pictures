@@ -16,6 +16,9 @@ class PictureLikeController
         return $this->like();
     }
 
+    /**
+     * Gere l ajout et la supression des likes sur les photos
+     */
     public function like()
     {
         $sucess = 0;
@@ -25,17 +28,17 @@ class PictureLikeController
         $message = "Une erreur est survenue ...";
         $postClean = Helper::cleanArray($_POST);
 
-        //Recherche si l'element est like si deja like efface le like
         $pictureLikeManager = new PictureLikeManager();
         $likes = $pictureLikeManager->getPicturesLikesbyPictureId($postClean['elementId']);
         foreach ($likes as $like) {
+            //Verifie si utilisateur a like photo efface photo
             if ($like->getUserId()->getUserId() == $postClean['userId']) {
                 $sucess = 1;
                 $likeStatus = 1;
-
+                //Efface like
                 $pictureLikeManager->delete($like->getPictureLikeId());
+                //nombre like photo
                 $likeNumber = $pictureLikeManager->getPicturesLikesNumberByPictureId($postClean['elementId']);
-
                 $data = [
                     "likeStatus" => $likeStatus,
                     "element" => $postClean['element'],
@@ -50,13 +53,13 @@ class PictureLikeController
         if (0 === $likeStatus) {
             $sucess = 1;
             $likeStatus = 0;
-
+            //ajout like a la base de donnees
             $pictureLikeManager->add($postClean['elementId'], $postClean['userId']);
+            //Nombre like photo
             $likeNumber = $pictureLikeManager->getPicturesLikesNumberByPictureId($postClean['elementId']);
 
             $userManager =  new UserManager();
             $user = $userManager->getUserById($postClean['userId']);
-
             $data = [
                 "element" => $postClean['element'],
                 "elementId" => $postClean['elementId'],

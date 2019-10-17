@@ -6,7 +6,7 @@ use Systeme\Helper;
 use Manager\PictureReportManager;
 
 /**
- * Gere l ajout et la suppression des signalements sur les photos
+ * Gere l ajout et la suppression des reports sur les photos
  */
 class PictureReportController
 {
@@ -15,6 +15,9 @@ class PictureReportController
         return $this->report();
     }
 
+    /**
+     * Gere reports photos
+     */
     public function report()
     {
         $postClean = Helper::cleanArray($_POST);
@@ -24,16 +27,16 @@ class PictureReportController
         $data = [];
         $message = "Une erreur est survenue ...";
 
-        //Recherche si l element est report si report efface report
         $pictureReportManager = new PictureReportManager();
         $reports = $pictureReportManager->getPicturesReportsByPictureId($postClean['elementIdReport']);
         foreach ($reports as $report) {
+            //Verifie si utilisateur a reporte la photo si report efface report
             if ($report->getUserId()->getUserId() == $postClean['userIdReport']) {
                 $reportStatus = 1;
                 $sucess = 1;
-
+                //Efface report photo
                 $pictureReportManager->delete($report->getPictureReportId());
-
+                //Nombre report photo
                 $reportsNumber = $pictureReportManager->getPicturesReportsNumberByPictureId($postClean['elementIdReport']);
                 $data = [
                     "reportsNumber" => $reportsNumber,
@@ -46,8 +49,9 @@ class PictureReportController
         //Ajout Report
         if ($reportStatus === 0) {
             $sucess = 1;
-
+            //Ajout report a la base de donnees
             $pictureReportManager->add($postClean['elementIdReport'], $postClean['userIdReport']);
+            //Nombre report photo
             $reportsNumber = $pictureReportManager->getPicturesReportsNumberByPictureId($postClean['elementIdReport']);
             $data = [
                 "reportsNumber" => $reportsNumber,

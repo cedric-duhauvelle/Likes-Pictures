@@ -15,6 +15,9 @@ class ConnexionController
         $this->connexion();
     }
 
+    /**
+     * Gere la verification des informations utilisateur pour la connexion
+     */
     public function connexion()
     {
         $postClean = Helper::cleanArray($_POST);

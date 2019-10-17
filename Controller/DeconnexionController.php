@@ -12,6 +12,9 @@ class DeconnexionController
         $this->deconnexion();
     }
 
+    /**
+     * deconnexion
+     */
     public function deconnexion()
     {
         //Detruit la session en cours
