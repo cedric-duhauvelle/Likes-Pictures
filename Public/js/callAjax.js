@@ -79,22 +79,16 @@ var comment = function(data) {
                                     <p id="comment_post' + comment.commentId + '">' + comment.comment + '</p>\
                                     <div class="content_form_like_report_comment">\
                                         <form method="POST" id="like_form_comment' + comment.commentId + '">\
-                                            <label for="elementComment' + comment.commentId + '"></label>\
-                                            <input type="text" name="element" id="elementComment' + comment.commentId + '" value="comment" class="hidden_input" />\
-                                            <label for="elementIdComment' + comment.commentId + '"></label>\
-                                            <input type="text" name="elementId" id="elementIdComment' + comment.commentId + '" value="' + comment.commentId + '" class="hidden_input" />\
-                                            <label for="userIdComment' + comment.commentId + '"></label>\
-                                            <input type="text" name="userId" id="userIdComment' + comment.commentId + '" value="' + comment.userId + '" class="hidden_input" />\
+                                            <input type="hidden" name="element" id="elementComment' + comment.commentId + '" value="comment" />\
+                                            <input type="hidden" name="elementId" id="elementIdComment' + comment.commentId + '" value="' + comment.commentId + '" />\
+                                            <input type="hidden" name="userId" id="userIdComment' + comment.commentId + '" value="' + comment.userId + '" />\
                                             <button type="submit" class="button_icone" onclick="callAjax(\'like_form_comment' + comment.commentId +'\', \'commentLike\')"><span id="icone_like' + comment.commentId + '" class="far fa-thumbs-up icone_like"></span></button>\
                                         </form>\
                                         <p id="like_comment_content' + comment.commentId + '"></p>\
                                         <form method="POST" id="report_form_comment' + comment.commentId + '">\
-                                            <label for="elementReportComment' + comment.commentId + '"></label>\
-                                            <input type="text" name="elementReport" id="elementReportComment' + comment.commentId + '" value="comment" class="hidden_input" />\
-                                            <label for="elementIdReportComment' + comment.commentId + '"></label>\
-                                            <input type="text" name="elementIdReport" id="elementIdReportComment' + comment.commentId + '" value="' + comment.commentId + '" class="hidden_input" />\
-                                            <label for="userIdReportComment' + comment.commentId + '"></label>\
-                                            <input type="text" name="userIdReport" id="userIdReportComment' + comment.commentId + '" value="' + comment.userId + '" class="hidden_input" />\
+                                            <input type="hidden" name="elementReport" id="elementReportComment' + comment.commentId + '" value="comment" />\
+                                            <input type="hidden" name="elementIdReport" id="elementIdReportComment' + comment.commentId + '" value="' + comment.commentId + '" />\
+                                            <input type="hidden" name="userIdReport" id="userIdReportComment' + comment.commentId + '" value="' + comment.userId + '" />\
                                             <button type="submit" class="button_icone" onclick="callAjax(\'report_form_comment' + comment.commentId + '\', \'commentReport\')"><span id="icone_report' + comment.commentId + '" class="far fa-flag icone_report"></span></button>\
                                         </form>\
                                         <p id="report_comment_content' + comment.commentId + '"></p>\

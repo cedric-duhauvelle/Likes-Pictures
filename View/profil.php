@@ -36,9 +36,9 @@
                                 <div class="container_picture_info_upload">
                                     <p>Ajoutée le <?= $picture->getUpload(); ?></p>
                                     <form method="post" id="form_delete_picture_user<?= $picture->getPictureId(); ?>" class="form_delete_picture_profil">
-                                        <input type="text" name="pictureId" id="pictureId<?= $picture->getPictureId(); ?>" value="<?= $picture->getPictureId(); ?>" class="hidden_input" />
-                                        <input type="text" name="pictureName" id="pictureName<?= $picture->getPictureId(); ?>" value="<?= $picture->getTitle(); ?>" class="hidden_input" />
-                                        <input type="text" name="element" id="element<?= $picture->getPictureId(); ?>" value="picture" class="hidden_input" />
+                                        <input type="hidden" name="pictureId" id="pictureId<?= $picture->getPictureId(); ?>" value="<?= $picture->getPictureId(); ?>" />
+                                        <input type="hidden" name="pictureName" id="pictureName<?= $picture->getPictureId(); ?>" value="<?= $picture->getTitle(); ?>" />
+                                        <input type="hidden" name="element" id="element<?= $picture->getPictureId(); ?>" value="picture" />
                                         <button type="submit" class="btn btn-danger" onclick="callAjax('form_delete_picture_user<?= $picture->getPictureId(); ?>', 'Profil')">Effacer</button>
                                     </form>
                                 </div>
@@ -53,28 +53,28 @@
                                 <form method="post" id="form_update_user_name<?= $user->getUserId(); ?>">
                                     <label for="new_name<?= $_SESSION['id']; ?>">Nom</label>
                                     <input type="text" name="new_name" id="new_name<?= $_SESSION['id']; ?>" required />
-                                    <input type="text" name="element" id="element_name<?= $_SESSION['id']; ?>" value="update" class="hidden_input" />
-                                    <input type="text" name="element_update" id="element_update_name<?= $_SESSION['id']; ?>" value="name" class="hidden_input" />
-                                    <input type="text" name="user_id" id="user_id_name<?= $_SESSION['id']; ?>" value="<?= $_SESSION['id']; ?>" class="hidden_input" />
-                                    <button type="submit" class="btn btn-primary" onclick="callAjax('form_update_user_name<?= $user->getUserId(); ?>', 'Profil')">validé</button>
+                                    <input type="hidden" name="element" id="element_name<?= $_SESSION['id']; ?>" value="update" />
+                                    <input type="hidden" name="element_update" id="element_update_name<?= $_SESSION['id']; ?>" value="name" />
+                                    <input type="hidden" name="user_id" id="user_id_name<?= $_SESSION['id']; ?>" value="<?= $_SESSION['id']; ?>" />
+                                    <button type="submit" class="btn btn-primary" onclick="callAjax('form_update_user_name<?= $user->getUserId(); ?>', 'Profil')">valider</button>
                                 </form>
                                 <form method="post" id="form_update_user_email<?= $user->getUserId(); ?>">
                                     <label for="new_email<?= $_SESSION['id']; ?>">Email</label>
                                     <input type="text" name="new_email" id="new_email<?= $_SESSION['id']; ?>" required />
-                                    <input type="text" name="element" id="element_email<?= $_SESSION['id']; ?>" value="update" class="hidden_input" />
-                                    <input type="text" name="element_update" id="element_update_email<?= $_SESSION['id']; ?>" value="email" class="hidden_input" />
-                                    <input type="text" name="user_id" id="user_id_email<?= $_SESSION['id']; ?>" value="<?= $_SESSION['id']; ?>" class="hidden_input" />
-                                    <button type="submit" class="btn btn-primary" onclick="callAjax('form_update_user_email<?= $user->getUserId(); ?>', 'Profil')">validé</button>
+                                    <input type="hidden" name="element" id="element_email<?= $_SESSION['id']; ?>" value="update" />
+                                    <input type="hidden" name="element_update" id="element_update_email<?= $_SESSION['id']; ?>" value="email" />
+                                    <input type="hidden" name="user_id" id="user_id_email<?= $_SESSION['id']; ?>" value="<?= $_SESSION['id']; ?>" />
+                                    <button type="submit" class="btn btn-primary" onclick="callAjax('form_update_user_email<?= $user->getUserId(); ?>', 'Profil')">valider</button>
                                 </form>
                                 <form method="post" id="form_update_user_password<?= $user->getUserId(); ?>">
                                     <label for="new_password<?= $_SESSION['id']; ?>">Mot de passe</label>
                                     <input type="text" name="new_password" id="new_password<?= $_SESSION['id']; ?>" required />
                                     <label for="password_confirm<?= $_SESSION['id']; ?>">Retapez votre mot de passe</label>
                                     <input type="text" name="password_confirm" id="password_confirm<?= $_SESSION['id']; ?>" required />
-                                    <input type="text" name="element" id="element_password<?= $_SESSION['id']; ?>" value="update" class="hidden_input" />
-                                    <input type="text" name="element_update" id="element_update_password<?= $_SESSION['id']; ?>" value="password" class="hidden_input" />
-                                    <input type="text" name="user_id" id="user_id_password<?= $_SESSION['id']; ?>" value="<?= $_SESSION['id']; ?>" class="hidden_input" />
-                                    <button type="submit" class="btn btn-primary" onclick="callAjax('form_update_user_password<?= $user->getUserId(); ?>', 'Profil')">validé</button>
+                                    <input type="hidden" name="element" id="element_password<?= $_SESSION['id']; ?>" value="update" />
+                                    <input type="hidden" name="element_update" id="element_update_password<?= $_SESSION['id']; ?>" value="password" />
+                                    <input type="hidden" name="user_id" id="user_id_password<?= $_SESSION['id']; ?>" value="<?= $_SESSION['id']; ?>" />
+                                    <button type="submit" class="btn btn-primary" onclick="callAjax('form_update_user_password<?= $user->getUserId(); ?>', 'Profil')">valider</button>
                                 </form>
                                 <form action="PictureController" method="POST" enctype="multipart/form-data" id="form_upload_avatar">
                                     <label for="file">Sélectionner un Avatar: </label>

@@ -36,15 +36,15 @@
             <?php if(array_key_exists('id', $_SESSION)) { ?>
             <div class="content_icone">
                 <form method="POST" class="like_form_post" id="like_form<?= $picture->getPictureId(); ?>">
-                    <input type="text" name="element" id="element<?= $picture->getPictureId(); ?>" value="picture" class="hidden_input" />
-                    <input type="text" name="elementId" id="elementId<?= $picture->getPictureId(); ?>" value="<?= $picture->getPictureId(); ?>" class="hidden_input" />
-                    <input type="text" name="userId" id="userId<?= $picture->getPictureId(); ?>" value="<?= $_SESSION['id']; ?>" class="hidden_input" />
+                    <input type="hidden" name="element" id="element<?= $picture->getPictureId(); ?>" value="picture" />
+                    <input type="hidden" name="elementId" id="elementId<?= $picture->getPictureId(); ?>" value="<?= $picture->getPictureId(); ?>" />
+                    <input type="hidden" name="userId" id="userId<?= $picture->getPictureId(); ?>" value="<?= $_SESSION['id']; ?>" />
                     <button type="submit" class="button_icone" onclick="callAjax('like_form<?= $picture->getPictureId(); ?>', 'pictureLike')" title="Like photo"><span id="icone_like<?= $picture->getPictureId(); ?>" class="far fa-thumbs-up icone_like <?= $classActiveLikePicture; ?>"></span></button>
                 </form>
                 <form method="POST" class="report_form_post" id="report_form<?= $picture->getPictureId(); ?>">
-                    <input type="text" name="elementReport" id="elementReport<?= $picture->getPictureId(); ?>" value="picture" class="hidden_input" />
-                    <input type="text" name="elementIdReport" id="elementIdReport<?= $picture->getPictureId(); ?>" value="<?= $picture->getPictureId(); ?>" class="hidden_input" />
-                    <input type="text" name="userIdReport" id="userIdReport<?= $picture->getPictureId(); ?>" value="<?= $_SESSION['id']; ?>" class="hidden_input" />
+                    <input type="hidden" name="elementReport" id="elementReport<?= $picture->getPictureId(); ?>" value="picture" />
+                    <input type="hidden" name="elementIdReport" id="elementIdReport<?= $picture->getPictureId(); ?>" value="<?= $picture->getPictureId(); ?>" />
+                    <input type="hidden" name="userIdReport" id="userIdReport<?= $picture->getPictureId(); ?>" value="<?= $_SESSION['id']; ?>" />
                     <button type="submit" class="button_icone" onclick="callAjax('report_form<?= $picture->getPictureId(); ?>', 'pictureReport')" title="Report photo"><span id="icone_report<?= $picture->getPictureId(); ?>" class="far fa-flag icone_report <?= $classActiveReportPicture; ?>"></span></button>
                 </form>
             </div>
@@ -94,9 +94,9 @@
                             <?php if (array_key_exists('id', $_SESSION)) { ?>
                             <div class="content_form_like_report_comment">
                                 <form method="POST" id="like_form_comment<?= $comment->getCommentId(); ?>">
-                                    <input type="text" name="element" id="elementComment<?= $comment->getCommentId(); ?>" value="comment" class="hidden_input" />
-                                    <input type="text" name="elementId" id="elementIdComment<?= $comment->getCommentId(); ?>" value="<?= $comment->getCommentId(); ?>" class="hidden_input" />
-                                    <input type="text" name="userId" id="userIdComment<?= $comment->getCommentId() ?>" value="<?= $_SESSION['id']; ?>" class="hidden_input" />
+                                    <input type="hidden" name="element" id="elementComment<?= $comment->getCommentId(); ?>" value="comment" />
+                                    <input type="hidden" name="elementId" id="elementIdComment<?= $comment->getCommentId(); ?>" value="<?= $comment->getCommentId(); ?>" />
+                                    <input type="hidden" name="userId" id="userIdComment<?= $comment->getCommentId() ?>" value="<?= $_SESSION['id']; ?>" />
                                     <button type="submit" class="button_icone" onclick="callAjax('like_form_comment<?= $comment->getCommentId(); ?>', 'commentLike')" title="Like commentaire"><span id="icone_like<?= $comment->getCommentId(); ?>" class="far fa-thumbs-up icone_like <?= $classActiveLikeComment; ?>"></span></button>
                                 </form>
                                 <p id="like_comment_content<?= $comment->getCommentId() ?>">
@@ -105,9 +105,9 @@
                                     <?php } ?>
                                 </p>
                                 <form method="POST" id="report_form_comment<?= $comment->getCommentId(); ?>">
-                                    <input type="text" name="elementReport" id="elementReportComment<?= $comment->getCommentId(); ?>" value="comment" class="hidden_input" />
-                                    <input type="text" name="elementIdReport" id="elementIdReportComment<?= $comment->getCommentId(); ?>" value="<?= $comment->getCommentId(); ?>" class="hidden_input" />
-                                    <input type="text" name="userIdReport" id="userIdReportComment<?= $comment->getCommentId(); ?>" value="<?= $_SESSION['id']; ?>" class="hidden_input" />
+                                    <input type="hidden" name="elementReport" id="elementReportComment<?= $comment->getCommentId(); ?>" value="comment" />
+                                    <input type="hidden" name="elementIdReport" id="elementIdReportComment<?= $comment->getCommentId(); ?>" value="<?= $comment->getCommentId(); ?>" />
+                                    <input type="hidden" name="userIdReport" id="userIdReportComment<?= $comment->getCommentId(); ?>" value="<?= $_SESSION['id']; ?>" />
                                     <button type="submit" class="button_icone" onclick="callAjax('report_form_comment<?= $comment->getCommentId(); ?>', 'commentReport')" title="Report commentaire"><span id="icone_report<?= $comment->getCommentId(); ?>" class="far fa-flag icone_report <?= $classActiveReportComment; ?>"></span></button>
                                 </form>
                                 <p id="report_comment_content<?= $comment->getCommentId(); ?>">

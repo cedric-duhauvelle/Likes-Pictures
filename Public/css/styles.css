@@ -74,9 +74,7 @@ body{
     opacity: 0.9;
 }
 .content{
-    margin-top: 58px;
     margin-bottom: 2%;
-    padding: 2%;
     width: 80%;
     margin-left: 10%;
     margin-right: 10%;
@@ -264,9 +262,6 @@ footer p{
     width: 30%;
     margin: 0 35%;
 }
-.hidden_input{
-    display: none;
-}
 .content_icone{
     display: flex;
 }
@@ -374,9 +369,7 @@ footer p{
  -- profil --
 */
 #profil{
-    margin: 0;
     width: 100%;
-    padding: 2%;
 }
 #container_avatar_profil{
     width: 50%;
@@ -646,7 +639,6 @@ ul.tabs, .tabs li{
 .tab_content{
     display: none;
     box-shadow: 0 1px 3px black, 0 1px 2px black;
-    padding: 2%;
 }
 .tab_content.active{
     display: block;
