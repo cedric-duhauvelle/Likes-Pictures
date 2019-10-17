@@ -6,7 +6,7 @@ use PDO;
 use Systeme\CustomException;
 
 /**
- * Connection a la base de donnee
+ * Entity Database
  */
 class DataBase
 {
@@ -24,6 +24,11 @@ class DataBase
         $this->_password = $db['password'];
     }
 
+    /**
+     * Connecxion a la base de donnees
+     *
+     * @return object PDO
+     */
     public function connect()
     {
         try {
@@ -36,6 +41,9 @@ class DataBase
         return $db;
     }
 
+    /**
+     * Getteur
+     */
     public function getHost()
     {
         return $this->_host;

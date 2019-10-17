@@ -3,7 +3,7 @@
 namespace Systeme;
 
 /**
- *
+ *  Entity Helper
  */
 class Helper
 {

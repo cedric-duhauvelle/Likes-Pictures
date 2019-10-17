@@ -6,7 +6,7 @@ use Exception;
 use Systeme\Session;
 
 /**
- *
+ * Entity CustomException extends Exception
  */
 class CustomException extends Exception
 {

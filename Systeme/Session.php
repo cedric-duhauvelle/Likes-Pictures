@@ -3,7 +3,7 @@
 namespace Systeme;
 
 /**
- *
+ * Entity Session
  */
 class Session
 {

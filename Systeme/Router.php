@@ -14,12 +14,12 @@ use Controller\AdminController;
 use Systeme\CustomException;
 
 /**
- *
+ *  Entity Router
  */
 class Router
 {
     /**
-     * Recupere l url
+     * Recupere url
      */
     public function setUrl($url)
     {
