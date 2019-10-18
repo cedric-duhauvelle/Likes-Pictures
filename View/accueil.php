@@ -1,6 +1,5 @@
 <div id="content_accueil" class="content">
     <?php
-    var_dump($numberPost);
     foreach ($pictures as $picture) {
         $numberPost++;
         $likeNumber = $pictureLikeManager->getPicturesLikesNumberByPictureId($picture->getPictureId());
@@ -145,4 +144,4 @@
     } ?>
     </div>
 </div>
-<script src="./js/callAjax.js" async></script>
+<script src="./js/tools.js" async></script>

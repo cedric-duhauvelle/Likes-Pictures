@@ -1,3 +1,8 @@
+/**
+ * Ajout ou enleve la class active
+ *
+ * @param {int} id
+ */
 var displayContentComment = function(id) {
     element = document.querySelector('.post' + id);
     if (element.classList.contains('active')) {
@@ -7,6 +12,12 @@ var displayContentComment = function(id) {
     };
 };
 
+/**
+ * Gere les appelles ajax
+ *
+ * @param {string} element
+ * @param {string} script
+ */
 var callAjax = function(element, script) {
     document.getElementById(element).addEventListener('submit', function(e) {
         e.preventDefault();
@@ -45,16 +56,22 @@ var callAjax = function(element, script) {
     });
 };
 
-var afterPost = function() {
-
-}
-
+/**
+ * Efface les images apres supression page profil
+ *
+ * @param {array} data
+ */
 var profil = function(data) {
     var picture = data;
     var containerPicture = document.getElementById('container_picture_profil' + picture.postClean.pictureId);
     containerPicture.style.display = "none";
 };
 
+/**
+ * Gere les evenements de la page administrateur
+ *
+ * @param {array} data
+ */
 var admin = function(data) {
     var report = data;
     if (report.post.element === 'comment') {
@@ -69,6 +86,11 @@ var admin = function(data) {
     }
 };
 
+/**
+ * Affiche un commentaire qui vient d etre publie
+ *
+ * @param {array} data
+ */
 var comment = function(data) {
     var comment = data;
     var container = document.getElementById('container_comment' + comment.pictureId);
@@ -101,6 +123,11 @@ var comment = function(data) {
                             </div>';
 };
 
+/**
+ * Gere les evenements lier au like d une image ou d un commentaire
+ *
+ * @param {array} data
+ */
 var like = function(data) {
     var like = data;
     var likeElement = like.element;
@@ -118,6 +145,11 @@ var like = function(data) {
     }
 };
 
+/**
+ * Gere les evenements lier au report d une image ou d un commentaire
+ *
+ * @param {array} data
+ */
 var report = function(data) {
     var report = data;
     if (report.post.elementReport == 'picture') {
@@ -143,6 +175,11 @@ var report = function(data) {
 };
 
 var timer;
+/**
+ * Affiche message
+ *
+ * @param {string} message
+ */
 var messageFlash = function(message) {
     var container = document.getElementById('container_message_flash');
     clearInterval(timer);

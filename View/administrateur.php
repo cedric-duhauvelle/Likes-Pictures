@@ -107,5 +107,5 @@ if (!array_key_exists('admin', $_SESSION)) {
         </div>
     </div>
 </div>
-<script src="./js/callAjax.js" async></script>
+<script src="./js/tools.js" async></script>
 <script src="./js/tabs.js"></script>

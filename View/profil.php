@@ -87,5 +87,5 @@
         </div>
     </div>
 </div>
-<script src="./js/callAjax.js"></script>
+<script src="./js/tools.js"></script>
 <script src="./js/tabs.js"></script>
