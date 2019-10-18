@@ -53,10 +53,10 @@ class PictureManager
      *
      * @return array
      */
-    public function getLastPictures()
+    public function getLastPictures($start, $numberPicture)
     {
         $pictures = [];
-        $query = $this->_db->query('SELECT * FROM picture ORDER BY upload DESC');
+        $query = $this->_db->query('SELECT * FROM picture ORDER BY upload DESC LIMIT ' . $start . ',' .$numberPicture);
         while ($data =  $query->fetch(PDO::FETCH_ASSOC)) {
            $pictures[] = new Picture($data);
         }
@@ -108,6 +108,19 @@ class PictureManager
         $query = $this->_db->query('SELECT * FROM picture ORDER BY picture_id DESC LIMIT 1');
 
         return new Picture($query->fetch(PDO::FETCH_ASSOC));
+    }
+
+    /**
+     * Retourne le nombre de photos
+     *
+     * @return int
+     */
+    public function getPicturesNumber()
+    {
+        $query = $this->_db->query('SELECT COUNT(*) FROM picture');
+        $pictureNumber = $query->fetch(PDO::FETCH_ASSOC);
+
+        return $pictureNumber['COUNT(*)'];
     }
 
     /**

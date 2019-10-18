@@ -44,7 +44,7 @@ class Router
             new CommentController();
         } elseif($page == 'Admin') {
             new AdminController();
-        }  elseif($page == 'Profil') {
+        } elseif($page == 'Profil') {
             new ProfilController();
         } elseif (strpos($page, 'Controller') && is_file('../Controller/' . $page . '.php')) {
             new Controller($page);

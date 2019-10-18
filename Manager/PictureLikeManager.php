@@ -42,6 +42,7 @@ class PictureLikeManager
         while ($data = $query->fetch(PDO::FETCH_ASSOC)) {
             $likes[] = new PictureLike($data);
         }
+
         return $likes;
     }
 
@@ -70,6 +71,7 @@ class PictureLikeManager
     {
         $query = $this->_db->query('SELECT COUNT(*) FROM picture_like WHERE picture_id="' . $pictureId . '"');
         $likeNumber = $query->fetch(PDO::FETCH_ASSOC);
+
         return $likeNumber['COUNT(*)'];
     }
 

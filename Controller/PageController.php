@@ -2,6 +2,7 @@
 
 namespace Controller;
 
+use Systeme\Helper;
 use Manager\UserManager;
 use Manager\PictureManager;
 use Manager\CommentManager;
@@ -44,12 +45,25 @@ class PageController
 		//accueil
 		} elseif ('accueil' === $page) {
 			$pictureManager = new PictureManager();
-			$pictures = $pictureManager->getLastPictures();
+
 			$commentManager = new CommentManager();
 			$pictureLikeManager = new PictureLikeManager();
 			$pictureReportManager = new PictureReportManager();
 			$commentLikeManager = new CommentLikeManager();
 			$commentReportManager = new CommentReportManager();
+
+			$getClean = Helper::cleanArray($_GET);
+			$NumberPostPage = 5;
+			$numberPost = $pictureManager->getPicturesNumber();
+			$pageTotal = ceil($numberPost/$NumberPostPage);
+			if (array_key_exists('page', $getClean) && $getClean['page'] > 0) {
+				$currentPage = intval($getClean['page']);
+			} else {
+				$currentPage = 1;
+			}
+			$start = ($currentPage-1)*$NumberPostPage;
+
+			$pictures = $pictureManager->getLastPictures($start, $NumberPostPage);
 		//administrateur
 		} elseif ('administrateur' === $page) {
 			$pictureReportManager = new PictureReportManager();

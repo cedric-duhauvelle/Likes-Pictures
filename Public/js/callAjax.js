@@ -45,6 +45,10 @@ var callAjax = function(element, script) {
     });
 };
 
+var afterPost = function() {
+
+}
+
 var profil = function(data) {
     var picture = data;
     var containerPicture = document.getElementById('container_picture_profil' + picture.postClean.pictureId);

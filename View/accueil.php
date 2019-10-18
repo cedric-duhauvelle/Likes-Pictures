@@ -1,6 +1,8 @@
 <div id="content_accueil" class="content">
     <?php
+    var_dump($numberPost);
     foreach ($pictures as $picture) {
+        $numberPost++;
         $likeNumber = $pictureLikeManager->getPicturesLikesNumberByPictureId($picture->getPictureId());
         $reportsNumber = $pictureReportManager->getPicturesReportsNumberByPictureId($picture->getPictureId());
         if ($likeNumber != 0) {
@@ -14,7 +16,7 @@
             $classActiveReportPicture = '';
         }
     ?>
-        <div class="col-ms-8 content_new_post">
+        <div class="content_new_post">
             <div class="content_avatar_post">
                 <figure>
                 <?php if(is_file('../Public/img/upload/avatar/avatar' . $picture->getUserId()->getUserId() . '.jpg')) { ?>
@@ -33,7 +35,7 @@
                     </a>
                 </figure>
             </div>
-            <?php if(array_key_exists('id', $_SESSION)) { ?>
+            <?php if((array_key_exists('id', $_SESSION)) && ($_SESSION['id'] !== $picture->getUserId()->getUserId())) { ?>
             <div class="content_icone">
                 <form method="POST" class="like_form_post" id="like_form<?= $picture->getPictureId(); ?>">
                     <input type="hidden" name="element" id="element<?= $picture->getPictureId(); ?>" value="picture" />
@@ -91,7 +93,7 @@
                             <div class="arrow-left"></div>
                             <p>Le <?= $comment->getPublished(); ?></p>
                             <p id="comment_post<?= $comment->getCommentId(); ?>"><?= $comment->getContent(); ?></p>
-                            <?php if (array_key_exists('id', $_SESSION)) { ?>
+                            <?php if (array_key_exists('id', $_SESSION) && ($_SESSION['id'] !== $comment->getUserId()->getUserId())) { ?>
                             <div class="content_form_like_report_comment">
                                 <form method="POST" id="like_form_comment<?= $comment->getCommentId(); ?>">
                                     <input type="hidden" name="element" id="elementComment<?= $comment->getCommentId(); ?>" value="comment" />
@@ -129,5 +131,18 @@
             </div>
         </div>
     <?php } ?>
+    <div id="content_pagination">
+    <?php for ($i=1; $i<=$pageTotal; $i++) {
+        if ($i == $currentPage) {
+    ?>
+        <?= $i; ?>
+    <?php
+        } else {
+    ?>
+        <a href="accueil?page=<?= $i ?>"><?= $i; ?></a>
+    <?php
+        }
+    } ?>
+    </div>
 </div>
 <script src="./js/callAjax.js" async></script>
