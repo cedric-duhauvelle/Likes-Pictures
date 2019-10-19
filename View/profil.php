@@ -1,3 +1,8 @@
+<?php
+if (!array_key_exists('id', $_SESSION)) {
+    header('Location: accueil');
+}
+?>
 <div class="content">
     <div id="content_profil">
         <ul class="tabs">
@@ -9,7 +14,7 @@
             <div id="profil" class="tab_content active">
                 <h1>Profil</h1>
                 <div id="container_info_profil">
-                    <div id="profil_info" class="col-lg-9">
+                    <div id="profil_info">
                         <p><strong>Nom : </strong><?= $user->getName(); ?></p>
                         <p><strong>Email : </strong><?= $user->getEmail(); ?></p>
                         <p>Inscrit depuis le <?= $user->getInscription();  ?></p>
@@ -87,5 +92,5 @@
         </div>
     </div>
 </div>
-<script src="./js/tools.js"></script>
+<script src="./js/tools.js" async></script>
 <script src="./js/tabs.js"></script>

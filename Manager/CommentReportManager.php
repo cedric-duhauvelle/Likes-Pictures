@@ -49,7 +49,7 @@ class CommentReportManager
     {
         $reports = [];
         $query = $this->_db->query('SELECT * FROM comment_report');
-        while ($data = $queryt->fetch(PDO::FETCH_ASSOC)) {
+        while ($data = $query->fetch(PDO::FETCH_ASSOC)) {
             $reports[] = new CommentReport($data);
         }
 
